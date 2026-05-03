@@ -97,9 +97,37 @@ window.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 intro.style.display = "none";
-            }, 1500);
+            }, 500);
 
-        }, 3000);
+        }, 3500);
     });
+
+    const title = document.querySelector(".intro-title");
+    const tagline = document.querySelector(".intro-tagline");
+
+    if (title) title.style.opacity = "0";
+
+    setTimeout(() => {
+        if (tagline) tagline.style.opacity = "0";
+    }, 200);
+
+    const aboutSection = document.querySelector(".about-section");
+
+    if (!aboutSection) {
+        console.log("about section not found");
+        return;
+    }
+
+    function reveal() {
+        const trigger = aboutSection.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (trigger < screenHeight - 100) {
+            aboutSection.classList.add("show");
+        }
+    }
+    reveal();
+
+    window.addEventListener("scroll", reveal);
 
 });
