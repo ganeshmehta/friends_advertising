@@ -130,4 +130,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", reveal);
 
+    const first = document.querySelector(".solutions-stack li");
+    if (first) first.classList.add("active");
+
+    const section = document.querySelector(".solutions-right");
+    const items = document.querySelectorAll(".solutions-stack li");
+
+    items.forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            items.forEach(i => i.classList.remove("active"));
+            item.classList.add("active");
+        });
+    });
+
+    /* 👇 KEY PART */
+    section.addEventListener("mouseleave", () => {
+        items.forEach(i => i.classList.remove("active"));
+    });
+
+
 });

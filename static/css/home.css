@@ -247,3 +247,108 @@
     width: 1px;
     background: rgba(255,255,255,0.1);
 }
+
+.solutions-section {
+    background: #0b0b0f;
+    padding: 100px 10%;
+    color: white;
+}
+
+.solutions-container {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+/* LEFT */
+.solutions-left {
+    flex: 1;
+}
+
+/* RIGHT PANEL */
+.solutions-right {
+    flex: 2;
+    height: 400px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #14141a, #1b1b22);
+    overflow: hidden;
+    background: #14141a;
+    box-shadow: 
+        0 10px 40px rgba(0,0,0,0.5),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* Background image */
+.solutions-bg {
+    position: absolute;
+    inset: 0;
+    transition: 0.6s ease;
+    filter: brightness(0.6);
+}
+
+/* STACK */
+.solutions-stack {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ITEMS */
+.solutions-stack li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    position: relative;
+    overflow: hidden;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+
+    transition: all 0.4s ease;
+    color: #aaa;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+}
+
+/* HOVER EFFECT */
+.solutions-stack li:hover {
+    flex: 2;  /* expands */
+    background: rgba(168, 85, 247, 0.2);
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(168, 85, 247, 0.15),
+        transparent
+    );
+
+    box-shadow: inset 4px 0 0 #a855f7;
+    transform: scale(1.02);
+}
+
+.solutions-stack li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background: #a855f7;
+    transition: width 0.4s ease;
+}
+
+.solutions-stack li.active {
+    flex: 2;
+    color: #fff;
+    background: rgba(168, 85, 247, 0.1);
+    box-shadow: inset 4px 0 0 #a855f7;
+}
+
+.solutions-stack li:hover::after {
+    width: 100%;
+}
