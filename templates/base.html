@@ -4,8 +4,15 @@
     <title>FRIENDS ADVERTISING</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/testimonials.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="{{ url_for('static', filename='js/intro.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/testimonials_rotate.js') }}"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.add("loaded");
+        });
+    </script>
 </head>
 <body>
 
@@ -18,12 +25,13 @@
     </div>
 
     <div class="nav-right">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about" class="nav-link">About Us</a>
-        <a href="/projects" class="nav-link">Projects</a>
-        <a href="/portfolio" class="nav-link">Portfolio</a>
-        <a href="/contact" class="nav-link">Contact Us</a>
+        <a href="{{ url_for('home') }}" class="nav-link {{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+        <a href="{{ url_for('about') }}" class="nav-link {{ 'active' if request.endpoint == 'about' else '' }}">About Us</a>
+        <a href="{{ url_for('testimonials') }}" class="nav-link {{ 'active' if request.endpoint == 'testimonials' else '' }}">Testimonials</a>
+        <a href="{{ url_for('portfolio') }}" class="nav-link {{ 'active' if request.endpoint == 'portfolio' else '' }}">Portfolio</a>
+        <a href="{{ url_for('contact') }}" class="nav-link {{ 'active' if request.endpoint == 'contact' else '' }}">Contact Us</a>
     </div>
+    
 </nav>
     {% block content %}{% endblock %}
 

@@ -115,6 +115,10 @@
     display: block;
 }
 
+#intro {
+    pointer-events: none;
+}
+
 .intro-content {
     position: absolute;
     top: 50%;

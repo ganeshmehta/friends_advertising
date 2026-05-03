@@ -2,7 +2,14 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f8;
+    overflow-x: hidden;
+    background: #080808;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 /* Navbar container */
@@ -13,6 +20,8 @@ body {
     padding: 15px 40px;
     background: linear-gradient(90deg, #2c2c34, #3b2f63);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10000;
 }
 
 .logo {
@@ -75,4 +84,13 @@ body {
     padding: 0; 
     margin: 0;
     max-width: 100%;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+.nav-link.active {
+    color: #a855f7;
+    border-bottom: 2px solid #a855f7;
 }
