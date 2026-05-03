@@ -1,0 +1,78 @@
+/* Reset */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f8;
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, #2c2c34, #3b2f63);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;   /* 👈 THIS makes it vertical */
+    align-items: flex-start;  /* aligns left */
+}
+
+.logo-main {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 3px;
+}
+
+.logo-sub {
+    font-size: 11px;
+    color: #a78bfa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Right side links */
+.nav-right {
+    display: flex;
+    gap: 25px;
+}
+
+/* Links */
+.nav-link {
+    text-decoration: none;
+    color: #d1d1e0;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.nav-link:hover {
+    color: #c084fc; /* soft purple */
+}
+
+/* Cool underline animation */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #c084fc;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.container {
+    padding: 0; 
+    margin: 0;
+    max-width: 100%;
+}

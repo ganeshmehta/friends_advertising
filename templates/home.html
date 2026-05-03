@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="impression_1">
+    <div id="intro">
+        <canvas id="three-canvas"></canvas>
+        <div class="intro-text">FRIENDS Advertising</div>
+    </div>
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline class="impression_1-video">
+        <source src="{{ url_for('static', filename='videos/impression_1.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Overlay -->
+    <div class="impression_1-overlay">
+        <h1>
+            Welcome to FRIENDS Advertising
+        </h1>
+
+        <p>Your trusted billboard advertising partner</p>
+
+        <div class="impression_1-buttons">
+            <a href="/billboards" class="btn primary">Explore Our Sites</a>
+            <a href="/testimonials" class="btn secondary">Testimonials</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
