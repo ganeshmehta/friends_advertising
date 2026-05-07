@@ -9,7 +9,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative px-4 py-20 text-center">
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none flex justify-center">
-          <div className="w-[600px] h-[600px] bg-[var(--neon-purple)] rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+          <div className="w-[600px] h-[600px] bg-[var(--neon-purple)] rounded-full mix-blend-screen filter blur-[128px] opacity-20"></div>
         </div>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}

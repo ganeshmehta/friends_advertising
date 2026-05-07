@@ -2,14 +2,25 @@
 
 import dynamic from "next/dynamic";
 import { ArrowRight, MapPin, Monitor, Megaphone, Flag, Sparkles, TrendingUp, Eye } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import Link from "next/link";
 
 // Dynamically import the 3D component with SSR disabled
 const Billboard3D = dynamic(() => import("@/components/Billboard3D"), { ssr: false });
+const EarthSplash = dynamic(() => import("@/components/EarthSplash"), { 
+  ssr: false,
+  loading: () => (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+      <div className="text-[var(--neon-blue)] font-bold tracking-widest animate-pulse">
+        LOADING EXPERIENCE...
+      </div>
+    </div>
+  )
+});
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -24,12 +35,19 @@ export default function Home() {
   const storyOpacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
 
   return (
-    <main ref={containerRef} className="flex flex-col w-full overflow-hidden">
-      {/* Hero Section */}
+    <>
+      <AnimatePresence>
+        {showSplash && (
+          <EarthSplash onComplete={() => setShowSplash(false)} />
+        )}
+      </AnimatePresence>
+
+      <main ref={containerRef} className="flex flex-col w-full overflow-hidden">
+        {/* Hero Section */}
       <section className="relative w-full h-screen flex flex-col items-center justify-start pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-[var(--neon-purple)] rounded-full mix-blend-multiply filter blur-[150px] opacity-20 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-96 h-96 bg-[var(--neon-blue)] rounded-full mix-blend-multiply filter blur-[150px] opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-20 left-10 w-96 h-96 bg-[var(--neon-purple)] rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse"></div>
+          <div className="absolute top-40 right-10 w-96 h-96 bg-[var(--neon-blue)] rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <motion.div 
@@ -198,7 +216,7 @@ export default function Home() {
       {/* Interactive CTA */}
       <section className="py-32 px-4 relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-96 bg-[var(--neon-blue)] rounded-full mix-blend-multiply filter blur-[200px] opacity-20"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-96 bg-[var(--neon-blue)] rounded-full mix-blend-screen filter blur-[200px] opacity-20"></div>
         </div>
         
         <div className="relative z-10 text-center glass p-12 md:p-20 rounded-3xl border border-white/10 max-w-4xl w-full">
@@ -210,5 +228,6 @@ export default function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }
