@@ -1,10 +1,29 @@
 "use client";
 
-import { useRef, useEffect, useState, Suspense } from "react";
+import { useRef, useEffect, useState, Suspense, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, useTexture, Text } from "@react-three/drei";
+import { useTexture, Text } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import * as THREE from "three";
+
+// Optimized geometries for instant load
+const EARTH_GEOM = new THREE.SphereGeometry(2, 32, 32);
+const ROAD_GEOM = new THREE.PlaneGeometry(14, 600);
+const GROUND_GEOM = new THREE.PlaneGeometry(600, 600);
+const LANE_GEOM = new THREE.PlaneGeometry(0.3, 5);
+const TRUNK_GEOM = new THREE.CylinderGeometry(0.2, 0.3, 4, 8);
+const LEAVES_GEOM = new THREE.ConeGeometry(2.5, 6, 8);
+const POLE_GEOM = new THREE.CylinderGeometry(0.12, 0.12, 10, 8);
+const LIGHT_GEOM = new THREE.SphereGeometry(0.3, 8, 8);
+
+// Lighter materials and stronger emissive properties for visibility
+const MAT_ROAD = new THREE.MeshStandardMaterial({ color: "#222", roughness: 0.6, metalness: 0.3 });
+const MAT_GROUND = new THREE.MeshStandardMaterial({ color: "#0a0a0a" });
+const MAT_LANE = new THREE.MeshStandardMaterial({ color: "#ffffff", emissive: "#ffffff", emissiveIntensity: 2 });
+const MAT_TRUNK = new THREE.MeshStandardMaterial({ color: "#3a261a", roughness: 0.9 });
+const MAT_LEAVES = new THREE.MeshStandardMaterial({ color: "#0f3a1a", roughness: 0.8 });
+const MAT_POLE = new THREE.MeshStandardMaterial({ color: "#555", metalness: 0.8, roughness: 0.2 });
+const MAT_LIGHT_GLOW = new THREE.MeshBasicMaterial({ color: "#fff4cc" });
 
 function SpinningEarth({ zooming }: { zooming: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -12,67 +31,64 @@ function SpinningEarth({ zooming }: { zooming: boolean }) {
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.5;
-      
+      meshRef.current.rotation.y += delta * 0.4;
       if (zooming) {
-        meshRef.current.scale.lerp(new THREE.Vector3(20, 20, 20), delta * 5);
+        meshRef.current.scale.lerp(new THREE.Vector3(25, 25, 25), delta * 4);
       }
     }
   });
 
   return (
     <group>
-      <ambientLight intensity={1.5} />
-      <directionalLight position={[10, 10, 5]} intensity={2} />
-      <Sphere ref={meshRef} args={[2, 64, 64]} rotation={[0, Math.PI * 1.2, 0]}>
-        <meshStandardMaterial map={colorMap} roughness={0.6} metalness={0.1} />
-      </Sphere>
+      <ambientLight intensity={2} />
+      <directionalLight position={[10, 10, 5]} intensity={3} />
+      <mesh ref={meshRef} geometry={EARTH_GEOM} rotation={[0, Math.PI * 1.2, 0]}>
+        <meshStandardMaterial map={colorMap} roughness={0.8} />
+      </mesh>
     </group>
   );
 }
 
 function RealisticRoadScene() {
-  const roadSpeed = 40; // Fast moving road
+  const roadSpeed = 45;
+  const itemCount = 20;
+  const spacing = 18;
 
   return (
     <group>
       <color attach="background" args={["#020205"]} />
-      <fog attach="fog" args={["#020205", 10, 100]} />
-      <ambientLight intensity={0.1} />
-      <directionalLight position={[10, 20, 10]} intensity={0.2} />
+      {/* Lightened fog to avoid black-out */}
+      <fog attach="fog" args={["#020205", 20, 150]} />
       
-      {/* The static ground */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
-        <planeGeometry args={[300, 300]} />
-        <meshStandardMaterial color="#050505" roughness={1} />
-      </mesh>
+      {/* Significantly boosted lighting for visibility */}
+      <ambientLight intensity={1.5} />
+      <pointLight position={[0, 20, -10]} intensity={150} color="#00f3ff" distance={100} />
+      <pointLight position={[0, 20, -50]} intensity={150} color="#bc13fe" distance={100} />
+      <pointLight position={[0, 20, -90]} intensity={150} color="#00f3ff" distance={100} />
 
-      {/* The Road Surface */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.99, 0]}>
-        <planeGeometry args={[14, 300]} />
-        <meshStandardMaterial color="#1a1a1a" roughness={0.7} metalness={0.2} />
-      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} geometry={GROUND_GEOM} material={MAT_GROUND} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.99, 0]} geometry={ROAD_GEOM} material={MAT_ROAD} />
 
-      {/* Moving Scenery Objects (Trees, Lamps, Billboards, Lane Markings) */}
-      {Array.from({ length: 20 }).map((_, i) => (
-        <SceneryItem key={i} index={i} speed={roadSpeed} totalItems={20} />
+      {Array.from({ length: itemCount }).map((_, i) => (
+        <SceneryItem key={i} index={i} speed={roadSpeed} totalItems={itemCount} spacing={spacing} />
       ))}
     </group>
   );
 }
 
-function SceneryItem({ index, speed, totalItems }: { index: number, speed: number, totalItems: number }) {
+function SceneryItem({ index, speed, totalItems, spacing }: { index: number, speed: number, totalItems: number, spacing: number }) {
   const groupRef = useRef<THREE.Group>(null);
-  const spacing = 15;
   const initialZ = -(index * spacing);
   const side = index % 2 === 0 ? 1 : -1;
-  const isBillboard = index % 4 === 0; // Every 4th item is a billboard
+  const isBillboard = index % 4 === 0;
+
+  const randomScale = useMemo(() => 0.8 + Math.random() * 0.4, []);
+  const randomXOffset = useMemo(() => Math.random() * 2, []);
 
   useFrame((state, delta) => {
     if (groupRef.current) {
       groupRef.current.position.z += delta * speed;
-      if (groupRef.current.position.z > 10) {
-        // Reset far back when it passes the camera
+      if (groupRef.current.position.z > 20) {
         groupRef.current.position.z -= totalItems * spacing;
       }
     }
@@ -81,119 +97,61 @@ function SceneryItem({ index, speed, totalItems }: { index: number, speed: numbe
   return (
     <group ref={groupRef} position={[0, 0, initialZ]}>
       {isBillboard ? (
-        <Billboard side={side} />
+        <BillboardItem side={side} />
       ) : (
-        <group>
-          <Tree side={side} />
-          <StreetLamp side={side} />
+        <group scale={randomScale}>
+          <TreeItem side={side} xOffset={randomXOffset} />
+          <LampItem side={side} />
         </group>
       )}
-      
-      {/* Lane Markings (center of the road) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.98, 0]}>
-        <planeGeometry args={[0.3, 5]} />
-        <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} />
-      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.98, 0]} geometry={LANE_GEOM} material={MAT_LANE} />
     </group>
   );
 }
 
-function Tree({ side }: { side: number }) {
-  // Randomize tree slightly so they don't look perfectly uniform
-  const x = side * (8 + Math.random() * 4); // Place off the road
-  const z = (Math.random() - 0.5) * 5;
-  const scale = 0.8 + Math.random() * 0.7;
-
-  return (
-    <group position={[x, -2, z]} scale={scale}>
-      {/* Trunk */}
-      <mesh position={[0, 2, 0]}>
-        <cylinderGeometry args={[0.3, 0.5, 4]} />
-        <meshStandardMaterial color="#2d1c10" roughness={0.9} />
-      </mesh>
-      {/* Leaves - Pine tree style */}
-      <mesh position={[0, 6, 0]}>
-        <coneGeometry args={[2.5, 6, 6]} />
-        <meshStandardMaterial color="#0a2a12" roughness={1} />
-      </mesh>
-      <mesh position={[0, 8, 0]}>
-        <coneGeometry args={[2, 5, 6]} />
-        <meshStandardMaterial color="#0c3015" roughness={1} />
-      </mesh>
-    </group>
-  );
-}
-
-function StreetLamp({ side }: { side: number }) {
-  const x = side * 7.5;
-  
+function TreeItem({ side, xOffset }: { side: number, xOffset: number }) {
+  const x = side * (9 + xOffset);
   return (
     <group position={[x, -2, 0]}>
-      {/* Pole */}
-      <mesh position={[0, 5, 0]}>
-        <cylinderGeometry args={[0.15, 0.2, 10]} />
-        <meshStandardMaterial color="#444" metalness={0.8} roughness={0.2} />
-      </mesh>
-      {/* Arm */}
-      <mesh position={[-side * 1, 10, 0]} rotation={[0, 0, side * Math.PI / 2]}>
-        <cylinderGeometry args={[0.1, 0.1, 2]} />
-        <meshStandardMaterial color="#444" metalness={0.8} roughness={0.2} />
-      </mesh>
-      {/* Light Bulb */}
-      <mesh position={[-side * 2, 9.8, 0]}>
-        <sphereGeometry args={[0.3]} />
-        <meshBasicMaterial color="#ffeebb" />
-        <pointLight intensity={3} color="#ffeebb" distance={30} />
-      </mesh>
+      <mesh position={[0, 2, 0]} geometry={TRUNK_GEOM} material={MAT_TRUNK} />
+      <mesh position={[0, 6, 0]} geometry={LEAVES_GEOM} material={MAT_LEAVES} />
+      <mesh position={[0, 8, 0]} geometry={LEAVES_GEOM} material={MAT_LEAVES} scale={0.7} />
     </group>
   );
 }
 
-function Billboard({ side }: { side: number }) {
+function LampItem({ side }: { side: number }) {
+  const x = side * 7.5;
+  return (
+    <group position={[x, -2, 0]}>
+      <mesh position={[0, 5, 0]} geometry={POLE_GEOM} material={MAT_POLE} />
+      {/* Light Head */}
+      <mesh position={[-side * 1.5, 9.8, 0]} geometry={LIGHT_GEOM} material={MAT_LIGHT_GLOW} />
+      <pointLight position={[-side * 1.5, 9.8, 0]} intensity={50} color="#ffeebb" distance={30} decay={1.5} />
+    </group>
+  );
+}
+
+function BillboardItem({ side }: { side: number }) {
   const x = side * 12;
-  // Rotate slightly to face the oncoming driver
-  const rotationY = side === 1 ? -Math.PI / 8 : Math.PI / 8;
-  const color = side === 1 ? "#00f3ff" : "#bc13fe";
   const brandName = side === 1 ? "FRIENDS" : "ADVERTISING";
+  const color = side === 1 ? "#00f3ff" : "#bc13fe";
 
   return (
-    <group position={[x, -2, 0]} rotation={[0, rotationY, 0]}>
-      {/* Main Pole */}
-      <mesh position={[0, 6, 0]}>
-        <cylinderGeometry args={[0.5, 0.6, 12]} />
-        <meshStandardMaterial color="#222" metalness={0.6} roughness={0.4} />
-      </mesh>
-      
-      {/* Screen Frame */}
+    <group position={[x, -2, 0]} rotation={[0, side === 1 ? -0.4 : 0.4, 0]}>
+      <mesh position={[0, 6, 0]} geometry={TRUNK_GEOM} material={MAT_POLE} scale={[2.5, 3, 2.5]} />
       <mesh position={[0, 12, 0]}>
-        <boxGeometry args={[10, 6, 1]} />
-        <meshStandardMaterial color="#111" />
+        <boxGeometry args={[10, 6, 0.5]} />
+        <meshStandardMaterial color="#222" />
       </mesh>
-      
-      {/* The Ad Screen */}
-      {/* Since side=1 is on the right, the screen should face -Z. 
-          Actually the camera is looking at -Z, so the screen should face +Z. 
-          If rotationY rotates the group, the plane faces +Z by default. */}
-      <mesh position={[0, 12, 0.51]}>
+      <mesh position={[0, 12, 0.3]}>
         <planeGeometry args={[9.6, 5.6]} />
         <meshBasicMaterial color={color} />
       </mesh>
-      
-      {/* Text on Billboard */}
-      <Text
-        position={[0, 12, 0.55]}
-        fontSize={1.2}
-        color="#ffffff"
-        anchorX="center"
-        anchorY="middle"
-        outlineWidth={0.02}
-        outlineColor="#000"
-      >
+      <Text position={[0, 12, 0.35]} fontSize={1.2} color="white" anchorX="center" anchorY="middle">
         {brandName}
       </Text>
-
-      {/* Screen Glow Light */}
-      <pointLight position={[0, 12, 2]} intensity={5} color={color} distance={40} decay={2} />
+      <pointLight position={[0, 12, 2]} intensity={80} color={color} distance={40} />
     </group>
   );
 }
@@ -203,48 +161,24 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    const zoomTimer = setTimeout(() => {
-      setPhase('zooming');
-    }, 3000); // Start zoom after 3 seconds
-
-    const transitionInTimer = setTimeout(() => {
-      setIsTransitioning(true);
-    }, 3100); // Start fading to black shortly after zoom starts
-
-    const roadTimer = setTimeout(() => {
-      setPhase('road');
-    }, 3900); // Switch to road when fully black
-
-    const transitionOutTimer = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 4000); // Fade back in to reveal the road
-
-    const completeTimer = setTimeout(() => {
-      onComplete();
-    }, 7500); // Extended total time for smoother experience
-
-    return () => {
-      clearTimeout(zoomTimer);
-      clearTimeout(transitionInTimer);
-      clearTimeout(roadTimer);
-      clearTimeout(transitionOutTimer);
-      clearTimeout(completeTimer);
-    };
+    const timers = [
+      setTimeout(() => setPhase('zooming'), 3000),
+      setTimeout(() => setIsTransitioning(true), 3100),
+      setTimeout(() => setPhase('road'), 3800),
+      setTimeout(() => setIsTransitioning(false), 3900),
+      setTimeout(() => onComplete(), 8500),
+    ];
+    return () => timers.forEach(clearTimeout);
   }, [onComplete]);
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1.5, ease: "easeInOut" }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black"
     >
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[var(--neon-blue)] mix-blend-screen filter blur-[150px] opacity-10"></div>
-      </div>
-      
-      <div className="relative z-10 w-full h-full">
-        <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+      <div className="relative w-full h-full">
+        <Canvas camera={{ position: [0, 0, 5], fov: 60 }} gl={{ antialias: true, powerPreference: "high-performance" }}>
           <Suspense fallback={null}>
             {phase === 'earth' || phase === 'zooming' ? (
               <SpinningEarth zooming={phase === 'zooming'} />
@@ -259,9 +193,9 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
         {phase === 'earth' && (
           <motion.div 
             exit={{ opacity: 0 }}
-            className="absolute bottom-10 z-20 text-[var(--neon-blue)] font-bold tracking-widest animate-pulse"
+            className="absolute bottom-10 z-20 text-[var(--neon-blue)] font-bold tracking-widest animate-pulse uppercase"
           >
-            LOADING EXPERIENCE...
+            Loading Experience...
           </motion.div>
         )}
         {isTransitioning && (
@@ -269,7 +203,6 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 z-40 bg-black"
           />
         )}
@@ -277,3 +210,7 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
     </motion.div>
   );
 }
+
+
+
+
