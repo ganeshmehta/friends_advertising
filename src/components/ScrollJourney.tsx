@@ -2,7 +2,7 @@
 
 import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useTexture, Stars, Float } from "@react-three/drei";
+import { useTexture, Stars, Float, OrbitControls } from "@react-three/drei";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import * as THREE from "three";
 
@@ -82,12 +82,19 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
       {/* 3D Scene Container */}
       <motion.div 
         style={{ opacity: earthOpacity, filter: `blur(${blurValue.get()}px)` }}
-        className="absolute inset-0 z-10"
+        className="absolute inset-0 z-10 pointer-events-auto"
       >
         <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
           <Suspense fallback={null}>
             <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
             <Earth scrollYProgress={scrollYProgress} />
+            <OrbitControls 
+              enableZoom={false} 
+              enablePan={false} 
+              rotateSpeed={0.5} 
+              enableDamping={true} 
+              dampingFactor={0.05}
+            />
           </Suspense>
         </Canvas>
       </motion.div>
