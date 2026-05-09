@@ -23,6 +23,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--neon-purple)] selection:text-white">
         <Header />
