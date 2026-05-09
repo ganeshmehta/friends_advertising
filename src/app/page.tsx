@@ -24,13 +24,13 @@ export default function Home() {
   }, []);
 
   // Journey and Hero transitions
-  const journeyOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 1, 0]);
-  const heroOpacity = useTransform(scrollYProgress, [0.4, 0.5, 0.65], [0, 1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0.4, 0.5], [0.9, 1]);
-  const heroY = useTransform(scrollYProgress, [0.4, 0.6], [50, 100]);
+  const journeyOpacity = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0]);
+  const heroOpacity = useTransform(scrollYProgress, [0.35, 0.42, 0.75, 0.85], [0, 1, 1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0.35, 0.45], [0.8, 1]);
+  const heroY = useTransform(scrollYProgress, [0.4, 0.6], [20, 0]);
   
-  const storyY = useTransform(scrollYProgress, [0.6, 0.8], [50, 0]);
-  const storyOpacity = useTransform(scrollYProgress, [0.6, 0.75], [0, 1]);
+  const storyY = useTransform(scrollYProgress, [0.5, 0.7], [50, 0]);
+  const storyOpacity = useTransform(scrollYProgress, [0.5, 0.58], [0, 1]);
 
   return (
     <main ref={containerRef} className="flex flex-col w-full overflow-hidden bg-[var(--background)]">
@@ -57,28 +57,26 @@ export default function Home() {
 
       {/* Hero Section - Becomes visible after atmospheric entry */}
       <section className="relative w-full h-screen flex flex-col items-center justify-start pt-32 overflow-hidden z-10">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-[var(--neon-purple)] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-64 h-64 bg-[var(--neon-blue)] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse"></div>
-        </div>
+        {/* Contrast Backdrop Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-0 pointer-events-none"></div>
 
         <motion.div 
           style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
           className="z-10 text-center max-w-5xl mx-auto px-4 mb-4 flex flex-col items-center"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--neon-blue)]/20 bg-white/5 text-[var(--neon-blue)] text-xs font-medium mb-6 uppercase tracking-widest"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--neon-blue)] bg-black/40 text-[var(--neon-blue)] text-xs font-bold mb-6 uppercase tracking-widest shadow-[0_0_20px_rgba(0,243,255,0.2)]"
           >
             <Sparkles className="w-3 h-3" />
             <span>Future of OOH Advertising</span>
           </motion.div>
           
-          <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-tighter leading-tight">
+          <h1 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter leading-tight text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
             DOMINATE THE <br />
-            <span className="neon-text text-[var(--neon-blue)]">SKYLINE.</span>
+            <span className="neon-text text-[var(--neon-blue)] brightness-125">SKYLINE.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl font-light">
+          <p className="text-xl md:text-2xl text-white font-medium mb-8 max-w-2xl leading-relaxed drop-shadow-md">
             We engineer massive, unmissable brand experiences across Mumbai and Satara.
           </p>
         </motion.div>
@@ -111,32 +109,52 @@ export default function Home() {
           style={{ y: storyY, opacity: storyOpacity }}
           className="max-w-4xl mx-auto space-y-32"
         >
-          {/* Chapter 1 */}
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="flex-1 space-y-6">
-              <div className="text-[var(--neon-blue)] font-bold tracking-widest text-sm">THE CHALLENGE</div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">In a noisy world, <br/><span className="text-gray-500">whispering doesn't work.</span></h2>
-              <p className="text-xl text-gray-400 leading-relaxed font-light">
+          {/* Chapter 1: The Challenge */}
+          <div className="flex flex-col md:flex-row gap-12 items-center relative group">
+            {/* High-Contrast Glow Backdrop */}
+            <div className="absolute -inset-10 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            
+            <div className="absolute -left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[var(--accent)] to-transparent opacity-80"></div>
+            <div className="flex-1 space-y-6 relative z-10">
+              <div className="text-[var(--accent)] font-black tracking-[0.3em] text-xs uppercase flex items-center gap-3">
+                <span className="w-12 h-[2px] bg-[var(--accent)]"></span>
+                THE CHALLENGE
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter text-white">
+                In a noisy world, <br/>
+                <span className="text-[var(--accent)] brightness-150 drop-shadow-[0_0_20px_rgba(255,0,85,0.4)]">whispering is invisible.</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-white font-medium leading-relaxed max-w-2xl drop-shadow-sm">
                 Digital ads are scrolled past in milliseconds. Screens are crowded. To truly capture attention, your brand needs to step out of the phone and into the real world.
               </p>
             </div>
-            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border border-white/10 flex items-center justify-center bg-white/5 relative">
-              <div className="absolute inset-0 rounded-full border border-gray-500 animate-ping opacity-20"></div>
-              <Eye className="w-16 h-16 text-gray-500" />
+            <div className="w-32 h-32 md:w-64 md:h-64 rounded-full border-2 border-[var(--accent)]/50 flex items-center justify-center bg-[var(--accent)]/10 relative z-10 shadow-[0_0_50px_rgba(255,0,85,0.2)]">
+              <Eye className="w-24 h-24 text-[var(--accent)] drop-shadow-[0_0_30px_rgba(255,0,85,0.8)]" />
             </div>
           </div>
 
-          {/* Chapter 2 */}
-          <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
-            <div className="flex-1 space-y-6">
-              <div className="text-[var(--neon-purple)] font-bold tracking-widest text-sm">THE SOLUTION</div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">Command attention <br/><span className="text-white">where it counts.</span></h2>
-              <p className="text-xl text-gray-400 leading-relaxed font-light">
+          {/* Chapter 2: The Solution */}
+          <div className="flex flex-col md:flex-row-reverse gap-12 items-center relative group">
+            {/* High-Contrast Glow Backdrop */}
+            <div className="absolute -inset-10 bg-purple-500/10 blur-[120px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+            <div className="absolute -right-6 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[var(--neon-blue)] to-transparent opacity-80"></div>
+            <div className="flex-1 space-y-6 relative z-10 text-right md:text-left">
+              <div className="text-[var(--neon-blue)] font-black tracking-[0.3em] text-xs uppercase flex items-center justify-end md:justify-start gap-3">
+                <span className="hidden md:block w-12 h-[2px] bg-[var(--neon-blue)]"></span>
+                THE SOLUTION
+                <span className="md:hidden w-12 h-[2px] bg-[var(--neon-blue)]"></span>
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter text-white">
+                Command attention <br/>
+                <span className="text-[var(--neon-blue)] brightness-150 drop-shadow-[0_0_20px_rgba(0,243,255,0.4)]">where it counts.</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-white font-medium leading-relaxed max-w-2xl ml-auto md:ml-0 drop-shadow-sm">
                 From 50x50 ft highway titans to high-contrast LED glow signs, we place your message in the direct line of sight of thousands of daily commuters.
               </p>
             </div>
-            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border border-[var(--neon-purple)]/50 flex items-center justify-center bg-[var(--neon-purple)]/10 neon-border">
-              <Megaphone className="w-16 h-16 text-[var(--neon-purple)]" />
+            <div className="w-32 h-32 md:w-64 md:h-64 rounded-full border-2 border-[var(--neon-blue)]/50 flex items-center justify-center bg-[var(--neon-blue)]/10 relative z-10 shadow-[0_0_50px_rgba(0,243,255,0.2)]">
+              <Megaphone className="w-24 h-24 text-[var(--neon-blue)] drop-shadow-[0_0_30px_rgba(0,243,255,0.8)]" />
             </div>
           </div>
         </motion.div>
@@ -155,50 +173,50 @@ export default function Home() {
               whileHover={{ scale: 0.98 }}
               className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-blue)] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-blue)] via-transparent to-transparent"></div>
               <div className="relative z-20">
                 <MapPin className="w-10 h-10 text-[var(--neon-blue)] mb-4" />
                 <h3 className="text-3xl font-bold mb-2">Flex Board Giants</h3>
-                <p className="text-gray-300">Dominate highways with large-format prints.</p>
+                <p className="text-white/70 group-hover:text-white transition-colors">Dominate highways with large-format prints.</p>
               </div>
             </motion.div>
 
             <motion.div 
               whileHover={{ scale: 0.98 }}
-              className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
+              className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-[var(--neon-purple)]/30 transition-colors"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-purple)] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-purple)] via-transparent to-transparent"></div>
               <div className="relative z-20">
                 <Monitor className="w-10 h-10 text-[var(--neon-purple)] mb-4" />
                 <h3 className="text-2xl font-bold mb-2">LED & Glow Signs</h3>
-                <p className="text-gray-300">Round-the-clock visibility.</p>
+                <p className="text-white/70 group-hover:text-white transition-colors">Round-the-clock visibility.</p>
               </div>
             </motion.div>
 
             <motion.div 
               whileHover={{ scale: 0.98 }}
-              className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
+              className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-colors"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
               <div className="relative z-20">
                 <Flag className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-2xl font-bold mb-2">Event Banners</h3>
-                <p className="text-gray-300">Custom promotional materials.</p>
+                <p className="text-white/70 group-hover:text-white transition-colors">Custom promotional materials.</p>
               </div>
             </motion.div>
 
             <motion.div 
               whileHover={{ scale: 0.98 }}
-              className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-[var(--neon-blue)]/20"
+              className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-[var(--neon-blue)]/10 hover:border-[var(--neon-blue)]/40 transition-colors"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
               <div className="relative z-20 flex justify-between items-end">
                 <div>
                   <TrendingUp className="w-10 h-10 text-[var(--neon-blue)] mb-4" />
                   <h3 className="text-3xl font-bold mb-2">See All Services</h3>
-                  <p className="text-gray-300">Explore our complete range of OOH assets.</p>
+                  <p className="text-white/70 group-hover:text-white transition-colors">Explore our complete range of OOH assets.</p>
                 </div>
                 <Link href="/services" className="w-14 h-14 rounded-full bg-[var(--neon-blue)] text-black flex items-center justify-center hover:scale-110 transition-transform">
                   <ArrowRight className="w-6 h-6" />

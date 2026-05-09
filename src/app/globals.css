@@ -24,23 +24,26 @@ body {
   font-family: var(--font-sans), Arial, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom utilities for premium feel */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .neon-text {
-  text-shadow: 0 0 8px rgba(0, 243, 255, 0.5), 0 0 15px rgba(0, 243, 255, 0.3);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3), 0 0 20px rgba(0, 243, 255, 0.1);
 }
 
 .neon-border {
-  box-shadow: 0 0 15px rgba(188, 19, 254, 0.3), inset 0 0 10px rgba(188, 19, 254, 0.1);
-  border: 1px solid rgba(188, 19, 254, 0.4);
+  box-shadow: 0 0 20px rgba(188, 19, 254, 0.15), inset 0 0 10px rgba(188, 19, 254, 0.05);
+  border: 1px solid rgba(188, 19, 254, 0.3);
 }
 
 /* Smooth scrolling */
