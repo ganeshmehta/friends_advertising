@@ -11,7 +11,7 @@ const Billboard3D = dynamic(() => import("@/components/Billboard3D"), { ssr: fal
 const EarthSplash = dynamic(() => import("@/components/EarthSplash"), { 
   ssr: false,
   loading: () => (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--background)]">
       <div className="w-12 h-12 border-4 border-[var(--neon-blue)] border-t-transparent rounded-full animate-spin"></div>
     </div>
   )
@@ -45,7 +45,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main ref={containerRef} className="flex flex-col w-full overflow-hidden bg-black">
+      <main ref={containerRef} className="flex flex-col w-full overflow-hidden bg-[var(--background)]">
         {/* Hero Section */}
         <section className="relative w-full h-screen flex flex-col items-center justify-start pt-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
 
         {/* Storytelling Section: The Problem & Solution */}
-        <section className="py-32 px-4 relative bg-[#050505]">
+        <section className="py-32 px-4 relative bg-[var(--background)]">
           <motion.div 
             style={{ y: storyY, opacity: storyOpacity }}
             className="max-w-4xl mx-auto space-y-32"
@@ -133,7 +133,7 @@ export default function Home() {
         </section>
 
         {/* Services Showcase (Bento Grid) */}
-        <section className="py-24 px-4 bg-black relative border-t border-white/5">
+        <section className="py-24 px-4 bg-[var(--background)] relative border-t border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <h2 className="text-4xl md:text-6xl font-black mb-6">OUR ARSENAL</h2>
@@ -145,7 +145,7 @@ export default function Home() {
                 whileHover={{ scale: 0.98 }}
                 className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-blue)] via-transparent to-transparent"></div>
                 <div className="relative z-20">
                   <MapPin className="w-10 h-10 text-[var(--neon-blue)] mb-4" />
@@ -158,7 +158,7 @@ export default function Home() {
                 whileHover={{ scale: 0.98 }}
                 className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-purple)] via-transparent to-transparent"></div>
                 <div className="relative z-20">
                   <Monitor className="w-10 h-10 text-[var(--neon-purple)] mb-4" />
@@ -171,7 +171,7 @@ export default function Home() {
                 whileHover={{ scale: 0.98 }}
                 className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
                 <div className="relative z-20">
                   <Flag className="w-10 h-10 text-white mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Event Banners</h3>
@@ -183,7 +183,7 @@ export default function Home() {
                 whileHover={{ scale: 0.98 }}
                 className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-[var(--neon-blue)]/20"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-transparent z-10"></div>
                 <div className="relative z-20 flex justify-between items-end">
                   <div>
                     <TrendingUp className="w-10 h-10 text-[var(--neon-blue)] mb-4" />

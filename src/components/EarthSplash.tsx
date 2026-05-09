@@ -71,7 +71,7 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
       initial={{ opacity: 1 }}
       animate={{ opacity: phase === 'exiting' ? 0 : 1 }}
       transition={{ duration: 1.5, ease: premiumEase }}
-      className="fixed inset-0 z-50 bg-black overflow-hidden flex items-center justify-center"
+      className="fixed inset-0 z-50 bg-[var(--background)] overflow-hidden flex items-center justify-center"
     >
       {/* 3D Earth Phase - Smooth Cross-fade to Video */}
       <motion.div 
@@ -116,7 +116,7 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
           className="w-full h-full object-cover"
           src="/videos/splash_road.mp4"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/80 via-transparent to-[var(--background)]/80 pointer-events-none" />
         
         {/* Premium Branding Overlay with Progressive Reveal */}
         <motion.div 

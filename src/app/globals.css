@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f0f0f0;
+  --background: #080a15;
+  --foreground: #f8fafc;
   --neon-blue: #00f3ff;
   --neon-purple: #bc13fe;
   --accent: #ff0055;
@@ -19,26 +19,28 @@
 
 body {
   background: var(--background);
+  background: radial-gradient(circle at 50% -20%, #151a30 0%, #080a15 80%);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Custom utilities for premium feel */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .neon-text {
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+  text-shadow: 0 0 8px rgba(0, 243, 255, 0.5), 0 0 15px rgba(0, 243, 255, 0.3);
 }
 
 .neon-border {
-  box-shadow: 0 0 10px rgba(188, 19, 254, 0.5), inset 0 0 10px rgba(188, 19, 254, 0.2);
-  border: 1px solid rgba(188, 19, 254, 0.5);
+  box-shadow: 0 0 15px rgba(188, 19, 254, 0.3), inset 0 0 10px rgba(188, 19, 254, 0.1);
+  border: 1px solid rgba(188, 19, 254, 0.4);
 }
 
 /* Smooth scrolling */
