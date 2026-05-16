@@ -99,18 +99,29 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
         </Canvas>
       </motion.div>
 
-      {/* Atmospheric Entry Video Overlay */}
-      <motion.div 
-        style={{ opacity: videoOpacity }}
-        className="absolute inset-0 z-20"
-      >
-        <video
-          autoPlay muted loop playsInline
-          className="w-full h-full object-cover grayscale opacity-40 mix-blend-screen"
-          src="/videos/splash_road.mp4"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-transparent to-[var(--background)]" />
-      </motion.div>
+   {/* Atmospheric Entry Video Overlay */}
+<motion.div 
+  style={{ opacity: videoOpacity }}
+  className="absolute inset-0 z-20"
+>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover saturate-150 brightness-115 contrast-115"
+    src="/videos/Temp_road.mp4"
+  />
+
+  {/* Light cinematic overlay */}
+  <div className="absolute inset-0 bg-black/5" />
+
+  {/* Soft glow for premium feel */}
+  <div className="absolute inset-0 bg-cyan-400/5 mix-blend-screen" />
+
+  {/* Vignette */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.18)_100%)]" />
+</motion.div>
 
       {/* Cinematic Text Layers */}
       <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
