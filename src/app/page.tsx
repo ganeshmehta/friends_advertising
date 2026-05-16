@@ -163,65 +163,138 @@ export default function Home() {
       </section>
 
       {/* Services Showcase */}
-      <section className="py-24 px-4 bg-[var(--background)] relative border-t border-white/5 z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">OUR ARSENAL</h2>
-            <div className="w-24 h-1 bg-[var(--neon-blue)]"></div>
+      <section className="py-32 px-4 bg-[var(--background)] relative border-t border-white/5 z-10 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[var(--neon-blue)] rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-pulse"></div>
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[var(--neon-purple)] rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          
+          {/* Tech Grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-[var(--neon-blue)] font-black tracking-[0.4em] text-xs uppercase mb-4"
+              >
+                Our Inventory
+              </motion.div>
+              <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white">
+                THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40">ARSENAL</span>
+              </h2>
+            </div>
+            <div className="max-w-md text-white/50 font-medium text-lg leading-relaxed">
+              We own the most strategic advertising assets in the region, engineered for maximum visibility and impact.
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
             <motion.div
-              whileHover={{ scale: 0.98 }}
-              className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="md:col-span-2 glass rounded-3xl p-10 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-[var(--neon-blue)]/30 transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-blue)] via-transparent to-transparent"></div>
-              <div className="relative z-20">
-                <MapPin className="w-10 h-10 text-[var(--neon-blue)] mb-4" />
-                <h3 className="text-3xl font-bold mb-2">Flex Board Giants</h3>
-                <p className="text-white/70 group-hover:text-white transition-colors">Dominate highways with large-format prints.</p>
+              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity">
+                <MapPin className="w-48 h-48 text-[var(--neon-blue)] -mr-12 -mt-12 rotate-12" />
               </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 0.98 }}
-              className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-[var(--neon-purple)]/30 transition-colors"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--neon-purple)] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/60 to-transparent z-10"></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[var(--neon-blue)] via-transparent to-transparent"></div>
+              
               <div className="relative z-20">
-                <Monitor className="w-10 h-10 text-[var(--neon-purple)] mb-4" />
-                <h3 className="text-2xl font-bold mb-2">LED & Glow Signs</h3>
-                <p className="text-white/70 group-hover:text-white transition-colors">Round-the-clock visibility.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 0.98 }}
-              className="glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-colors"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
-              <div className="relative z-20">
-                <Flag className="w-10 h-10 text-white mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Event Banners</h3>
-                <p className="text-white/70 group-hover:text-white transition-colors">Custom promotional materials.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 0.98 }}
-              className="md:col-span-2 glass rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-[var(--neon-blue)]/10 hover:border-[var(--neon-blue)]/40 transition-colors"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10"></div>
-              <div className="relative z-20 flex justify-between items-end">
-                <div>
-                  <TrendingUp className="w-10 h-10 text-[var(--neon-blue)] mb-4" />
-                  <h3 className="text-3xl font-bold mb-2">See All Services</h3>
-                  <p className="text-white/70 group-hover:text-white transition-colors">Explore our complete range of OOH assets.</p>
+                <div className="w-12 h-12 rounded-2xl bg-[var(--neon-blue)]/10 flex items-center justify-center mb-6 border border-[var(--neon-blue)]/20">
+                  <MapPin className="w-6 h-6 text-[var(--neon-blue)]" />
                 </div>
-                <Link href="/services" className="w-14 h-14 rounded-full bg-[var(--neon-blue)] text-black flex items-center justify-center hover:scale-110 transition-transform">
-                  <ArrowRight className="w-6 h-6" />
+                <h3 className="text-4xl font-black mb-3 tracking-tight">Flex Board Giants</h3>
+                <p className="text-xl text-white/60 group-hover:text-white transition-colors max-w-xl">
+                  Strategic high-traffic locations with massive format prints that command attention from miles away.
+                </p>
+              </div>
+              
+              {/* Decorative Corner */}
+              <div className="absolute top-0 right-0 w-24 h-24 overflow-hidden pointer-events-none">
+                <div className="absolute top-0 right-0 w-[2px] h-8 bg-[var(--neon-blue)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 h-[2px] w-8 bg-[var(--neon-blue)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="glass rounded-3xl p-10 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-[var(--neon-purple)]/30 transition-all duration-500"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/60 to-transparent z-10"></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[var(--neon-purple)] via-transparent to-transparent"></div>
+              
+              <div className="relative z-20">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--neon-purple)]/10 flex items-center justify-center mb-6 border border-[var(--neon-purple)]/20">
+                  <Monitor className="w-6 h-6 text-[var(--neon-purple)]" />
+                </div>
+                <h3 className="text-3xl font-black mb-3 tracking-tight">LED & Glow Signs</h3>
+                <p className="text-lg text-white/60 group-hover:text-white transition-colors">
+                  High-definition digital displays and backlit signs for 24/7 brand brilliance.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="glass rounded-3xl p-10 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-all duration-500"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/60 to-transparent z-10"></div>
+              <div className="relative z-20">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">
+                  <Flag className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-3xl font-black mb-3 tracking-tight">Event Banners</h3>
+                <p className="text-lg text-white/60 group-hover:text-white transition-colors">
+                  Premium branding materials for corporate events and public gatherings.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -5 }}
+              className="md:col-span-2 glass rounded-3xl p-10 flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-[var(--neon-blue)]/10 hover:border-[var(--neon-blue)]/40 transition-all duration-500"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/80 to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-[var(--neon-blue)]/5 to-transparent z-0"></div>
+              
+              <div className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div className="max-w-xl">
+                  <div className="w-12 h-12 rounded-2xl bg-[var(--neon-blue)]/10 flex items-center justify-center mb-6 border border-[var(--neon-blue)]/20">
+                    <TrendingUp className="w-6 h-6 text-[var(--neon-blue)]" />
+                  </div>
+                  <h3 className="text-4xl font-black mb-3 tracking-tight">Full Scale Solutions</h3>
+                  <p className="text-xl text-white/60 group-hover:text-white transition-colors">
+                    Explore our complete catalog of transit media, airport advertising, and rural outreach programs.
+                  </p>
+                </div>
+                <Link href="/services" className="group/btn relative w-20 h-20 rounded-full bg-[var(--neon-blue)] text-black flex items-center justify-center overflow-hidden transition-transform hover:scale-110">
+                  <motion.div 
+                    animate={{ x: [-40, 40] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                  />
+                  <ArrowRight className="w-8 h-8 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </motion.div>
