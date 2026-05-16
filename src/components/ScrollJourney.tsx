@@ -118,11 +118,17 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
           <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-blue)]">
             A New Perspective
           </h2>
+          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-blue)]">
+            For OutDoor Advertising
+          </h2>
         </motion.div>
         
         <motion.div style={{ opacity: text2Opacity }} className="text-center px-4">
-          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-purple)]">
+          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-green)]">
             Hitting the Streets
+          </h2>
+          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-green)]">
+            Converting campaigns into experiences
           </h2>
         </motion.div>
       </div>

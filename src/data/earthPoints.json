@@ -1,0 +1,72 @@
+[
+  {
+    "id": "mumbai",
+    "title": "Mumbai, India",
+    "desc": "The financial capital, key ad hub.",
+    "media": ["/images/mumbai.jpg"],
+    "position": [0.5, 0.1, -0.8]
+  },
+  {
+    "id": "pune",
+    "title": "Pune, India",
+    "desc": "Tech corridor with high‑traffic routes.",
+    "media": ["/images/pune.jpg"],
+    "position": [0.45, 0.15, -0.75]
+  },
+  {
+    "id": "delhi",
+    "title": "Delhi, India",
+    "desc": "National capital, massive reach.",
+    "media": ["/images/delhi.jpg"],
+    "position": [-0.3, 0.6, 0.8]
+  },
+  {
+    "id": "bangalore",
+    "title": "Bangalore, India",
+    "desc": "Silicon Valley of India.",
+    "media": ["/images/bangalore.jpg"],
+    "position": [-0.4, 0.2, 0.7]
+  },
+  {
+    "id": "kolkata",
+    "title": "Kolkata, India",
+    "desc": "Cultural hub on the east coast.",
+    "media": ["/images/kolkata.jpg"],
+    "position": [-0.6, 0.3, 0.6]
+  },
+  {
+    "id": "chennai",
+    "title": "Chennai, India",
+    "desc": "Southern port city.",
+    "media": ["/images/chennai.jpg"],
+    "position": [-0.5, -0.1, 0.9]
+  },
+  {
+    "id": "hyderabad",
+    "title": "Hyderabad, India",
+    "desc": "Growing commercial market.",
+    "media": ["/images/hyderabad.jpg"],
+    "position": [-0.45, -0.05, 0.85]
+  },
+  {
+    "id": "goa",
+    "title": "Goa, India",
+    "desc": "Tourist hotspot, coastal visibility.",
+    "media": ["/images/goa.jpg"],
+    "position": [-0.2, -0.3, 0.95]
+  },
+  {
+    "id": "ahmedabad",
+    "title": "Ahmedabad, India",
+    "desc": "Western industrial hub.",
+    "media": ["/images/ahmedabad.jpg"],
+    "position": [0.2, 0.2, -0.9]
+  },
+  {
+    "id": "jaipur",
+    "title": "Jaipur, India",
+    "desc": "Heritage city with growing OOH.",
+    "media": ["/images/jaipur.jpg"],
+    "position": [0.1, 0.5, -0.85]
+  }
+]
