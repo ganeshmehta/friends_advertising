@@ -10,6 +10,7 @@ import Link from "next/link";
 // Dynamically import 3D components
 const Billboard3D = dynamic(() => import("@/components/Billboard3D"), { ssr: false });
 const ScrollJourney = dynamic(() => import("@/components/ScrollJourney"), { ssr: false });
+const Megaphone3D = dynamic(() => import("@/components/Megaphone3D"), { ssr: false });
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -154,8 +155,8 @@ export default function Home() {
                 From 50x50 ft highway titans to high-contrast LED glow signs, we place your message in the direct line of sight of thousands of daily commuters.
               </p>
             </div>
-            <div className="w-32 h-32 md:w-64 md:h-64 rounded-full border-2 border-[var(--neon-blue)]/50 flex items-center justify-center bg-[var(--neon-blue)]/10 relative z-10 shadow-[0_0_50px_rgba(0,243,255,0.2)]">
-              <Megaphone className="w-24 h-24 text-[var(--neon-blue)] drop-shadow-[0_0_30px_rgba(0,243,255,0.8)]" />
+            <div className="w-48 h-48 md:w-80 md:h-80 rounded-full border-2 border-[var(--neon-blue)]/50 flex items-center justify-center bg-[var(--neon-blue)]/10 relative z-10 shadow-[0_0_50px_rgba(0,243,255,0.2)]">
+              {isMounted && <Megaphone3D />}
             </div>
           </div>
         </motion.div>
