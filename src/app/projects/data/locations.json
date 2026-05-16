@@ -1,0 +1,3368 @@
+[
+  {
+    "id": 1,
+    "city": "Powai",
+    "title": "Opp. L & T Tower JVLR Traffic from Vikroli to Jogeshwari",
+    "location": "Opp. L & T Tower JVLR Traffic from Vikroli to Jogeshwari",
+    "size": "32 x 32",
+    "coordinates": [
+      19.127713,
+      72.880866
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "59,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "452,000+"
+    },
+    "description": "Premium billboard location in Powai with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 2,
+    "city": "Mumbai",
+    "title": "Various Location in Mumbai (Vasai,Virar,Navi Mumbai,Kalyan,Dombiwali)",
+    "location": "Various Location in Mumbai (Vasai,Virar,Navi Mumbai,Kalyan,Dombiwali)",
+    "size": "Premium Format",
+    "coordinates": [
+      19.070979,
+      72.90701
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "66,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "679,000+"
+    },
+    "description": "Premium billboard location in Mumbai with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 3,
+    "city": "Ghansoli",
+    "title": "Ghansoli  facing towords Kopar-Khairane",
+    "location": "Ghansoli  facing towords Kopar-Khairane",
+    "size": "40 x 30",
+    "coordinates": [
+      19.123388,
+      73.00488
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "73,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "171,000+"
+    },
+    "description": "Premium billboard location in Ghansoli with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 4,
+    "city": "Ghansoli",
+    "title": "Ghansoli  facing towords Mahape",
+    "location": "Ghansoli  facing towords Mahape",
+    "size": "40 x 30",
+    "coordinates": [
+      19.144434,
+      72.988054
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "45,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "562,000+"
+    },
+    "description": "Premium billboard location in Ghansoli with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 5,
+    "city": "Mahape",
+    "title": "Mahape-Thakur Compound Mhape-Shilphata rd after L &T Mindspace-Vashi to Thane Ka",
+    "location": "Mahape-Thakur Compound Mhape-Shilphata rd after L &T Mindspace-Vashi to Thane Kalyan Dombiwali",
+    "size": "61 x 40",
+    "coordinates": [
+      19.125311,
+      73.037355
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "57,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "466,000+"
+    },
+    "description": "Premium billboard location in Mahape with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 6,
+    "city": "Mahape",
+    "title": "Mahape-Thakur Compound Mhape-Shilphata rd after L &T Mindspace- Thane Kalyan Dom",
+    "location": "Mahape-Thakur Compound Mhape-Shilphata rd after L &T Mindspace- Thane Kalyan Dombiwali to Vashi.",
+    "size": "61 x 40",
+    "coordinates": [
+      19.127707,
+      73.044637
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "72,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "587,000+"
+    },
+    "description": "Premium billboard location in Mahape with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 7,
+    "city": "Nerul",
+    "title": "Nerul - Rajiv Gandhi Bridge Going towards Palm Beach Road Traffic from East to W",
+    "location": "Nerul - Rajiv Gandhi Bridge Going towards Palm Beach Road Traffic from East to West",
+    "size": "40 x 30",
+    "coordinates": [
+      19.01162,
+      73.048643
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "28,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "611,000+"
+    },
+    "description": "Premium billboard location in Nerul with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 8,
+    "city": "Nerul",
+    "title": "Nerul - Rajiv Gandhi Bridge Going towards Palm Beach Road Traffic from  West to ",
+    "location": "Nerul - Rajiv Gandhi Bridge Going towards Palm Beach Road Traffic from  West to East",
+    "size": "41 x 30",
+    "coordinates": [
+      19.019165,
+      73.051219
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "77,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "285,000+"
+    },
+    "description": "Premium billboard location in Nerul with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 9,
+    "city": "Seawood",
+    "title": "Sewoods Bridge facing centurioun Mall to Seawoods Mall,Nr L&T Tower",
+    "location": "Sewoods Bridge facing centurioun Mall to Seawoods Mall,Nr L&T Tower",
+    "size": "20 x 40",
+    "coordinates": [
+      19.039872,
+      73.04168
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "24,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "219,000+"
+    },
+    "description": "Premium billboard location in Seawood with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 10,
+    "city": "Turbhe",
+    "title": "Turbhe Naka Traffic From Vashi TO panvel",
+    "location": "Turbhe Naka Traffic From Vashi TO panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      19.057041,
+      72.871975
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "87,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "220,000+"
+    },
+    "description": "Premium billboard location in Turbhe with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 11,
+    "city": "Kalyan",
+    "title": "Durgadi Kalyan Phata towords durgadi fort",
+    "location": "Durgadi Kalyan Phata towords durgadi fort",
+    "size": "30 x 30",
+    "coordinates": [
+      19.269745,
+      73.144008
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "34,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "152,000+"
+    },
+    "description": "Premium billboard location in Kalyan with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 12,
+    "city": "Kalyan",
+    "title": "Durgadi Kalyan Phata towords APMC Market",
+    "location": "Durgadi Kalyan Phata towords APMC Market",
+    "size": "30 x 30",
+    "coordinates": [
+      19.255841,
+      73.141948
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "85,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "173,000+"
+    },
+    "description": "Premium billboard location in Kalyan with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 13,
+    "city": "Dombivali",
+    "title": "Manpada traffic from  Vashi to kalyan",
+    "location": "Manpada traffic from  Vashi to kalyan",
+    "size": "40 x 40",
+    "coordinates": [
+      19.059763,
+      72.858273
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "64,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "348,000+"
+    },
+    "description": "Premium billboard location in Dombivali with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 14,
+    "city": "Dombivali",
+    "title": "Manpada  - Dombivali -Kalyan to Vashi",
+    "location": "Manpada  - Dombivali -Kalyan to Vashi",
+    "size": "40 x 40",
+    "coordinates": [
+      19.065524,
+      72.857607
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "29,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "150,000+"
+    },
+    "description": "Premium billboard location in Dombivali with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 15,
+    "city": "Dombivali",
+    "title": "Katai - Dombivali Traffic from Kalyan to vashi",
+    "location": "Katai - Dombivali Traffic from Kalyan to vashi",
+    "size": "40 x 40",
+    "coordinates": [
+      19.049144,
+      72.885148
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "68,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "549,000+"
+    },
+    "description": "Premium billboard location in Dombivali with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 16,
+    "city": "Dombivali",
+    "title": "Katai - Dombivali Traffic from  vashi to kalyan",
+    "location": "Katai - Dombivali Traffic from  vashi to kalyan",
+    "size": "40 x 40",
+    "coordinates": [
+      19.061789,
+      72.882265
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "70,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "538,000+"
+    },
+    "description": "Premium billboard location in Dombivali with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 17,
+    "city": "Thane",
+    "title": "Opp. Khidkaleshwar Mandir - Vashi to Kalyan",
+    "location": "Opp. Khidkaleshwar Mandir - Vashi to Kalyan",
+    "size": "50 x 50",
+    "coordinates": [
+      19.236225,
+      72.958042
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "48,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "311,000+"
+    },
+    "description": "Premium billboard location in Thane with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 18,
+    "city": "Thane",
+    "title": "Opp. Khidkaleshwar Mandir - Kalyan to Vashi",
+    "location": "Opp. Khidkaleshwar Mandir - Kalyan to Vashi",
+    "size": "50 x 50",
+    "coordinates": [
+      19.188377,
+      72.965918
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "36,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "257,000+"
+    },
+    "description": "Premium billboard location in Thane with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 19,
+    "city": "Thane",
+    "title": "Near Khidkaleshwar Mandir - Vashi to Kalyan",
+    "location": "Near Khidkaleshwar Mandir - Vashi to Kalyan",
+    "size": "40 x 40",
+    "coordinates": [
+      19.199182,
+      72.965399
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "34,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "374,000+"
+    },
+    "description": "Premium billboard location in Thane with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 20,
+    "city": "Airoli",
+    "title": "Main Road  Near Natural Icecream",
+    "location": "Main Road  Near Natural Icecream",
+    "size": "40 x 20",
+    "coordinates": [
+      19.069575,
+      72.896303
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "43,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "276,000+"
+    },
+    "description": "Premium billboard location in Airoli with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 21,
+    "city": "Panvel",
+    "title": "Dharna Goan Traffic from  Mumbra to Panvel",
+    "location": "Dharna Goan Traffic from  Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      18.982941,
+      73.115676
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "74,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "668,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 22,
+    "city": "Panvel",
+    "title": "Dharna Goan Traffic from Panvel to Mumbra",
+    "location": "Dharna Goan Traffic from Panvel to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      18.960478,
+      73.138732
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "63,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "228,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 23,
+    "city": "Panvel",
+    "title": "Taloja-Near Gazebo Dhaba Traffic from Panvel to Mumbra",
+    "location": "Taloja-Near Gazebo Dhaba Traffic from Panvel to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      18.986451,
+      73.088854
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "45,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "185,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 24,
+    "city": "Panvel",
+    "title": "Taloja -Near Gazebo Dhaba Traffic from Mumbra to Panvel",
+    "location": "Taloja -Near Gazebo Dhaba Traffic from Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      19.005771,
+      73.136177
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "48,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "292,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 25,
+    "city": "Panvel",
+    "title": "Taloja -Opp. JIO Petrol Pump Traffic from Panvel to Mumbra",
+    "location": "Taloja -Opp. JIO Petrol Pump Traffic from Panvel to Mumbra",
+    "size": "30 x 30",
+    "coordinates": [
+      18.976149,
+      73.111618
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "42,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "615,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 26,
+    "city": "Panvel",
+    "title": "Taloja -Opp. JIO Petrol Pump Traffic from Mumbra to Panvel",
+    "location": "Taloja -Opp. JIO Petrol Pump Traffic from Mumbra to Panvel",
+    "size": "30 x 30",
+    "coordinates": [
+      19.007239,
+      73.131448
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "29,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "413,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 27,
+    "city": "Panvel",
+    "title": "Taloja -Near JIO Petrol Pump Traffic from Mumbra to Panvel",
+    "location": "Taloja -Near JIO Petrol Pump Traffic from Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      18.989021,
+      73.124832
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "44,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "170,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 28,
+    "city": "Panvel",
+    "title": "Taloja -Near JIO Petrol Pump Traffic from Panvel to Mumbra",
+    "location": "Taloja -Near JIO Petrol Pump Traffic from Panvel to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      19.00425,
+      73.089325
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "65,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "525,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 29,
+    "city": "Panvel",
+    "title": "Taloja - Opp. Delhi Zaika Hotel Traffic from Mumbra to Panvel",
+    "location": "Taloja - Opp. Delhi Zaika Hotel Traffic from Mumbra to Panvel",
+    "size": "30 x 30",
+    "coordinates": [
+      19.013065,
+      73.094521
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "44,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "183,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 30,
+    "city": "Panvel",
+    "title": "Taloja -Opp. Delhi Zaika Hotel Traffic from Panvel to Mumbra",
+    "location": "Taloja -Opp. Delhi Zaika Hotel Traffic from Panvel to Mumbra",
+    "size": "30 x30",
+    "coordinates": [
+      19.009744,
+      73.114135
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "26,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "554,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 31,
+    "city": "Panvel",
+    "title": "Taloja -Opp. Sai Mandir Traffic from Panvel to Mumbra",
+    "location": "Taloja -Opp. Sai Mandir Traffic from Panvel to Mumbra",
+    "size": "30 X 30",
+    "coordinates": [
+      19.017615,
+      73.092704
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "89,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "553,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 32,
+    "city": "Panvel",
+    "title": "Taloja -Opp. Sai Mandir Traffic from Mumbra to Panvel",
+    "location": "Taloja -Opp. Sai Mandir Traffic from Mumbra to Panvel",
+    "size": "30 x 30",
+    "coordinates": [
+      19.003055,
+      73.130589
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "48,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "461,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 33,
+    "city": "Panvel",
+    "title": "Taloja - Opp. Adhiraj Project  Traffic from Mumbra to Panvel",
+    "location": "Taloja - Opp. Adhiraj Project  Traffic from Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      18.997492,
+      73.13335
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "23,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "223,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 34,
+    "city": "Panvel",
+    "title": "Taloja - Opp. Adhiraj Project  Traffic from  Panve to Mumbra",
+    "location": "Taloja - Opp. Adhiraj Project  Traffic from  Panve to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      18.991693,
+      73.094843
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "83,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "499,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 35,
+    "city": "Panvel",
+    "title": "Taloja - Near Rutika Hotel Traffic from Panvel to Mumbra",
+    "location": "Taloja - Near Rutika Hotel Traffic from Panvel to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      18.979206,
+      73.133062
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "21,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "646,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 36,
+    "city": "Panvel",
+    "title": "Taloja - Near Rutika Hotel Traffic from Mumbra to Panvel",
+    "location": "Taloja - Near Rutika Hotel Traffic from Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      18.989515,
+      73.100694
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "53,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "522,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 37,
+    "city": "Panvel",
+    "title": "Taloja - Near Arihant Project Traffic from Panvel to Mumbra",
+    "location": "Taloja - Near Arihant Project Traffic from Panvel to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      18.971159,
+      73.09589
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "28,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "155,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 38,
+    "city": "Panvel",
+    "title": "Taloja - Near Arihant Project Traffic from Mumbra to Panvel",
+    "location": "Taloja - Near Arihant Project Traffic from Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      19.007133,
+      73.099895
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "79,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "272,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 39,
+    "city": "Panvel",
+    "title": "Taloja - Opp .Rutika Hotel Traffic from Panvel to Mumbra",
+    "location": "Taloja - Opp .Rutika Hotel Traffic from Panvel to Mumbra",
+    "size": "40 x 40",
+    "coordinates": [
+      19.00381,
+      73.117281
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "45,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "305,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 40,
+    "city": "Panvel",
+    "title": "Taloja - Opp .Rutika Hotel Traffic from Mumbra to Panvel",
+    "location": "Taloja - Opp .Rutika Hotel Traffic from Mumbra to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      18.982195,
+      73.140149
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "73,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "623,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 41,
+    "city": "Panvel",
+    "title": "Taloja - RAF Signal Traffic from Panvel to Mumbra",
+    "location": "Taloja - RAF Signal Traffic from Panvel to Mumbra",
+    "size": "40 x 20",
+    "coordinates": [
+      18.968916,
+      73.142747
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "39,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "694,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 42,
+    "city": "Panvel",
+    "title": "Taloja - RAF Signal Traffic from Mumbra to Panvel",
+    "location": "Taloja - RAF Signal Traffic from Mumbra to Panvel",
+    "size": "40 x 20",
+    "coordinates": [
+      18.963748,
+      73.138912
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "63,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "527,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 43,
+    "city": "Panvel",
+    "title": "Taloja - Taloja Signal",
+    "location": "Taloja - Taloja Signal",
+    "size": "41 x 20",
+    "coordinates": [
+      18.993801,
+      73.130003
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "73,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "570,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 44,
+    "city": "Panvel",
+    "title": "Taloja - Taloja Subway Entrance",
+    "location": "Taloja - Taloja Subway Entrance",
+    "size": "20 x 20",
+    "coordinates": [
+      18.968927,
+      73.110943
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "70,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "620,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 45,
+    "city": "Panvel",
+    "title": "Taloja - Near Pethali Metro Station",
+    "location": "Taloja - Near Pethali Metro Station",
+    "size": "20 x 20",
+    "coordinates": [
+      18.96592,
+      73.116334
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "70,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "578,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 46,
+    "city": "Panvel",
+    "title": "Taloja - Before Ghot Road",
+    "location": "Taloja - Before Ghot Road",
+    "size": "20 x 20",
+    "coordinates": [
+      18.985047,
+      73.132044
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "42,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "633,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 47,
+    "city": "Panvel",
+    "title": "Taloja - Before Ghot Road",
+    "location": "Taloja - Before Ghot Road",
+    "size": "20 x 20",
+    "coordinates": [
+      18.986292,
+      73.13738
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "44,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "629,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 48,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road Corner towadrs Ghot",
+    "location": "Taloja - Ghot Road Corner towadrs Ghot",
+    "size": "20 x 20",
+    "coordinates": [
+      18.960811,
+      73.092139
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "38,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "190,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 49,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road Corner towards Phase 1",
+    "location": "Taloja - Ghot Road Corner towards Phase 1",
+    "size": "20 x 20",
+    "coordinates": [
+      19.000663,
+      73.089902
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "22,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "391,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 50,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road towards RTO Office",
+    "location": "Taloja - Ghot Road towards RTO Office",
+    "size": "20 x 20",
+    "coordinates": [
+      18.988748,
+      73.105341
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "20,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "330,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 51,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road towards Ghot Gaon",
+    "location": "Taloja - Ghot Road towards Ghot Gaon",
+    "size": "20 x 20",
+    "coordinates": [
+      18.966599,
+      73.108719
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "31,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "163,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 52,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road towards Phase 1",
+    "location": "Taloja - Ghot Road towards Phase 1",
+    "size": "20 x 20",
+    "coordinates": [
+      19.001878,
+      73.136532
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "87,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "688,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 53,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road towards Ghot Gaon",
+    "location": "Taloja - Ghot Road towards Ghot Gaon",
+    "size": "20 x 20",
+    "coordinates": [
+      19.017634,
+      73.087734
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "51,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "210,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 54,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road towards Ghot Gaon",
+    "location": "Taloja - Ghot Road towards Ghot Gaon",
+    "size": "20 x 20",
+    "coordinates": [
+      18.982671,
+      73.139465
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "74,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "475,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 55,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Road towards Ghot Gaon",
+    "location": "Taloja - Ghot Road towards Ghot Gaon",
+    "size": "20 x 20",
+    "coordinates": [
+      18.961721,
+      73.111964
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "61,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "470,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 56,
+    "city": "Panvel",
+    "title": "Taloja - Ghot Gaon",
+    "location": "Taloja - Ghot Gaon",
+    "size": "20 x 20",
+    "coordinates": [
+      19.019331,
+      73.136414
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "47,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "469,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 57,
+    "city": "Panvel",
+    "title": "Taloja - Below Pendhar Metro Station",
+    "location": "Taloja - Below Pendhar Metro Station",
+    "size": "20 x 20",
+    "coordinates": [
+      18.994983,
+      73.133523
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "56,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "387,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 58,
+    "city": "Panvel",
+    "title": "Taloja - Railway Phatak",
+    "location": "Taloja - Railway Phatak",
+    "size": "20 x 20",
+    "coordinates": [
+      18.965797,
+      73.126954
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "36,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "532,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 59,
+    "city": "Panvel",
+    "title": "Taloja - Market",
+    "location": "Taloja - Market",
+    "size": "20 x 20",
+    "coordinates": [
+      18.991419,
+      73.099008
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "84,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "156,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 60,
+    "city": "Panvel",
+    "title": "Taloja - Pendhar Opp. L & T Traffic from Panvel to Taloja",
+    "location": "Taloja - Pendhar Opp. L & T Traffic from Panvel to Taloja",
+    "size": "60 x 20",
+    "coordinates": [
+      19.003541,
+      73.139251
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "90,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "557,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 61,
+    "city": "Panvel",
+    "title": "Taloja - Pendhar Opp. L & T Traffic from Taloja to Panvel",
+    "location": "Taloja - Pendhar Opp. L & T Traffic from Taloja to Panvel",
+    "size": "60 x 20",
+    "coordinates": [
+      19.013229,
+      73.113668
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "31,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "630,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 62,
+    "city": "Panvel",
+    "title": "Old Panvel Uran Naka Traffic from Karanjade to Panvel city",
+    "location": "Old Panvel Uran Naka Traffic from Karanjade to Panvel city",
+    "size": "30 x 30",
+    "coordinates": [
+      19.012228,
+      73.146126
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "20,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "376,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 63,
+    "city": "Panvel",
+    "title": "Old Panvel Uran Naka Traffic from Panvel city to Karanjade",
+    "location": "Old Panvel Uran Naka Traffic from Panvel city to Karanjade",
+    "size": "30 x 30",
+    "coordinates": [
+      18.978911,
+      73.111865
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "46,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "277,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 64,
+    "city": "Panvel",
+    "title": "Palaspe Phata - Traffic from Panvel to Khopoli",
+    "location": "Palaspe Phata - Traffic from Panvel to Khopoli",
+    "size": "40 x 40",
+    "coordinates": [
+      18.997876,
+      73.142185
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "74,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "188,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 65,
+    "city": "Panvel",
+    "title": "Palaspe Phata - Traffic from Khopoli to Panvel",
+    "location": "Palaspe Phata - Traffic from Khopoli to Panvel",
+    "size": "40 x 40",
+    "coordinates": [
+      18.999585,
+      73.136405
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "83,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "184,000+"
+    },
+    "description": "Premium billboard location in Panvel with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 66,
+    "city": "Goa Highway",
+    "title": "Goa Road - Near Saikrupa Hotel Traffic from Mumbai to Goa",
+    "location": "Goa Road - Near Saikrupa Hotel Traffic from Mumbai to Goa",
+    "size": "40 x 20",
+    "coordinates": [
+      19.088938,
+      72.879165
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "20,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "522,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 67,
+    "city": "Goa Highway",
+    "title": "Goa Road - Near Saikrupa Hotel Traffic from Goa to Mumbai",
+    "location": "Goa Road - Near Saikrupa Hotel Traffic from Goa to Mumbai",
+    "size": "40 x 20",
+    "coordinates": [
+      19.091906,
+      72.862831
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "27,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "619,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 68,
+    "city": "Goa Highway ",
+    "title": "Goa Road CHINCHAVAN Traffic From Panvel To Goa",
+    "location": "Goa Road CHINCHAVAN Traffic From Panvel To Goa",
+    "size": "20 x 20",
+    "coordinates": [
+      19.09724,
+      72.866404
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "84,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "257,000+"
+    },
+    "description": "Premium billboard location in Goa Highway  with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 69,
+    "city": "Goa Highway",
+    "title": "Goa Road Karnala Traffic From Panvel To Goa",
+    "location": "Goa Road Karnala Traffic From Panvel To Goa",
+    "size": "20 x 20",
+    "coordinates": [
+      19.07299,
+      72.862157
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "58,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "460,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 70,
+    "city": "Goa Highway",
+    "title": "Goa Road Karnala Traffic From Goa To Panvel",
+    "location": "Goa Road Karnala Traffic From Goa To Panvel",
+    "size": "20 x 20",
+    "coordinates": [
+      19.090936,
+      72.856792
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "53,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "509,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 71,
+    "city": "Goa Highway",
+    "title": "Goa Road  Jite Traffic from  Goa to Panvel",
+    "location": "Goa Road  Jite Traffic from  Goa to Panvel",
+    "size": "20 x 20",
+    "coordinates": [
+      19.071816,
+      72.850507
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "33,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "364,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 72,
+    "city": "Goa Highway",
+    "title": "Goa Road  Jite Traffic from Panvel to Goa",
+    "location": "Goa Road  Jite Traffic from Panvel to Goa",
+    "size": "20 x 20",
+    "coordinates": [
+      19.072644,
+      72.902934
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "67,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "484,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 73,
+    "city": "Goa Highway",
+    "title": "Goa Road Pen Kolkhe Traffic from  Goa to Panvel",
+    "location": "Goa Road Pen Kolkhe Traffic from  Goa to Panvel",
+    "size": "60 x 20",
+    "coordinates": [
+      19.077816,
+      72.904046
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "31,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "686,000+"
+    },
+    "description": "Premium billboard location in Goa Highway with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 74,
+    "city": "Chowk - Karjat",
+    "title": "Before N D Studio Traffic from Chowk to Karjat - Front Side",
+    "location": "Before N D Studio Traffic from Chowk to Karjat - Front Side",
+    "size": "20 x 20",
+    "coordinates": [
+      19.09241,
+      72.888696
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b91,25,000"
+    },
+    "traffic": {
+      "daily": "74,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "573,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 75,
+    "city": "Karjat - Chowk",
+    "title": "After N D Studio Traffic from  Karjat to Chowk - Back Side",
+    "location": "After N D Studio Traffic from  Karjat to Chowk - Back Side",
+    "size": "20 x 20",
+    "coordinates": [
+      19.093991,
+      72.855612
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "69,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "476,000+"
+    },
+    "description": "Premium billboard location in Karjat - Chowk with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 76,
+    "city": "Chowk - Karjat",
+    "title": "Before N D Studio Traffic from Chowk to Karjat - Front Side",
+    "location": "Before N D Studio Traffic from Chowk to Karjat - Front Side",
+    "size": "20 x 20",
+    "coordinates": [
+      19.081614,
+      72.893484
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "35,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "182,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 77,
+    "city": "Karjat - Chowk",
+    "title": "After N D Studio Traffic from  Karjat to Chowk - Back Side",
+    "location": "After N D Studio Traffic from  Karjat to Chowk - Back Side",
+    "size": "20 x 20",
+    "coordinates": [
+      19.05423,
+      72.906538
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "82,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "431,000+"
+    },
+    "description": "Premium billboard location in Karjat - Chowk with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 78,
+    "city": "Chowk - Karjat",
+    "title": "Before N D Studio Traffic from Chowk to Karjat - Front Side",
+    "location": "Before N D Studio Traffic from Chowk to Karjat - Front Side",
+    "size": "20 x 20",
+    "coordinates": [
+      19.084902,
+      72.890272
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "68,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "234,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 79,
+    "city": "Karjat - Chowk",
+    "title": "After N D Studio Traffic from  Karjat to Chowk - Back Side",
+    "location": "After N D Studio Traffic from  Karjat to Chowk - Back Side",
+    "size": "20 x 20",
+    "coordinates": [
+      19.050018,
+      72.880784
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "32,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "384,000+"
+    },
+    "description": "Premium billboard location in Karjat - Chowk with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 80,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat",
+    "size": "20 x 20",
+    "coordinates": [
+      19.099255,
+      72.854138
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "63,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "627,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 81,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karja- 1",
+    "location": "Opp . N D Studio Traffic from Chowk to Karja- 1",
+    "size": "20 x 20",
+    "coordinates": [
+      19.047279,
+      72.856752
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "21,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "163,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 82,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat  -2",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat  -2",
+    "size": "20 x 20",
+    "coordinates": [
+      19.071424,
+      72.850536
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "23,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "331,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 83,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat -3",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat -3",
+    "size": "20 x 20",
+    "coordinates": [
+      19.105315,
+      72.907488
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "62,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "483,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 84,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat - 4",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat - 4",
+    "size": "20 x 20",
+    "coordinates": [
+      19.064591,
+      72.858823
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "79,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "612,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 85,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat - 5",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat - 5",
+    "size": "20 x 20",
+    "coordinates": [
+      19.070063,
+      72.860736
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "79,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "266,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 86,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat - 6",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat - 6",
+    "size": "20 x 20",
+    "coordinates": [
+      19.067727,
+      72.87706
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "90,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "171,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 87,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat -7",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat -7",
+    "size": "20 x 20",
+    "coordinates": [
+      19.101828,
+      72.875151
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "72,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "690,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 88,
+    "city": "Chowk - Karjat",
+    "title": "Opp . N D Studio Traffic from Chowk to Karjat - 8",
+    "location": "Opp . N D Studio Traffic from Chowk to Karjat - 8",
+    "size": "20 x 20",
+    "coordinates": [
+      19.103479,
+      72.869976
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "36,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "499,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 89,
+    "city": "Chowk - Karjat",
+    "title": "Before Arihant Project after N D Studio Traffic from Chowk to Karjat",
+    "location": "Before Arihant Project after N D Studio Traffic from Chowk to Karjat",
+    "size": "40 x 20",
+    "coordinates": [
+      19.082777,
+      72.884956
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "76,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "258,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 90,
+    "city": "Chowk - Karjat",
+    "title": "Opp. Arihant Project Traffic from Chowk to Karjat",
+    "location": "Opp. Arihant Project Traffic from Chowk to Karjat",
+    "size": "40 x 20",
+    "coordinates": [
+      19.051786,
+      72.869998
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "76,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "444,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 91,
+    "city": "Karjat - Chowk",
+    "title": "Opp. Arihant Project Traffic from Karjat to Chowk",
+    "location": "Opp. Arihant Project Traffic from Karjat to Chowk",
+    "size": "40 x 20",
+    "coordinates": [
+      19.091821,
+      72.907344
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "34,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "431,000+"
+    },
+    "description": "Premium billboard location in Karjat - Chowk with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 92,
+    "city": "Chowk - Karjat",
+    "title": "Wavarle traffic from Chowk to Karjat",
+    "location": "Wavarle traffic from Chowk to Karjat",
+    "size": " 20 x 20",
+    "coordinates": [
+      19.095239,
+      72.879888
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "68,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "543,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 93,
+    "city": "Chowk - Karjat",
+    "title": "Wawarle Traffic from Chowk to Karjat",
+    "location": "Wawarle Traffic from Chowk to Karjat",
+    "size": "20 x 10",
+    "coordinates": [
+      19.076526,
+      72.898333
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "74,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "302,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 94,
+    "city": "Chowk - Karjat",
+    "title": "Wavarle Namkeen Factory  traffic from Chowk to Karjat",
+    "location": "Wavarle Namkeen Factory  traffic from Chowk to Karjat",
+    "size": "20 x 20",
+    "coordinates": [
+      19.063026,
+      72.90167
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "26,000+",
+      "peak": "7\u201310 AM",
+      "weeklyReach": "299,000+"
+    },
+    "description": "Premium billboard location in Chowk - Karjat with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 95,
+    "city": "Karjat  - Murbad",
+    "title": "Shriram Pool - Traffic from Karjat to Murbad",
+    "location": "Shriram Pool - Traffic from Karjat to Murbad",
+    "size": "20 x 20",
+    "coordinates": [
+      19.062161,
+      72.874602
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b985,000"
+    },
+    "traffic": {
+      "daily": "66,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "407,000+"
+    },
+    "description": "Premium billboard location in Karjat  - Murbad with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 96,
+    "city": "Karjat  - Murbad",
+    "title": "Posari - Before TATA POWER Project traffic from Karjat to Murbad",
+    "location": "Posari - Before TATA POWER Project traffic from Karjat to Murbad",
+    "size": "20 x 20",
+    "coordinates": [
+      19.061037,
+      72.848707
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b945,000"
+    },
+    "traffic": {
+      "daily": "73,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "243,000+"
+    },
+    "description": "Premium billboard location in Karjat  - Murbad with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 97,
+    "city": "Rasayani",
+    "title": "Rees Rasayani Panvel to Rasayani LHS",
+    "location": "Rees Rasayani Panvel to Rasayani LHS",
+    "size": "20 x 20",
+    "coordinates": [
+      19.063961,
+      72.888548
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b965,000"
+    },
+    "traffic": {
+      "daily": "68,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "546,000+"
+    },
+    "description": "Premium billboard location in Rasayani with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 98,
+    "city": "Rasayani",
+    "title": "Rees Rasayani Rasayani to Panvel RHS",
+    "location": "Rees Rasayani Rasayani to Panvel RHS",
+    "size": "20 x 20",
+    "coordinates": [
+      19.100877,
+      72.873548
+    ],
+    "status": "available",
+    "pricing": {
+      "Monthly": "\u20b995,000"
+    },
+    "traffic": {
+      "daily": "46,000+",
+      "peak": "6\u20139 PM",
+      "weeklyReach": "421,000+"
+    },
+    "description": "Premium billboard location in Rasayani with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  },
+  {
+    "id": 99,
+    "city": "Rasayani",
+    "title": "Parade, Panvel to Rasayani",
+    "location": "Parade, Panvel to Rasayani",
+    "size": "20 x 20",
+    "coordinates": [
+      19.083261,
+      72.856418
+    ],
+    "status": "booked",
+    "pricing": {
+      "Monthly": "\u20b975,000"
+    },
+    "traffic": {
+      "daily": "44,000+",
+      "peak": "8\u201311 AM",
+      "weeklyReach": "652,000+"
+    },
+    "description": "Premium billboard location in Rasayani with strong commuter visibility and high-impact advertising reach.",
+    "features": [
+      "Prime traffic visibility",
+      "High commuter reach",
+      "Large format display",
+      "Strategic location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+    ],
+    "bookedDates": [
+      "2026-05-18",
+      "2026-05-19"
+    ]
+  }
+]
