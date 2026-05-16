@@ -14,8 +14,11 @@ function Earth({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
   // Custom materials for premium look
   const earthMaterial = useMemo(() => new THREE.MeshStandardMaterial({
     map: earthTexture,
-    roughness: 0.7,
-    metalness: 0.1,
+    roughness: 0.55,
+    metalness: 0.15,
+    color: new THREE.Color("#ffffff"),
+    emissive: new THREE.Color("#0a1a2a"),
+    emissiveIntensity: 0.1,
   }), [earthTexture]);
 
   useFrame((state, delta) => {
@@ -37,9 +40,10 @@ function Earth({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
 
   return (
     <group>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={3} color="#00f3ff" />
-      <pointLight position={[-10, -10, -10]} intensity={1} color="#bc13fe" />
+      <ambientLight intensity={0.9} />
+      <pointLight position={[10, 10, 10]} intensity={4} color="#ffffff" />
+      <pointLight position={[-10, -10, -10]} intensity={2} color="#ffd38a" />
+      <directionalLight position={[5, 3, 5]} intensity={2} color="#ffffff" />
       
       {/* Main Earth */}
       <mesh ref={meshRef}>
@@ -86,7 +90,40 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
       >
         <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
           <Suspense fallback={null}>
-            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+            <>
+              {/* Far deep blue stars (background galaxy) */}
+              <Stars
+                radius={120}
+                depth={80}
+                count={4000}
+                factor={4}
+                saturation={0.3}
+                fade
+                speed={0.5}
+              />
+
+              {/* Mid-layer white + slight cyan stars */}
+              <Stars
+                radius={80}
+                depth={40}
+                count={3000}
+                factor={5}
+                saturation={0.6}
+                fade
+                speed={0.8}
+              />
+
+              {/* Near bright glowing stars */}
+              <Stars
+                radius={50}
+                depth={20}
+                count={1500}
+                factor={6}
+                saturation={1}
+                fade
+                speed={1.2}
+              />
+            </>
             <Earth scrollYProgress={scrollYProgress} />
             <OrbitControls 
               enableZoom={false} 

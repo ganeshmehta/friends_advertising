@@ -1,176 +1,246 @@
 "use client";
 
-import { useRef, useEffect, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useTexture } from "@react-three/drei";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  Environment,
+  OrbitControls,
+  Stars,
+  useTexture,
+} from "@react-three/drei";
+
+import {
+  EffectComposer,
+  Bloom,
+  Vignette,
+} from "@react-three/postprocessing";
+
+import { Suspense, useMemo, useRef } from "react";
 import * as THREE from "three";
 
-// Optimized geometries for the Earth part
-const EARTH_GEOM = new THREE.SphereGeometry(2, 32, 32);
+// ======================
+// EARTH
+// ======================
 
-function SpinningEarth({ zooming, opacity }: { zooming: boolean, opacity: number }) {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const colorMap = useTexture('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg');
+function PremiumEarth() {
+  const earthRef = useRef<THREE.Mesh>(null);
 
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.3;
-      if (zooming) {
-        // Ultra-smooth exponential zoom
-        meshRef.current.scale.lerp(new THREE.Vector3(50, 50, 50), delta * 2.5);
-      }
+  // TEXTURES
+  const [earthMap, bumpMap, specMap] = useTexture([
+    "/textures/earth_day.jpg",
+    "/textures/earth_bump.jpg",
+    "/textures/earth_spec.jpg",
+  ]);
+
+  // CONSTANT SCALE VECTOR
+  const atmosphereScale = useMemo(
+    () => new THREE.Vector3(1.08, 1.08, 1.08),
+    []
+  );
+
+  // SMOOTH ROTATION
+  useFrame((_, delta) => {
+    if (earthRef.current) {
+      earthRef.current.rotation.y += delta * 0.15;
     }
   });
 
   return (
     <group>
-      <ambientLight intensity={3} />
-      <pointLight position={[10, 10, 10]} intensity={2} />
-      <mesh ref={meshRef} geometry={EARTH_GEOM} rotation={[0, Math.PI * 1.2, 0]}>
-        <meshStandardMaterial 
-          map={colorMap} 
-          roughness={0.7} 
-          transparent 
-          opacity={opacity}
+      {/* ======================
+          MAIN EARTH
+      ====================== */}
+
+      <mesh ref={earthRef}>
+        <sphereGeometry args={[2, 128, 128]} />
+
+        <meshStandardMaterial
+          map={earthMap}
+          bumpMap={bumpMap}
+          bumpScale={0.04}
+          metalness={0.15}
+          roughness={0.7}
+          emissive="#112244"
+          emissiveIntensity={0.18}
+        />
+      </mesh>
+
+      {/* ======================
+          GOLDEN COASTLINE GLOW
+      ====================== */}
+
+      <mesh scale={[1.003, 1.003, 1.003]}>
+        <sphereGeometry args={[2, 128, 128]} />
+
+        <meshStandardMaterial
+          map={specMap}
+          color="#f6c453"
+          emissive="#f6c453"
+          emissiveIntensity={2}
+          transparent
+          opacity={0.55}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+
+      {/* ======================
+          ATMOSPHERE GLOW
+      ====================== */}
+
+      <mesh scale={atmosphereScale}>
+        <sphereGeometry args={[2, 128, 128]} />
+
+        <shaderMaterial
+          blending={THREE.AdditiveBlending}
+          side={THREE.BackSide}
+          transparent
+          uniforms={{
+            glowColor: {
+              value: new THREE.Color("#4fa3ff"),
+            },
+          }}
+          vertexShader={`
+            varying vec3 vNormal;
+
+            void main() {
+              vNormal = normalize(normalMatrix * normal);
+
+              gl_Position =
+                projectionMatrix *
+                modelViewMatrix *
+                vec4(position, 1.0);
+            }
+          `}
+          fragmentShader={`
+            varying vec3 vNormal;
+            uniform vec3 glowColor;
+
+            void main() {
+
+              float intensity =
+                pow(0.7 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 4.0);
+
+              gl_FragColor =
+                vec4(glowColor * intensity, intensity);
+            }
+          `}
         />
       </mesh>
     </group>
   );
 }
 
-export default function EarthSplash({ onComplete }: { onComplete: () => void }) {
-  const [phase, setPhase] = useState<'earth' | 'zooming' | 'video' | 'exiting'>('earth');
-  const videoRef = useRef<HTMLVideoElement>(null);
+// ======================
+// MAIN COMPONENT
+// ======================
 
-  useEffect(() => {
-    // Premium timing sequence for buttery smooth transitions
-    const timers = [
-      setTimeout(() => setPhase('zooming'), 2800),
-      setTimeout(() => setPhase('video'), 3800),
-      setTimeout(() => setPhase('exiting'), 8500),
-      setTimeout(() => onComplete(), 10000), // Extended for slow fade-out
-    ];
-
-    // Preload for zero-latency video start
-    if (typeof window !== 'undefined') {
-      const link = document.createElement('link');
-      link.rel = 'preload'; link.as = 'video';
-      link.href = "/videos/Temp_Road.mp4";
-      document.head.appendChild(link);
-    }
-
-    return () => timers.forEach(clearTimeout);
-  }, [onComplete]);
-
-  // Cubic-bezier easing for premium feel
-  const premiumEase = [0.43, 0.13, 0.23, 0.96];
-
+export default function PremiumEarthScene() {
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={{ opacity: phase === 'exiting' ? 0 : 1 }}
-      transition={{ duration: 1.5, ease: premiumEase }}
-      className="fixed inset-0 z-50 bg-[var(--background)] overflow-hidden flex items-center justify-center"
-    >
-      {/* 3D Earth Phase - Smooth Cross-fade to Video */}
-      <motion.div 
-        animate={{ 
-          opacity: phase === 'video' || phase === 'exiting' ? 0 : 1,
-          scale: phase === 'zooming' ? 1.2 : 1,
-          filter: phase === 'zooming' ? "blur(10px)" : "blur(0px)"
-        }}
-        transition={{ duration: 1.2, ease: premiumEase }}
-        className="absolute inset-0 z-20 pointer-events-none"
-      >
-        <Canvas camera={{ position: [0, 0, 5], fov: 60 }} gl={{ antialias: true, alpha: true }}>
-          <Suspense fallback={null}>
-            <SpinningEarth zooming={phase === 'zooming'} opacity={phase === 'video' ? 0 : 1} />
-          </Suspense>
-        </Canvas>
-      </motion.div>
+    <div className="w-full h-screen bg-black">
+      {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0 bg-blue-500/10 blur-[180px]" />
 
-      {/* Glassy Transition Layer */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ 
-          opacity: phase === 'zooming' ? 1 : 0 
+      <Canvas
+        camera={{
+          position: [0, 0, 5.5],
+          fov: 45,
         }}
-        transition={{ duration: 1 }}
-        className="absolute inset-0 z-30 bg-white/5 backdrop-blur-3xl pointer-events-none"
-      />
-
-      {/* Video Content Phase */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ 
-          opacity: phase === 'video' || phase === 'exiting' ? 1 : 0,
-          scale: phase === 'exiting' ? 1.05 : 1
+        gl={{
+          antialias: true,
+          alpha: true,
         }}
-        transition={{ duration: 2, ease: premiumEase }}
-        className="absolute inset-0 z-10"
       >
-        <video
-          ref={videoRef}
-          autoPlay muted loop playsInline
-          className="w-full h-full object-cover"
-          src="/videos/Temp_Road.mp4"
+        {/* ======================
+            BACKGROUND COLOR
+        ====================== */}
+
+        <color attach="background" args={["#020817"]} />
+
+        {/* ======================
+            CINEMATIC LIGHTING
+        ====================== */}
+
+        <ambientLight intensity={1.8} />
+
+        <directionalLight
+          position={[5, 3, 5]}
+          intensity={5}
+          color="#ffffff"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/80 via-transparent to-[var(--background)]/80 pointer-events-none" />
-        
-        {/* Premium Branding Overlay with Progressive Reveal */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={phase === 'video' ? { opacity: 1, y: 0 } : { opacity: 0 }}
-          transition={{ delay: 0.8, duration: 1.5, ease: premiumEase }}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center p-6"
-        >
-          <motion.div 
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="glass p-12 md:p-20 rounded-full border border-white/10"
-          >
-            <div className="mb-6 px-6 py-2 rounded-full border border-[var(--neon-blue)]/20 bg-white/5 text-[var(--neon-blue)] text-xs font-bold tracking-[0.5em] uppercase">
-              Friends Advertising
-            </div>
-            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-4">
-              REAL IMPACT. <br />
-              <span className="text-[var(--neon-blue)] neon-text">NO LIMITS.</span>
-            </h2>
-            <div className="w-48 h-[2px] bg-gradient-to-r from-transparent via-[var(--neon-blue)] to-transparent mx-auto mt-8 opacity-50"></div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
 
-      {/* Final Glassy Exit Reveal */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: phase === 'exiting' ? 1 : 0 }}
-        transition={{ duration: 1.5 }}
-        className="absolute inset-0 z-40 bg-black/40 backdrop-blur-2xl pointer-events-none"
-      />
+        <pointLight
+          position={[10, 10, 10]}
+          intensity={7}
+          color="#4fa3ff"
+        />
 
-      {/* Initial Loading Micro-copy */}
-      <AnimatePresence>
-        {phase === 'earth' && (
-          <motion.div 
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 1, ease: premiumEase }}
-            className="absolute bottom-12 z-50 text-white/40 text-[9px] font-bold tracking-[0.6em] uppercase"
-          >
-            Crafting Your Digital Skyline
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+        <pointLight
+          position={[-10, -5, -10]}
+          intensity={3}
+          color="#f6c453"
+        />
+
+        {/* ======================
+            HDR ENVIRONMENT
+        ====================== */}
+
+        <Suspense fallback={null}>
+          <Environment preset="sunset" />
+        </Suspense>
+
+        {/* ======================
+            STARS
+        ====================== */}
+
+        <Stars
+          radius={100}
+          depth={60}
+          count={5000}
+          factor={4}
+          fade
+          speed={0.5}
+        />
+
+        {/* ======================
+            EARTH
+        ====================== */}
+
+        <Suspense fallback={null}>
+          <PremiumEarth />
+        </Suspense>
+
+        {/* ======================
+            CAMERA CONTROLS
+        ====================== */}
+
+        <OrbitControls
+          enablePan={false}
+          minDistance={3}
+          maxDistance={10}
+          rotateSpeed={0.5}
+          zoomSpeed={0.7}
+          autoRotate={false}
+        />
+
+        {/* ======================
+            POST PROCESSING
+        ====================== */}
+
+        <EffectComposer>
+          {/* CINEMATIC BLOOM */}
+          <Bloom
+            intensity={1.4}
+            luminanceThreshold={0.2}
+            luminanceSmoothing={0.9}
+          />
+
+          {/* PREMIUM EDGE DARKENING */}
+          <Vignette
+            eskil={false}
+            offset={0.15}
+            darkness={1.2}
+          />
+        </EffectComposer>
+      </Canvas>
+    </div>
   );
 }
-
-
-
-
-
-
-
-
-

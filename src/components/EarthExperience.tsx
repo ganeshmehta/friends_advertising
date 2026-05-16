@@ -1,123 +1,180 @@
-import { Canvas, useFrame, extend, useThree } from '@react-three/fiber';
-import { Suspense, useRef, useState, useEffect } from 'react';
-import { useTexture } from '@react-three/drei';
-import { motion } from 'framer-motion';
+import { Canvas, useThree } from '@react-three/fiber';
+import { Suspense, useEffect, useRef } from 'react';
+import { OrbitControls, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
-import { useGesture } from '@use-gesture/react';
-import EarthDetailModal from './EarthDetailModal';
-import pointsData from "../data/earthPoints.json";
 
-// Low‑poly sphere geometry
-const EARTH_GEOM = new THREE.SphereGeometry(2, 32, 32);
+// Shared geometry
+const EARTH_GEOM = new THREE.SphereGeometry(2, 64, 64);
 
-function Point({ data, onSelect }) {
-  const meshRef = useRef<THREE.Mesh>(null);
-  // Hover animation using GSAP
+function Earth() {
+  const earthRef = useRef<THREE.Mesh>(null);
+
+  // Load textures
+  const [earthMap, borderMap] = useTexture([
+    '/textures/earth_day.jpg',
+    '/textures/earth_gold_boundaries.png'
+  ]);
+
+  // Slow auto rotation
   useEffect(() => {
-    if (!meshRef.current) return;
-    const el = meshRef.current;
-    const hover = () => {
-      el.scale.set(1.2, 1.2, 1.2);
+    let frame: number;
+
+    const animate = () => {
+      if (earthRef.current) {
+        earthRef.current.rotation.y += 0.0015;
+      }
+
+      frame = requestAnimationFrame(animate);
     };
-    const out = () => {
-      el.scale.set(1, 1, 1);
-    };
-    const handle = el;
-    handle.addEventListener('pointerover', hover);
-    handle.addEventListener('pointerout', out);
-    return () => {
-      handle.removeEventListener('pointerover', hover);
-      handle.removeEventListener('pointerout', out);
-    };
+
+    animate();
+
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
-    <mesh
-      ref={meshRef}
-      position={new THREE.Vector3(...data.position)}
-      geometry={new THREE.SphereGeometry(0.07, 16, 16)}
-      onClick={(e) => {
-        e.stopPropagation();
-        onSelect(data);
-      }}
-    >
-      <meshStandardMaterial color="var(--neon-blue)" emissive="var(--neon-blue)" emissiveIntensity={0.6} />
-    </mesh>
+    <>
+      {/* Main Earth */}
+      <mesh ref={earthRef} geometry={EARTH_GEOM}>
+        <meshStandardMaterial
+          map={earthMap}
+          roughness={0.8}
+          metalness={0.15}
+        />
+      </mesh>
+
+      {/* Golden boundary overlay */}
+      <mesh
+        geometry={EARTH_GEOM}
+        scale={[1.003, 1.003, 1.003]}
+      >
+        <meshBasicMaterial
+          map={borderMap}
+          transparent
+          opacity={1}
+          blending={THREE.AdditiveBlending}
+          toneMapped={false}
+        />
+      </mesh>
+
+      {/* Atmosphere glow */}
+      <mesh
+        geometry={EARTH_GEOM}
+        scale={[1.08, 1.08, 1.08]}
+      >
+        <shaderMaterial
+          transparent
+          side={THREE.BackSide}
+          uniforms={{
+            glowColor: {
+              value: new THREE.Color('#f6c453')
+            },
+            viewVector: {
+              value: new THREE.Vector3(0, 0, 5)
+            }
+          }}
+          vertexShader={`
+            uniform vec3 viewVector;
+            varying float intensity;
+
+            void main() {
+              vec3 vNormal = normalize(normalMatrix * normal);
+              vec3 vNormel = normalize(normalMatrix * viewVector);
+
+              intensity = pow(0.7 - dot(vNormal, vNormel), 4.0);
+
+              gl_Position = projectionMatrix *
+                            modelViewMatrix *
+                            vec4(position, 1.0);
+            }
+          `}
+          fragmentShader={`
+            uniform vec3 glowColor;
+            varying float intensity;
+
+            void main() {
+              vec3 glow = glowColor * intensity;
+
+              gl_FragColor = vec4(glow, 1.0);
+            }
+          `}
+        />
+      </mesh>
+    </>
   );
 }
 
-export default function EarthExperience() {
-  const [selected, setSelected] = useState<any>(null);
-  const earthRef = useRef<THREE.Mesh>(null);
+function CameraSetup() {
   const { camera } = useThree();
 
-  // Load texture
-  const [colorMap] = useTexture(['/textures/earth_low.jpg']); // add this texture to public/textures
-
-  // Initial camera position – focus on India (approx lat 20N, lon 78E)
   useEffect(() => {
-    // Convert lat/lon to spherical coordinates for the camera
-    const phi = THREE.MathUtils.degToRad(90 - 20); // latitude
-    const theta = THREE.MathUtils.degToRad(78 + 180); // longitude offset
+    // Focus near India initially
+    const phi = THREE.MathUtils.degToRad(90 - 20);
+    const theta = THREE.MathUtils.degToRad(78 + 180);
+
     const radius = 5;
+
     const x = radius * Math.sin(phi) * Math.cos(theta);
     const y = radius * Math.cos(phi);
     const z = radius * Math.sin(phi) * Math.sin(theta);
+
     camera.position.set(x, y, z);
     camera.lookAt(0, 0, 0);
   }, []);
 
-  // Gesture handling – only rotate while user drags / scrolls
-  const bind = useGesture(
-    {
-      onDrag: ({ offset: [x, y] }) => {
-        if (earthRef.current) {
-          earthRef.current.rotation.y = x / 100;
-          earthRef.current.rotation.x = y / 100;
-        }
-      },
-      onWheel: ({ delta: [, dy] }) => {
-        // simple zoom, clamped
-        const newZ = THREE.MathUtils.clamp(camera.position.length() + dy * 0.01, 3, 10);
-        camera.position.setLength(newZ);
-      }
-    },
-    { drag: { threshold: 10 }, eventOptions: { passive: false } }
-  );
+  return null;
+}
 
-  // Animation loop – apply inertia damping when not dragging (optional)
-  useFrame(() => {
-    // nothing needed for now – earth stays static unless user interacts
-  });
-
+export default function EarthExperience() {
   return (
-    <>
+    <div
+      style={{
+        width: '100%',
+        height: '100vh',
+        background: 'black'
+      }}
+    >
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 60 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ width: '100%', height: '70vh' }}
-        {...bind()}
-        frameloop="demand"
+        camera={{
+          position: [0, 0, 5],
+          fov: 50
+        }}
+        gl={{
+          antialias: true,
+          alpha: true
+        }}
       >
-        <ambientLight intensity={1.5} />
-        <pointLight position={[10, 10, 10]} intensity={2} />
-        <Suspense fallback={null}>
-          <mesh ref={earthRef} geometry={EARTH_GEOM} rotation={[0, Math.PI * 1.2, 0]}>
-            <meshStandardMaterial
-              map={colorMap}
-              roughness={0.7}
-              metalness={0.2}
-              transparent
-            />
-          </mesh>
-        </Suspense>
-      </Canvas>
-      {selected && (
-        <EarthDetailModal
-          point={selected}
-          onClose={() => setSelected(null)}
+        {/* Camera setup */}
+        <CameraSetup />
+
+        {/* Lights */}
+        <ambientLight intensity={0.5} />
+
+        <directionalLight
+          position={[5, 3, 5]}
+          intensity={2}
         />
-      )}
-    </>
+
+        <pointLight
+          position={[-5, -3, -5]}
+          intensity={1}
+          color="#f6c453"
+        />
+
+        {/* Stars background */}
+        <Suspense fallback={null}>
+          <Earth />
+        </Suspense>
+
+        {/* Controls */}
+        <OrbitControls
+          enablePan={false}
+          minDistance={3}
+          maxDistance={10}
+          rotateSpeed={0.6}
+          zoomSpeed={0.8}
+        />
+      </Canvas>
+    </div>
   );
 }
