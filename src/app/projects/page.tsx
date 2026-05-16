@@ -1,113 +1,367 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin, TrendingUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import locations from "./data/locations.json";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Search,
+  MapPin,
+  Navigation,
+  X
+} from "lucide-react";
 
-export default function ProjectsPage() {
-  const projects = [
-    {
-      title: "Chowk Karjat Road, MH",
-      desc: "40 x 20 Front and Back Display. Strategic placement capturing bidirectional traffic on the busy Chowk Karjat route.",
-      size: "40x20",
-    },
-    {
-      title: "Palaspe Phata, MH",
-      desc: "Traffic from Karjat, Khopoli, Goa, Pune to Mumbai. A massive billboard ensuring maximum visibility for incoming city traffic.",
-      size: "40x40",
-    },
-    {
-      title: "Opp. Khidkaleshwar Mandir",
-      desc: "From Kalyan to Vashi. High-impact square hoarding targeting daily commuters and local traffic.",
-      size: "50x50",
-    }
-  ];
+const LocationModal = ({ location, onClose }: any) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
-    <main className="flex flex-col w-full overflow-hidden pt-10 min-h-screen">
-      <section className="relative px-4 py-20 text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-bold mb-6 tracking-tight relative z-10"
-        >
-          OUR <span className="text-[var(--neon-blue)] neon-text">PROJECTS</span>
-        </motion.h1>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto relative z-10"
-        >
-          Showcasing the power of our outdoor advertising services across key locations in Maharashtra.
-        </motion.p>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 p-6 backdrop-blur-lg"
+    >
+      <motion.div
+        initial={{ y: 30 }}
+        animate={{ y: 0 }}
+        exit={{ y: 30 }}
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-5xl overflow-hidden rounded-[32px] bg-white shadow-[0_40px_120px_rgba(0,0,0,0.25)]"
+      >
+        <div className="relative h-[320px]">
+          <img
+            src={location.images[0]}
+            alt={location.title}
+            className="h-full w-full object-cover"
+          />
+
+          <button
+            onClick={onClose}
+            className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white"
+          >
+            <X className="h-5 w-5 text-slate-800" />
+          </button>
+        </div>
+
+        <div className="p-8">
+          <div className="flex gap-3">
+            <span className="rounded-full bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">
+              {location.city}
+            </span>
+
+            <span
+              className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                location.status === "available"
+                  ? "bg-emerald-50 text-emerald-700"
+                  : "bg-amber-50 text-amber-700"
+              }`}
+            >
+              {location.status}
+            </span>
+          </div>
+
+          <h2 className="mt-5 text-4xl font-black text-slate-900">
+            {location.title}
+          </h2>
+
+          <p className="mt-3 flex items-center gap-2 text-slate-500">
+            <Navigation className="h-4 w-4" />
+            {location.location}
+          </p>
+
+          <p className="mt-6 text-lg leading-relaxed text-slate-600">
+            {location.description}
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-4">
+            {[
+              {
+                label: "Daily Traffic",
+                value: location.traffic.daily
+              },
+              {
+                label: "Weekly Reach",
+                value: location.traffic.weeklyReach
+              },
+              {
+                label: "Peak Hours",
+                value: location.traffic.peak
+              },
+              {
+                label: "Format",
+                value: location.size
+              }
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl bg-slate-50 p-5"
+              >
+                <p className="text-sm text-slate-500">
+                  {item.label}
+                </p>
+
+                <p className="mt-2 text-xl font-bold text-slate-900">
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const LeafletMap = ({
+  locations,
+  onSelect,
+  selectedLocation
+}: any) => {
+  const mapRef = useRef<any>(null);
+  const mapInstanceRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (mapInstanceRef.current || !mapRef.current) return;
+
+    if (!document.querySelector("#leaflet-css")) {
+      const link = document.createElement("link");
+
+      link.id = "leaflet-css";
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+
+      document.head.appendChild(link);
+    }
+
+    const loadLeaflet = () => {
+      if ((window as any).L) {
+        initMap();
+        return;
+      }
+
+      const script = document.createElement("script");
+
+      script.src =
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+
+      script.onload = initMap;
+
+      document.head.appendChild(script);
+    };
+
+    const initMap = () => {
+      const L = (window as any).L;
+
+      const map = L.map(mapRef.current, {
+        center: [19.076, 72.8777],
+        zoom: 10,
+        zoomControl: false
+      });
+
+      mapInstanceRef.current = map;
+
+      L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution: "&copy; OpenStreetMap"
+        }
+      ).addTo(map);
+
+      L.control.zoom({
+        position: "bottomright"
+      }).addTo(map);
+
+      const bounds = L.latLngBounds([]);
+
+      locations.forEach((loc: any) => {
+        bounds.extend(loc.coordinates);
+
+        const color =
+          loc.status === "available"
+            ? "#10b981"
+            : "#f59e0b";
+
+        const icon = L.divIcon({
+          html: `
+            <div style="
+              width:20px;
+              height:20px;
+              background:${color};
+              border-radius:999px;
+              border:4px solid white;
+              box-shadow:0 10px 25px rgba(0,0,0,0.25);
+            "></div>
+          `,
+          className: "",
+          iconSize: [20, 20],
+          iconAnchor: [10, 10]
+        });
+
+        const marker = L.marker(loc.coordinates, {
+          icon
+        }).addTo(map);
+
+        marker.on("click", () => onSelect(loc));
+      });
+
+      map.fitBounds(bounds, {
+        padding: [60, 60]
+      });
+    };
+
+    loadLeaflet();
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!selectedLocation || !mapInstanceRef.current) return;
+
+    mapInstanceRef.current.flyTo(
+      selectedLocation.coordinates,
+      14,
+      {
+        duration: 1.5
+      }
+    );
+  }, [selectedLocation]);
+
+  return <div ref={mapRef} className="h-full w-full" />;
+};
+
+export default function ProjectsPage() {
+  const [selected, setSelected] = useState<any>(null);
+  const [query, setQuery] = useState("");
+
+  const filteredLocations = locations.filter((location) =>
+    location.title
+      .toLowerCase()
+      .includes(query.toLowerCase())
+  );
+
+  return (
+    <main className="min-h-screen bg-[#f3f6fb]">
+      <style jsx global>{`
+        .leaflet-pane,
+        .leaflet-top,
+        .leaflet-bottom,
+        .leaflet-control,
+        .leaflet-container {
+          z-index: 1 !important;
+        }
+      `}</style>
+
+      {/* HERO */}
+      <section className="px-6 pb-14 pt-24 text-center">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-5 py-2 text-sm font-semibold text-indigo-700">
+          <MapPin className="h-4 w-4" />
+          Premium OOH Billboard Network
+        </div>
+
+        <h1 className="mx-auto max-w-5xl text-5xl font-black tracking-tight text-slate-900 md:text-7xl">
+          Explore Billboard
+          <span className="text-indigo-600">
+            {" "}Locations
+          </span>
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-500">
+          Search and discover high-performing outdoor
+          advertising locations across Maharashtra.
+        </p>
       </section>
 
-      {/* Projects Grid */}
-      <section className="pb-16 px-4 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-        {projects.map((project, index) => (
-          <motion.div 
-            key={index}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="glass rounded-2xl overflow-hidden group border border-white/10"
-          >
-            {/* Placeholder for project image, could use a 3D generic billboard or standard image */}
-            <div className="h-48 bg-[#111] relative flex items-center justify-center border-b border-white/10 overflow-hidden">
-              <div className="absolute inset-0 bg-[var(--neon-purple)] opacity-10 group-hover:opacity-20 transition-opacity"></div>
-              <MapPin className="w-12 h-12 text-gray-600 group-hover:text-[var(--neon-blue)] transition-colors" />
-            </div>
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold">{project.title}</h3>
-                <span className="text-xs font-mono bg-[var(--neon-blue)]/10 text-[var(--neon-blue)] px-2 py-1 rounded">
-                  {project.size}
-                </span>
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed">{project.desc}</p>
-            </div>
-          </motion.div>
-        ))}
-      </section>
+      {/* SEARCH */}
+      <section className="mx-auto max-w-7xl px-6">
+        <div className="relative z-20 mx-auto mb-6 max-w-xl">
+          <Search className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
 
-      {/* Success Story */}
-      <section className="py-20 px-4 bg-black/50 border-t border-white/5 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass p-8 md:p-12 rounded-3xl border border-[var(--neon-purple)]/30 relative overflow-hidden"
-          >
-            <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--neon-purple)] rounded-full filter blur-[100px] opacity-20"></div>
-            
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-[var(--neon-purple)]/20 flex items-center justify-center text-[var(--neon-purple)]">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold">Featured Success Story</h2>
-            </div>
-            
-            <h3 className="text-xl font-bold text-white mb-4">Retail Business – Increased Foot Traffic</h3>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              A local retail business in Mumbai was struggling to stand out amidst fierce competition in a high-traffic area. We recommended a large-format flex board featuring a vibrant, attention-grabbing design. Installed at a prime location, the strategic placement worked wonders.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                "40% increase in foot traffic",
-                "Boost in sales during promos",
-                "Enhanced brand recognition"
-              ].map((result, i) => (
-                <div key={i} className="bg-black/50 p-4 rounded-xl border border-white/5 text-center text-sm font-medium text-[var(--neon-blue)]">
-                  {result}
-                </div>
+          <input
+            type="text"
+            placeholder="Search locations..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-slate-900 shadow-sm outline-none transition-all focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          />
+
+          {query && (
+            <div className="absolute mt-2 max-h-[320px] w-full overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-xl">
+              {filteredLocations.map((location: any) => (
+                <button
+                  key={location.id}
+                  onClick={() => {
+                    setSelected(location);
+                    setQuery("");
+                  }}
+                  className="flex w-full items-center justify-between border-b border-slate-100 px-5 py-4 text-left transition hover:bg-slate-50"
+                >
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      {location.title}
+                    </p>
+
+                    <p className="mt-1 text-sm text-slate-500">
+                      {location.city}
+                    </p>
+                  </div>
+
+                  <MapPin className="h-4 w-4 text-indigo-500" />
+                </button>
               ))}
             </div>
-          </motion.div>
+          )}
         </div>
       </section>
+
+      {/* MAP */}
+      <section className="mx-auto max-w-7xl px-6 pb-20">
+        <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+          <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+            <div>
+              <h3 className="font-bold text-slate-900">
+                Interactive Billboard Map
+              </h3>
+
+              <p className="mt-1 text-sm text-slate-500">
+                Click any pin to explore details
+              </p>
+            </div>
+
+            <div className="text-sm text-slate-500">
+              {locations.length} Locations
+            </div>
+          </div>
+
+          <div className="h-[720px]">
+            <LeafletMap
+              locations={locations}
+              onSelect={setSelected}
+              selectedLocation={selected}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* MODAL */}
+      <AnimatePresence>
+        {selected && (
+          <LocationModal
+            location={selected}
+            onClose={() => setSelected(null)}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 }

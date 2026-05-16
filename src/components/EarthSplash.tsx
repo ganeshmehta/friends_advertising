@@ -25,7 +25,7 @@ function SpinningEarth({ zooming, opacity }: { zooming: boolean, opacity: number
 
   return (
     <group>
-      <ambientLight intensity={1.5} />
+      <ambientLight intensity={3} />
       <pointLight position={[10, 10, 10]} intensity={2} />
       <mesh ref={meshRef} geometry={EARTH_GEOM} rotation={[0, Math.PI * 1.2, 0]}>
         <meshStandardMaterial 
@@ -56,7 +56,7 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
     if (typeof window !== 'undefined') {
       const link = document.createElement('link');
       link.rel = 'preload'; link.as = 'video';
-      link.href = "/videos/splash_road.mp4";
+      link.href = "/videos/Temp_Road.mp4";
       document.head.appendChild(link);
     }
 
@@ -114,7 +114,7 @@ export default function EarthSplash({ onComplete }: { onComplete: () => void }) 
           ref={videoRef}
           autoPlay muted loop playsInline
           className="w-full h-full object-cover"
-          src="/videos/splash_road.mp4"
+          src="/videos/Temp_Road.mp4"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/80 via-transparent to-[var(--background)]/80 pointer-events-none" />
         
