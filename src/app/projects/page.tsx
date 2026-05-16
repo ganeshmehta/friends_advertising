@@ -56,11 +56,10 @@ const LocationModal = ({ location, onClose }: any) => {
             </span>
 
             <span
-              className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                location.status === "available"
+              className={`rounded-full px-4 py-2 text-sm font-semibold ${location.status === "available"
                   ? "bg-emerald-50 text-emerald-700"
                   : "bg-amber-50 text-amber-700"
-              }`}
+                }`}
             >
               {location.status}
             </span>

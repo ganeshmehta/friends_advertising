@@ -26,7 +26,10 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--neon-purple)] selection:text-white">
+      <body 
+        className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--neon-purple)] selection:text-white"
+        suppressHydrationWarning
+      >
         <Header />
         <div className="flex-1 pt-20">
           {children}

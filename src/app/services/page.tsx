@@ -44,48 +44,76 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="flex flex-col w-full overflow-hidden pt-10 min-h-screen">
-      <section className="relative px-4 py-20 text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-bold mb-6 tracking-tight relative z-10"
-        >
-          OUR <span className="text-[var(--neon-purple)] neon-text">SERVICES</span>
-        </motion.h1>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto relative z-10"
-        >
-          We Provide the Best Out-Of-Home (OOH) Assets For Your Business.
-        </motion.p>
-      </section>
-
-      <section className="pb-24 px-4 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-        {services.map((service, index) => (
+    <main className="relative min-h-screen pt-28 pb-20 bg-[var(--background)]">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Unified Header */}
+        <div className="mb-20">
           <motion.div 
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="glass p-8 rounded-2xl flex flex-col group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-[var(--neon-blue)] font-black tracking-[0.4em] text-xs uppercase mb-4"
           >
-            <div 
-              className="absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[50px] opacity-20 group-hover:opacity-40 transition-opacity"
-              style={{ backgroundColor: service.color }}
-            ></div>
-            <service.icon 
-              className="w-10 h-10 mb-6 transition-transform group-hover:scale-110" 
-              style={{ color: service.color }} 
-            />
-            <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-            <p className="text-gray-400 leading-relaxed flex-1">{service.desc}</p>
+            Capabilities
           </motion.div>
-        ))}
-      </section>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6"
+          >
+            OUR <span className="text-[var(--neon-purple)] neon-text">SERVICES</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-white/50 max-w-2xl leading-relaxed"
+          >
+            A comprehensive suite of outdoor and indoor advertising assets engineered for maximum brand penetration and memory recall.
+          </motion.p>
+        </div>
+
+        {/* Unified Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group relative"
+            >
+              <div className="glass h-full p-10 rounded-[32px] border border-white/5 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
+                <div 
+                  className="absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"
+                  style={{ backgroundColor: service.color }}
+                ></div>
+                
+                <div className="relative z-10">
+                  <div 
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 transition-transform duration-500"
+                    style={{ backgroundColor: `${service.color}10` }}
+                  >
+                    <service.icon 
+                      className="w-8 h-8" 
+                      style={{ color: service.color }} 
+                    />
+                  </div>
+                  
+                  <h3 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-white transition-colors">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-lg text-white/40 leading-relaxed group-hover:text-white/70 transition-colors">
+                    {service.desc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </main>
   );
 }

@@ -2,13 +2,12 @@
 
 import dynamic from "next/dynamic";
 import EyeFollow from "@/components/EyeFollow";
-import { ArrowRight, MapPin, Monitor, Megaphone, Flag, Sparkles, TrendingUp, Eye, MousePointer2 } from "lucide-react";
+import { ArrowRight, MapPin, Monitor, Flag, Sparkles, TrendingUp, Eye, MousePointer2 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
 // Dynamically import 3D components
-const Billboard3D = dynamic(() => import("@/components/Billboard3D"), { ssr: false });
 const ScrollJourney = dynamic(() => import("@/components/ScrollJourney"), { ssr: false });
 const Megaphone3D = dynamic(() => import("@/components/Megaphone3D"), { ssr: false });
 
@@ -83,13 +82,7 @@ export default function Home() {
           </p>
         </motion.div>
 
-        {/* The 3D Billboard */}
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          className="z-20 w-full flex-1 min-h-[40vh] relative -mt-10"
-        >
-          {isMounted && <Billboard3D />}
-        </motion.div>
+
       </section>
 
       {/* Marquee */}
