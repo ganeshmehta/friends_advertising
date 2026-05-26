@@ -51,7 +51,7 @@ const LocationModal = ({ location, onClose }: any) => {
 
         <div className="p-8">
           <div className="flex gap-3">
-            <span className="rounded-full bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">
+            <span className="rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-[var(--neon-blue)]">
               {location.city}
             </span>
 
@@ -262,15 +262,15 @@ export default function ProjectsPage() {
       `}</style>
 
       {/* HERO */}
-      <section className="px-6 pb-14 pt-24 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-5 py-2 text-sm font-semibold text-indigo-700">
-          <MapPin className="h-4 w-4" />
+      <section className="px-6 pb-14 pt-24 text-center bg-[var(--background)]">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2 text-sm font-semibold text-slate-500 shadow-sm">
+          <MapPin className="h-4 w-4 text-[var(--neon-blue)]" />
           Premium OOH Billboard Network
         </div>
 
-        <h1 className="mx-auto max-w-5xl text-5xl font-black tracking-tight text-slate-900 md:text-7xl">
+        <h1 className="mx-auto max-w-5xl text-5xl font-black tracking-tight text-[#1d1d1f] md:text-7xl">
           Explore Billboard
-          <span className="text-indigo-600">
+          <span className="text-[var(--neon-blue)]">
             {" "}Locations
           </span>
         </h1>
@@ -291,7 +291,7 @@ export default function ProjectsPage() {
             placeholder="Search locations..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-slate-900 shadow-sm outline-none transition-all focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+            className="w-full rounded-2xl border border-black/10 bg-white py-4 pl-12 pr-4 text-[#1d1d1f] shadow-sm outline-none transition-all focus:border-black/35 font-medium"
           />
 
           {query && (

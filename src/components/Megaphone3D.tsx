@@ -38,25 +38,25 @@ function MegaphoneModel() {
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.5]}>
         <coneGeometry args={[1.2, 2.5, 32, 1, true]} />
         <meshStandardMaterial 
-            color="#00f3ff" 
-            emissive="#00f3ff" 
-            emissiveIntensity={hovered ? 2 : 0.5} 
+            color="#0071e3" 
+            emissive="#0071e3" 
+            emissiveIntensity={hovered ? 1.2 : 0.3} 
             side={THREE.DoubleSide}
-            metalness={0.8}
-            roughness={0.2}
+            metalness={0.7}
+            roughness={0.3}
         />
       </mesh>
 
       {/* Back Part */}
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, -1]}>
         <cylinderGeometry args={[0.6, 0.6, 1, 32]} />
-        <meshStandardMaterial color="#080a15" metalness={0.9} roughness={0.1} />
+        <meshStandardMaterial color="#f5f5f7" metalness={0.6} roughness={0.4} />
       </mesh>
 
       {/* Handle */}
       <mesh position={[0, -1.2, -0.8]} rotation={[0.2, 0, 0]}>
         <boxGeometry args={[0.3, 1.2, 0.5]} />
-        <meshStandardMaterial color="#111" />
+        <meshStandardMaterial color="#1d1d1f" metalness={0.9} roughness={0.1} />
       </mesh>
 
       {/* Sound Waves / Pulses */}
@@ -64,19 +64,19 @@ function MegaphoneModel() {
           <mesh position={[0, 0, 1.8]} rotation={[Math.PI / 2, 0, 0]}>
               <ringGeometry args={[1.2, 1.3, 32]} />
               <MeshDistortMaterial 
-                color="#00f3ff" 
+                color="#0071e3" 
                 speed={5} 
                 distort={0.3} 
                 transparent 
                 opacity={0.5} 
-                emissive="#00f3ff"
-                emissiveIntensity={2}
+                emissive="#0071e3"
+                emissiveIntensity={1}
               />
           </mesh>
       )}
 
       {/* Point Light inside the horn */}
-      <pointLight position={[0, 0, 0.5]} intensity={5} color="#00f3ff" distance={5} />
+      <pointLight position={[0, 0, 0.5]} intensity={5} color="#0071e3" distance={5} />
     </group>
   );
 }

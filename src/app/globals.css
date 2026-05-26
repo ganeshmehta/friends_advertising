@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080a15;
-  --foreground: #f8fafc;
-  --neon-blue: #00f3ff;
-  --neon-purple: #bc13fe;
-  --accent: #ff0055;
+  --background: #ffffff;
+  --background-secondary: #f5f5f7;
+  --foreground: #000000;
+  --foreground-secondary: #333333;
+  --neon-blue: #0071e3;
+  --neon-purple: #5c60f5;
+  --accent: #e30052;
 }
 
 @theme inline {
@@ -14,12 +16,12 @@
   --color-neon-blue: var(--neon-blue);
   --color-neon-purple: var(--neon-purple);
   --color-accent: var(--accent);
-  --font-sans: var(--font-outfit), var(--font-geist-sans);
+  --font-sans: var(--font-outfit), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
 }
 
 body {
   background: var(--background);
-  background: radial-gradient(circle at 50% -20%, #151a30 0%, #080a15 80%);
+  background: radial-gradient(circle at 50% 0%, #f5f5f7 0%, #ffffff 100%);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, sans-serif;
   overflow-x: hidden;
@@ -28,29 +30,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom utilities for premium feel */
+/* Custom utilities for premium Apple-style feel */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
 }
 
 .nav-glass {
-  background: rgba(8, 10, 21, 0.7);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .neon-text {
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3), 0 0 20px rgba(0, 243, 255, 0.1);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8), 0 2px 12px rgba(0, 113, 227, 0.15);
 }
 
 .neon-border {
-  box-shadow: 0 0 20px rgba(188, 19, 254, 0.15), inset 0 0 10px rgba(188, 19, 254, 0.05);
-  border: 1px solid rgba(188, 19, 254, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06), inset 0 0 10px rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Smooth scrolling */

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -91,49 +90,48 @@ export default function ContactSection() {
 
   const submit = async (e: any) => {
     e.preventDefault();
-
     setSent(true);
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#07111f] py-32 text-white">
+    <section className="relative overflow-hidden bg-[var(--background)] py-32 text-[#1d1d1f]">
       {/* BACKGROUND */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.22),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,113,227,0.06),transparent_40%)]" />
 
-        <div className="absolute bottom-0 left-0 right-0 h-[240px] bg-gradient-to-t from-[#05070d] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[240px] bg-gradient-to-t from-slate-100 to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0 h-[160px] bg-[#0a0f18]" />
+        <div className="absolute bottom-0 left-0 right-0 h-[160px] bg-[#f5f5f7]" />
 
-        {/* SKYLINE */}
-        <div className="absolute bottom-0 left-0 right-0 flex items-end opacity-20">
-         {[
-  { w: 70, h: 180 },
-  { w: 90, h: 240 },
-  { w: 60, h: 140 },
-  { w: 110, h: 260 },
-  { w: 75, h: 210 },
-  { w: 95, h: 280 },
-  { w: 65, h: 170 },
-  { w: 120, h: 300 },
-  { w: 80, h: 220 },
-  { w: 55, h: 160 },
-  { w: 100, h: 250 },
-  { w: 68, h: 190 },
-  { w: 115, h: 320 },
-  { w: 72, h: 200 },
-  { w: 88, h: 240 },
-  { w: 62, h: 150 }
-].map((b, i) => (
-  <div
-    key={i}
-    className="border border-white/10 bg-white/5"
-    style={{
-      width: `${b.w}px`,
-      height: `${b.h}px`
-    }}
-  />
-))}
+        {/* SKYLINE (Sleek Silver Outline Blueprint) */}
+        <div className="absolute bottom-0 left-0 right-0 flex items-end opacity-30">
+          {[
+            { w: 70, h: 180 },
+            { w: 90, h: 240 },
+            { w: 60, h: 140 },
+            { w: 110, h: 260 },
+            { w: 75, h: 210 },
+            { w: 95, h: 280 },
+            { w: 65, h: 170 },
+            { w: 120, h: 300 },
+            { w: 80, h: 220 },
+            { w: 55, h: 160 },
+            { w: 100, h: 250 },
+            { w: 68, h: 190 },
+            { w: 115, h: 320 },
+            { w: 72, h: 200 },
+            { w: 88, h: 240 },
+            { w: 62, h: 150 }
+          ].map((b, i) => (
+            <div
+              key={i}
+              className="border border-black/5 bg-black/[0.01]"
+              style={{
+                width: `${b.w}px`,
+                height: `${b.h}px`
+              }}
+            />
+          ))}
         </div>
       </div>
 
@@ -145,18 +143,18 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-5 py-2 text-sm font-semibold text-indigo-300">
-              <Building2 className="h-4 w-4" />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2 text-sm font-semibold text-slate-500 shadow-sm">
+              <Building2 className="h-4 w-4 text-[var(--neon-blue)]" />
               Let’s Build Your Next Campaign
             </div>
 
-            <h2 className="max-w-xl text-5xl font-black leading-tight md:text-6xl">
+            <h2 className="max-w-xl text-5xl font-black leading-tight md:text-6xl text-[#1d1d1f] tracking-tight">
               Own Attention.
               <br />
               Own The Skyline.
             </h2>
 
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-slate-300">
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-slate-500 font-medium">
               Launch premium outdoor campaigns across
               Maharashtra with strategically placed
               high-visibility billboards.
@@ -169,10 +167,10 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 space-y-5"
+            className="mt-12 space-y-5 animate-none"
           >
             <div className="relative">
-              <User className="absolute left-4 top-4 h-5 w-5 text-slate-500" />
+              <User className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
 
               <input
                 value={form.name}
@@ -180,12 +178,12 @@ export default function ContactSection() {
                   updateField("name", e.target.value)
                 }
                 placeholder="Your Name"
-                className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none backdrop-blur-xl transition-all focus:border-indigo-400"
+                className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
               />
             </div>
 
             <div className="relative">
-              <Building2 className="absolute left-4 top-4 h-5 w-5 text-slate-500" />
+              <Building2 className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
 
               <input
                 value={form.company}
@@ -193,12 +191,12 @@ export default function ContactSection() {
                   updateField("company", e.target.value)
                 }
                 placeholder="Brand / Company"
-                className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none backdrop-blur-xl transition-all focus:border-indigo-400"
+                className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
               />
             </div>
 
             <div className="relative">
-              <Mail className="absolute left-4 top-4 h-5 w-5 text-slate-500" />
+              <Mail className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
 
               <input
                 value={form.email}
@@ -206,7 +204,7 @@ export default function ContactSection() {
                   updateField("email", e.target.value)
                 }
                 placeholder="Email Address"
-                className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none backdrop-blur-xl transition-all focus:border-indigo-400"
+                className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
               />
             </div>
 
@@ -217,12 +215,12 @@ export default function ContactSection() {
               }
               placeholder="Tell us about your campaign"
               rows={5}
-              className="w-full rounded-2xl border border-white/10 bg-white/5 p-5 text-white outline-none backdrop-blur-xl transition-all focus:border-indigo-400"
+              className="w-full rounded-2xl border border-black/10 bg-white/60 p-5 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
             />
 
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-2xl bg-indigo-600 px-8 py-4 font-semibold text-white transition hover:bg-indigo-500"
+              className="flex items-center justify-center gap-2 rounded-full bg-black px-8 py-4 font-semibold text-white transition hover:bg-black/90 shadow-sm"
             >
               Launch Campaign
               <Send className="h-4 w-4" />
@@ -233,20 +231,20 @@ export default function ContactSection() {
         {/* BILLBOARD EXPERIENCE */}
         <div className="relative flex min-h-[720px] items-end justify-center">
           {/* GROUND */}
-          <div className="absolute bottom-0 h-[140px] w-full rounded-[100%] bg-[#101827] blur-2xl" />
+          <div className="absolute bottom-0 h-[140px] w-full rounded-[100%] bg-black/10 blur-2xl" />
 
           {/* BILLBOARD POLE */}
           <motion.div
             initial={{ y: -400, rotate: -10, opacity: 0 }}
             animate={billboardControls}
-            className="absolute bottom-[110px] h-[380px] w-[24px] rounded-full bg-gradient-to-b from-slate-300 to-slate-700 shadow-2xl"
+            className="absolute bottom-[110px] h-[380px] w-[24px] rounded-full bg-gradient-to-b from-slate-200 via-slate-400 to-slate-600 shadow-xl"
           />
 
           {/* BILLBOARD */}
           <motion.div
             initial={{ y: -500, rotate: -6, opacity: 0 }}
             animate={billboardControls}
-            className="absolute bottom-[380px] h-[260px] w-[520px] overflow-hidden rounded-[32px] border border-white/10 bg-[#0b1220] shadow-[0_40px_120px_rgba(0,0,0,0.45)]"
+            className="absolute bottom-[380px] h-[260px] w-[520px] overflow-hidden rounded-[32px] border border-black/10 bg-[#ffffff] shadow-[0_30px_80px_rgba(0,0,0,0.15)]"
           >
             {/* LIGHTS */}
             <AnimatePresence>
@@ -255,19 +253,19 @@ export default function ContactSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-[radial-gradient(circle,rgba(99,102,241,0.45),transparent_60%)]"
+                  className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,113,227,0.2),transparent_60%)]"
                 />
               )}
             </AnimatePresence>
 
-            {/* POSTER */}
+            {/* POSTER (Apple Royal Gradient) */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{
                 scaleX: interactionStarted ? 1 : 0.08
               }}
               transition={{ duration: 1 }}
-              className="absolute inset-5 origin-left rounded-[24px] bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500"
+              className="absolute inset-5 origin-left rounded-[24px] bg-gradient-to-br from-[#0071e3] via-[#5c60f5] to-[#ff0055]"
             />
 
             {/* CONTENT */}
@@ -275,15 +273,15 @@ export default function ContactSection() {
               {!sent ? (
                 <>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/60">
+                    <p className="text-xs font-bold uppercase tracking-[0.4em] text-white/70">
                       LIVE CAMPAIGN PREVIEW
                     </p>
 
-                    <h3 className="mt-6 text-5xl font-black leading-none text-white">
+                    <h3 className="mt-6 text-4xl font-black leading-none text-white tracking-tight">
                       {form.company || "YOUR BRAND"}
                     </h3>
 
-                    <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/80">
+                    <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/95 font-medium">
                       {form.message ||
                         "Your campaign begins here."}
                     </p>
@@ -291,16 +289,16 @@ export default function ContactSection() {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/50">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/60">
                         Powered By
                       </p>
 
-                      <p className="mt-2 text-2xl font-black text-white">
+                      <p className="mt-1 text-xl font-black text-white tracking-tight">
                         FRIENDS ADV
                       </p>
                     </div>
 
-                    <div className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-xl">
+                    <div className="rounded-full border border-white/20 bg-white/25 px-4 py-2 text-xs font-bold text-white backdrop-blur-xl">
                       Premium OOH
                     </div>
                   </div>
@@ -313,11 +311,11 @@ export default function ContactSection() {
                 >
                   <CheckCircle2 className="h-16 w-16 text-white" />
 
-                  <p className="mt-8 text-6xl font-black text-white">
+                  <p className="mt-8 text-5xl font-black text-white tracking-tight">
                     FRIENDS ADV
                   </p>
 
-                  <p className="mt-4 text-2xl font-medium text-white/80">
+                  <p className="mt-4 text-xl font-bold text-white/90">
                     Own Every Glance
                   </p>
                 </motion.div>
@@ -347,12 +345,12 @@ export default function ContactSection() {
                     className="absolute bottom-[130px]"
                   >
                     {/* LADDER */}
-                    <div className="absolute bottom-0 left-1/2 h-[180px] w-[10px] -translate-x-1/2 rounded-full bg-slate-300">
+                    <div className="absolute bottom-0 left-1/2 h-[180px] w-[10px] -translate-x-1/2 rounded-full bg-slate-400">
                       {Array.from({ length: 7 }).map((_, i) => (
                         <div
-                          key={i}
-                          className="absolute left-1/2 h-[4px] w-[34px] -translate-x-1/2 rounded-full bg-slate-400"
-                          style={{ top: `${i * 24}px` }}
+                           key={i}
+                           className="absolute left-1/2 h-[4px] w-[34px] -translate-x-1/2 rounded-full bg-slate-300"
+                           style={{ top: `${i * 24}px` }}
                         />
                       ))}
                     </div>
@@ -379,7 +377,7 @@ export default function ContactSection() {
                             duration: 1.4,
                             repeat: Infinity
                           }}
-                          className="absolute -top-10 left-8 h-10 w-16 origin-left rounded-md border border-white/20 bg-white/70 backdrop-blur"
+                          className="absolute -top-1 left-8 h-10 w-16 origin-left rounded-md border border-black/10 bg-white/80 backdrop-blur"
                         />
 
                         {/* ARM */}
@@ -391,19 +389,19 @@ export default function ContactSection() {
                             duration: 1.2,
                             repeat: Infinity
                           }}
-                          className="absolute -top-1 left-5 h-10 w-[5px] origin-bottom rounded-full bg-slate-200"
+                          className="absolute -top-1 left-5 h-10 w-[5px] origin-bottom rounded-full bg-slate-300"
                         />
 
                         {/* HEAD */}
-                        <div className="h-8 w-8 rounded-full bg-slate-100 shadow-md" />
+                        <div className="h-8 w-8 rounded-full bg-slate-200 shadow-sm" />
 
                         {/* BODY */}
-                        <div className="mt-1 h-14 w-10 rounded-t-full rounded-b-2xl bg-amber-400 shadow-lg" />
+                        <div className="mt-1 h-14 w-10 rounded-t-full rounded-b-2xl bg-amber-400 shadow-md" />
 
                         {/* LEGS */}
                         <div className="mt-1 flex gap-1">
-                          <div className="h-8 w-[5px] rounded-full bg-slate-300" />
-                          <div className="h-8 w-[5px] rounded-full bg-slate-300" />
+                          <div className="h-8 w-[5px] rounded-full bg-slate-400" />
+                          <div className="h-8 w-[5px] rounded-full bg-slate-400" />
                         </div>
                       </div>
                     </motion.div>
@@ -417,9 +415,9 @@ export default function ContactSection() {
           {started && (
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: [0.6, 0], scale: 2.2 }}
+              animate={{ opacity: [0.3, 0], scale: 2.2 }}
               transition={{ duration: 1.4 }}
-              className="absolute bottom-[80px] h-[180px] w-[180px] rounded-full bg-white/10 blur-3xl"
+              className="absolute bottom-[80px] h-[180px] w-[180px] rounded-full bg-black/5 blur-3xl"
             />
           )}
         </div>
@@ -427,4 +425,3 @@ export default function ContactSection() {
     </section>
   );
 }
-

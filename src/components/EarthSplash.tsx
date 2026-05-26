@@ -8,11 +8,13 @@ import {
   useTexture,
 } from "@react-three/drei";
 
+/*
 import {
   EffectComposer,
   Bloom,
   Vignette,
 } from "@react-three/postprocessing";
+*/
 
 import { Suspense, useMemo, useRef } from "react";
 import * as THREE from "three";
@@ -221,25 +223,21 @@ export default function PremiumEarthScene() {
           autoRotate={false}
         />
 
-        {/* ======================
-            POST PROCESSING
-        ====================== */}
-
+        {/* 
         <EffectComposer>
-          {/* CINEMATIC BLOOM */}
           <Bloom
             intensity={1.4}
             luminanceThreshold={0.2}
             luminanceSmoothing={0.9}
           />
 
-          {/* PREMIUM EDGE DARKENING */}
           <Vignette
             eskil={false}
             offset={0.15}
             darkness={1.2}
           />
         </EffectComposer>
+        */}
       </Canvas>
     </div>
   );

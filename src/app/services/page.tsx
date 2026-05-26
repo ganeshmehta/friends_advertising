@@ -51,22 +51,22 @@ export default function ServicesPage() {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-[var(--neon-blue)] font-black tracking-[0.4em] text-xs uppercase mb-4"
+            className="text-[var(--neon-blue)] font-bold tracking-[0.4em] text-xs uppercase mb-4"
           >
             Capabilities
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6"
+            className="text-6xl md:text-8xl font-black tracking-tight text-[#1d1d1f] mb-6"
           >
-            OUR <span className="text-[var(--neon-purple)] neon-text">SERVICES</span>
+            OUR <span className="text-[var(--neon-purple)]">SERVICES</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-white/50 max-w-2xl leading-relaxed"
+            className="text-xl text-slate-500 max-w-2xl leading-relaxed font-medium"
           >
             A comprehensive suite of outdoor and indoor advertising assets engineered for maximum brand penetration and memory recall.
           </motion.p>
@@ -84,16 +84,16 @@ export default function ServicesPage() {
               whileHover={{ y: -5 }}
               className="group relative"
             >
-              <div className="glass h-full p-10 rounded-[32px] border border-white/5 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
+              <div className="glass h-full p-10 rounded-[32px] border border-black/5 hover:border-black/10 hover:shadow-xl transition-all duration-500 overflow-hidden bg-white">
                 <div 
-                  className="absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"
+                  className="absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[60px] opacity-[0.04] group-hover:opacity-[0.08] transition-opacity"
                   style={{ backgroundColor: service.color }}
                 ></div>
                 
                 <div className="relative z-10">
                   <div 
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundColor: `${service.color}10` }}
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 border border-black/5 group-hover:scale-105 transition-transform duration-500"
+                    style={{ backgroundColor: `${service.color}08` }}
                   >
                     <service.icon 
                       className="w-8 h-8" 
@@ -101,11 +101,11 @@ export default function ServicesPage() {
                     />
                   </div>
                   
-                  <h3 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-white transition-colors">
+                  <h3 className="text-2xl font-black mb-4 tracking-tight text-[#1d1d1f] group-hover:text-black transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="text-lg text-white/40 leading-relaxed group-hover:text-white/70 transition-colors">
+                  <p className="text-lg text-slate-500 leading-relaxed group-hover:text-slate-700 transition-colors">
                     {service.desc}
                   </p>
                 </div>

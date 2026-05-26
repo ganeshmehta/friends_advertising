@@ -18,7 +18,7 @@ interface Props {
 export default function EarthDetailModal({ point, onClose }: Props) {
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md z-40"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

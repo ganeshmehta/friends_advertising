@@ -17,8 +17,8 @@ function Earth({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
     roughness: 0.55,
     metalness: 0.15,
     color: new THREE.Color("#ffffff"),
-    emissive: new THREE.Color("#0a1a2a"),
-    emissiveIntensity: 0.1,
+    emissive: new THREE.Color("#0071e3"),
+    emissiveIntensity: 0.05,
   }), [earthTexture]);
 
   useFrame((state, delta) => {
@@ -29,7 +29,6 @@ function Earth({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
       cloudRef.current.rotation.y += delta * 0.25 + (scrollVal * delta * 2.5);
       
       // Zoom effect mapped to scroll
-      // As we scroll from 0 to 0.4, we zoom from scale 1 to 50
       const zoomScale = THREE.MathUtils.lerp(1.5, 60, Math.pow(scrollVal * 2.5, 3));
       if (scrollVal <= 0.4) {
         meshRef.current.scale.setScalar(zoomScale);
@@ -40,10 +39,10 @@ function Earth({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
 
   return (
     <group>
-      <ambientLight intensity={0.9} />
-      <pointLight position={[10, 10, 10]} intensity={4} color="#ffffff" />
-      <pointLight position={[-10, -10, -10]} intensity={2} color="#ffd38a" />
-      <directionalLight position={[5, 3, 5]} intensity={2} color="#ffffff" />
+      <ambientLight intensity={1.5} />
+      <pointLight position={[10, 10, 10]} intensity={6} color="#ffffff" />
+      <pointLight position={[-10, -10, -10]} intensity={3} color="#e0f2fe" />
+      <directionalLight position={[5, 3, 5]} intensity={2.5} color="#ffffff" />
       
       {/* Main Earth */}
       <mesh ref={meshRef}>
@@ -55,9 +54,9 @@ function Earth({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
       <mesh ref={cloudRef}>
         <sphereGeometry args={[2, 64, 64]} />
         <meshStandardMaterial 
-          color="#00f3ff" 
+          color="#0071e3" 
           transparent 
-          opacity={0.1} 
+          opacity={0.08} 
           side={THREE.BackSide}
           blending={THREE.AdditiveBlending}
         />
@@ -74,14 +73,14 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
   const letterboxSize = useTransform(scrollYProgress, [0, 0.1, 0.8, 1], ["0%", "8%", "8%", "0%"]);
   
   // Overlay text transitions
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.1, 0.15], [0, 1, 0]);
-  const text2Opacity = useTransform(scrollYProgress, [0.15, 0.25, 0.3], [0, 1, 0]);
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.08, 0.12], [0, 1, 0]);
+  const text2Opacity = useTransform(scrollYProgress, [0.15, 0.23, 0.28], [0, 1, 0]);
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[var(--background)]">
-      {/* Letterbox Effect */}
-      <motion.div style={{ height: letterboxSize }} className="absolute top-0 left-0 right-0 bg-black z-50" />
-      <motion.div style={{ height: letterboxSize }} className="absolute bottom-0 left-0 right-0 bg-black z-50" />
+      {/* Letterbox Effect (Sleek Apple Cinema Frame) */}
+      <motion.div style={{ height: letterboxSize }} className="absolute top-0 left-0 right-0 bg-white z-30 border-b border-black/5" />
+      <motion.div style={{ height: letterboxSize }} className="absolute bottom-0 left-0 right-0 bg-white z-30 border-t border-black/5" />
 
       {/* 3D Scene Container */}
       <motion.div 
@@ -90,40 +89,6 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
       >
         <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
           <Suspense fallback={null}>
-            <>
-              {/* Far deep blue stars (background galaxy) */}
-              <Stars
-                radius={120}
-                depth={80}
-                count={4000}
-                factor={4}
-                saturation={0.3}
-                fade
-                speed={0.5}
-              />
-
-              {/* Mid-layer white + slight cyan stars */}
-              <Stars
-                radius={80}
-                depth={40}
-                count={3000}
-                factor={5}
-                saturation={0.6}
-                fade
-                speed={0.8}
-              />
-
-              {/* Near bright glowing stars */}
-              <Stars
-                radius={50}
-                depth={20}
-                count={1500}
-                factor={6}
-                saturation={1}
-                fade
-                speed={1.2}
-              />
-            </>
             <Earth scrollYProgress={scrollYProgress} />
             <OrbitControls 
               enableZoom={false} 
@@ -136,53 +101,50 @@ export default function ScrollJourney({ scrollYProgress }: { scrollYProgress: Mo
         </Canvas>
       </motion.div>
 
-   {/* Atmospheric Entry Video Overlay */}
-<motion.div 
-  style={{ opacity: videoOpacity }}
-  className="absolute inset-0 z-20"
->
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover saturate-150 brightness-115 contrast-115"
-    src="/videos/Temp_road.mp4"
-  />
+      {/* Atmospheric Entry Video Overlay */}
+      <motion.div 
+        style={{ opacity: videoOpacity }}
+        className="absolute inset-0 z-20"
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover saturate-[1.1] brightness-[1.05] contrast-[1.05]"
+          src="/videos/Temp_road.mp4"
+        />
 
-  {/* Light cinematic overlay */}
-  <div className="absolute inset-0 bg-black/5" />
+        {/* Light cinematic overlay */}
+        <div className="absolute inset-0 bg-white/10" />
 
-  {/* Soft glow for premium feel */}
-  <div className="absolute inset-0 bg-cyan-400/5 mix-blend-screen" />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(255,255,255,0.25)_100%)]" />
+      </motion.div>
 
-  {/* Vignette */}
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.18)_100%)]" />
-</motion.div>
-
-      {/* Cinematic Text Layers */}
+      {/* Cinematic Text Layers (Apple Typography styles) */}
       <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
         <motion.div style={{ opacity: text1Opacity }} className="text-center px-4">
-          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-blue)]">
+          <h2 className="text-3xl md:text-6xl font-black tracking-tight text-[#1d1d1f] mb-3">
             A New Perspective
           </h2>
-          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-blue)]">
-            For OutDoor Advertising
+          <h2 className="text-sm md:text-lg font-bold tracking-[0.3em] uppercase text-[var(--neon-blue)]">
+            For Outdoor Advertising
           </h2>
         </motion.div>
         
         <motion.div style={{ opacity: text2Opacity }} className="text-center px-4">
-          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-green)]">
+          <h2 className="text-3xl md:text-6xl font-black tracking-tight text-[#1d1d1f] mb-3">
             Hitting the Streets
           </h2>
-          <h2 className="text-2xl md:text-4xl font-bold tracking-[0.5em] uppercase neon-text text-[var(--neon-green)]">
+          <h2 className="text-sm md:text-lg font-bold tracking-[0.3em] uppercase text-[var(--neon-purple)]">
             Converting campaigns into experiences
           </h2>
         </motion.div>
       </div>
 
       {/* Guided Visual Overlay */}
-      <div className="absolute inset-0 z-40 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(8,10,21,0.4)_100%)]" />
+      <div className="absolute inset-0 z-40 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(245,245,247,0.3)_100%)]" />
     </div>
   );
 }

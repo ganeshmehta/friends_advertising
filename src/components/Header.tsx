@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
           ? "nav-glass py-3" 
           : "bg-transparent py-5"
@@ -35,10 +35,10 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="text-2xl font-black tracking-tighter flex items-center gap-2">
-          <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-black via-slate-800 to-slate-600 bg-clip-text text-transparent">
             FRIENDS
           </span>
-          <span className="text-[var(--neon-blue)] neon-text text-3xl">.</span>
+          <span className="text-[var(--neon-blue)] text-3xl">.</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-10">
@@ -46,15 +46,15 @@ export default function Header() {
             <Link 
               key={link.href} 
               href={link.href}
-              className={`relative text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 hover:text-white ${
-                pathname === link.href ? "text-white" : "text-gray-400"
+              className={`relative text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 hover:text-[var(--foreground)] ${
+                pathname === link.href ? "text-[var(--foreground)]" : "text-[var(--foreground-secondary)]"
               }`}
             >
               {link.label}
               {pathname === link.href && (
                 <motion.div 
                   layoutId="underline"
-                  className="absolute left-0 right-0 h-[1.5px] -bottom-2 bg-[var(--neon-blue)] shadow-[0_0_8px_rgba(0,243,255,0.8)]"
+                  className="absolute left-0 right-0 h-[2px] -bottom-2 bg-[var(--neon-blue)] rounded-full"
                 />
               )}
             </Link>
@@ -64,7 +64,7 @@ export default function Header() {
         <div className="flex items-center gap-6">
           <Link 
             href="/contact" 
-            className="hidden md:inline-flex items-center justify-center px-8 py-2.5 text-[10px] uppercase tracking-[0.2em] font-bold text-white transition-all duration-300 border border-white/10 rounded-full hover:bg-white hover:text-black hover:border-white shadow-xl hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="hidden md:inline-flex items-center justify-center px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-bold text-white transition-all duration-300 bg-black hover:bg-black/85 rounded-full border border-black/10 shadow-sm"
           >
             Let's Talk
           </Link>

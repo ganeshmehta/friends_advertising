@@ -37,12 +37,12 @@ export default function EyeFollow() {
     return (
         <div
             ref={eyeRef}
-            className="w-32 h-32 md:w-64 md:h-64 rounded-full border-2 border-red-500/50 flex items-center justify-center bg-red-500/10 relative shadow-[0_0_50px_rgba(255,0,0,0.2)]"
+            className="w-32 h-32 md:w-64 md:h-64 rounded-full border border-slate-200 flex items-center justify-center bg-slate-100/40 relative shadow-inner"
         >
-            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center border border-slate-100 shadow-sm">
                 <div
                     ref={pupilRef}
-                    className="w-6 h-6 bg-black rounded-full transition-transform duration-75 ease-out"
+                    className="w-8 h-8 bg-black rounded-full transition-transform duration-75 ease-out"
                 />
             </div>
         </div>
