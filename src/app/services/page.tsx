@@ -1,119 +1,417 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Monitor, Image as ImageIcon, Zap, Flag, Truck, Building } from "lucide-react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import Link from "next/link";
+import "@/styles/services-lab.css";
+
+type ServiceMock = "flex" | "vinyl" | "led" | "banner" | "transit" | "indoor";
+
+type ServiceCard = {
+  id: string;
+  title: string;
+  short: string;
+  format: string;
+  materials: string;
+  turnaround: string;
+  reach: string;
+  cities: string[];
+  accent: string;
+  mock: ServiceMock;
+};
+
+const services: ServiceCard[] = [
+  {
+    id: "flex",
+    title: "Flex Board Printing & Installation",
+    short: "High-impact roadside hoardings",
+    format: "20×10 ft to 40×20 ft hoardings · highway-grade frames",
+    materials: "920 gsm star-flex · UV-cured ink · galvanised-steel frame",
+    turnaround: "72-hour print-to-pack · 4-day install with own crews",
+    reach: "~1.2L daily impressions per premium site",
+    cities: ["Navi Mumbai", "Mumbai BKC", "Pune NH4", "Aurangabad"],
+    accent: "var(--neon-blue)",
+    mock: "flex",
+  },
+  {
+    id: "vinyl",
+    title: "Vinyl & Digital Printing",
+    short: "Premium short-run print",
+    format: "A0 posters · backlit panels · window vinyls · wall wraps",
+    materials: "Cast vinyl · solvent + UV ink · 5-yr outdoor lamination",
+    turnaround: "24-hour print · same-day pickup or city dispatch",
+    reach: "720 dpi, ΔE < 3 colour match — gallery-grade",
+    cities: ["Navi Mumbai studio", "Thane", "Pune", "Nashik"],
+    accent: "#06b6d4",
+    mock: "vinyl",
+  },
+  {
+    id: "led",
+    title: "LED Sign Boards & Glow Signs",
+    short: "24×7 illuminated storefronts",
+    format: "Channel letters · backlit ACP · pixel LED screens",
+    materials: "High-CRI LED modules · 5-yr driver warranty · ACP + acrylic",
+    turnaround: "5-day fabrication · timed midnight install",
+    reach: "24×7 visibility · 92% recall after dusk",
+    cities: ["Mumbai retail strips", "Pune malls", "Nashik bazaars"],
+    accent: "#22d3ee",
+    mock: "led",
+  },
+  {
+    id: "banner",
+    title: "Event & Promotional Banners",
+    short: "Pop-up brand surfaces",
+    format: "Stage backdrops · vertical drops · pole banners · standees",
+    materials: "Frontlit flex + eyelets · roll-up cassettes · fabric drops",
+    turnaround: "36-hour rush · on-site rigging crew included",
+    reach: "Event-grade · 100% sponsor-ready on go-live morning",
+    cities: ["Mumbai BEC", "Pune ICC", "Hotel chains across MH"],
+    accent: "var(--neon-purple)",
+    mock: "banner",
+  },
+  {
+    id: "transit",
+    title: "Vehicle & Transit Advertising",
+    short: "Brand on the move",
+    format: "Bus wraps · auto-rickshaw hoods · cab door panels",
+    materials: "Cast wrap vinyl · air-egress film · 3-yr fade warranty",
+    turnaround: "8-hour wrap per vehicle · fleet-scale next day",
+    reach: "~80,000 impressions per bus per day across a corridor",
+    cities: ["Mumbai BEST", "Pune PMPML", "NMMT Navi Mumbai"],
+    accent: "#0ea5e9",
+    mock: "transit",
+  },
+  {
+    id: "indoor",
+    title: "Corporate Branding & Indoor Displays",
+    short: "In-office brand identity",
+    format: "Reception walls · backlit logos · standees · wayfinding",
+    materials: "Acrylic + brushed metal · architectural-grade vinyl · LED edge",
+    turnaround: "4-day design-to-install · after-hours fitment",
+    reach: "Every visitor, every meeting — daily brand reinforcement",
+    cities: ["IT parks · BFSI HQs · hospitality lobbies"],
+    accent: "var(--accent)",
+    mock: "indoor",
+  },
+];
 
 export default function ServicesPage() {
-  const services = [
-    {
-      icon: ImageIcon,
-      title: "Flex Board Printing & Installation",
-      desc: "Boost Your Brand Visibility – On the Streets, Shops & Skylines! We design, print, and install high-quality flex boards that grab attention immediately.",
-      color: "var(--neon-blue)"
-    },
-    {
-      icon: Monitor,
-      title: "Vinyl & Digital Printing",
-      desc: "High-quality prints for promotional and branding purposes. Perfect for store fronts, glass facades, and indoor promotional campaigns.",
-      color: "var(--neon-purple)"
-    },
-    {
-      icon: Zap,
-      title: "LED Sign Boards & Glow Signs",
-      desc: "Our LED and glow sign boards provide round-the-clock visibility. Stand out even at night with energy-efficient and vibrant backlit boards.",
-      color: "var(--neon-blue)"
-    },
-    {
-      icon: Flag,
-      title: "Event & Promotional Banners",
-      desc: "Custom banners for events, exhibitions, and marketing campaigns. Quick turnaround times without compromising on print quality.",
-      color: "var(--neon-purple)"
-    },
-    {
-      icon: Truck,
-      title: "Vehicle & Transit Advertising",
-      desc: "Branding on cars, buses, and other transport mediums. Turn everyday vehicles into moving billboards that cover the entire city.",
-      color: "var(--neon-blue)"
-    },
-    {
-      icon: Building,
-      title: "Corporate Branding & Indoor Displays",
-      desc: "Office branding, standees, and custom indoor advertisements to enhance your corporate identity and wow your visitors.",
-      color: "var(--neon-purple)"
+  const [active, setActive] = useState(0);
+  const tabsRef = useRef<HTMLOListElement>(null);
+  const activeSvc = services[active];
+
+  const setActiveClamped = useCallback((i: number) => {
+    setActive(Math.max(0, Math.min(services.length - 1, i)));
+  }, []);
+
+  const onKeyNav = (event: React.KeyboardEvent<HTMLOListElement>) => {
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      event.preventDefault();
+      setActiveClamped(active + 1);
+    } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      setActiveClamped(active - 1);
     }
-  ];
+  };
+
+  useEffect(() => {
+    const list = tabsRef.current;
+    if (!list) return;
+    const buttons = list.querySelectorAll<HTMLButtonElement>("button[data-tab]");
+    const target = buttons[active];
+    if (
+      target &&
+      document.activeElement?.tagName === "BUTTON" &&
+      list.contains(document.activeElement)
+    ) {
+      target.focus({ preventScroll: true });
+    }
+  }, [active]);
+
+  const sectionStyle = { "--svc-accent": activeSvc.accent } as CSSProperties;
 
   return (
-    <main className="relative min-h-screen pt-28 pb-20 bg-[var(--background)]">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Unified Header */}
-        <div className="mb-20">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-[var(--neon-blue)] font-bold tracking-[0.4em] text-xs uppercase mb-4"
-          >
-            Capabilities
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-black tracking-tight text-[#1d1d1f] mb-6"
-          >
-            OUR <span className="text-[var(--neon-purple)]">SERVICES</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-slate-500 max-w-2xl leading-relaxed font-medium"
-          >
-            A comprehensive suite of outdoor and indoor advertising assets engineered for maximum brand penetration and memory recall.
-          </motion.p>
-        </div>
+    <main className="services-shell flex flex-col w-full relative">
+      <section className="svc-section" style={sectionStyle}>
+        <div className="svc-grid-bg" aria-hidden="true" />
+        <div className="svc-spotlight" aria-hidden="true" />
 
-        {/* Unified Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group relative"
+          <header className="svc-header">
+            <p className="eyebrow">Our Services · OOH Format Catalog</p>
+            <h1>Complete outdoor advertising services under one execution team</h1>
+            <p className="svc-lead">
+              From flex boards and vinyl prints to LED signage, vehicle branding, event banners and
+              corporate indoor displays, Friends Advertising delivers a complete OOH offering with
+              end-to-end accountability.
+            </p>
+            <ul className="svc-hero-stats" role="list">
+              <li>
+                <strong>6</strong>
+                <span>Formats</span>
+              </li>
+              <li>
+                <strong>240+</strong>
+                <span>Active sites</span>
+              </li>
+              <li>
+                <strong>8</strong>
+                <span>Cities</span>
+              </li>
+              <li>
+                <strong>12 yrs</strong>
+                <span>Operating</span>
+              </li>
+            </ul>
+          </header>
+
+          <div className="svc-lab">
+            <ol
+              ref={tabsRef}
+              className="svc-tabs"
+              role="tablist"
+              aria-label="Service formats"
+              onKeyDown={onKeyNav}
             >
-              <div className="glass h-full p-10 rounded-[32px] border border-black/5 hover:border-black/10 hover:shadow-xl transition-all duration-500 overflow-hidden bg-white">
-                <div 
-                  className="absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[60px] opacity-[0.04] group-hover:opacity-[0.08] transition-opacity"
-                  style={{ backgroundColor: service.color }}
-                ></div>
-                
-                <div className="relative z-10">
-                  <div 
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 border border-black/5 group-hover:scale-105 transition-transform duration-500"
-                    style={{ backgroundColor: `${service.color}08` }}
+              {services.map((s, i) => {
+                const tabStyle = { "--svc-accent": s.accent } as CSSProperties;
+                const isActive = i === active;
+                return (
+                  <li
+                    key={s.id}
+                    className={`svc-tab${isActive ? " is-active" : ""}`}
+                    style={tabStyle}
                   >
-                    <service.icon 
-                      className="w-8 h-8" 
-                      style={{ color: service.color }} 
-                    />
-                  </div>
-                  
-                  <h3 className="text-2xl font-black mb-4 tracking-tight text-[#1d1d1f] group-hover:text-black transition-colors">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-lg text-slate-500 leading-relaxed group-hover:text-slate-700 transition-colors">
-                    {service.desc}
-                  </p>
-                </div>
+                    <button
+                      type="button"
+                      data-tab={s.id}
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-controls="svc-stage"
+                      onMouseEnter={() => setActive(i)}
+                      onFocus={() => setActive(i)}
+                      onClick={() => setActive(i)}
+                      tabIndex={isActive ? 0 : -1}
+                    >
+                      <span className="svc-tab-rail" aria-hidden="true">
+                        <span className="svc-tab-node" />
+                      </span>
+                      <span className="svc-tab-index" aria-hidden="true">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="svc-tab-body">
+                        <span className="svc-tab-title">{s.title}</span>
+                        <span className="svc-tab-tag">{s.short}</span>
+                      </span>
+                      <span className="svc-tab-chev" aria-hidden="true">
+                        →
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+
+            <div id="svc-stage" className="svc-stage" role="tabpanel" aria-live="polite">
+              <div className="svc-stage-cityticker" aria-hidden="true">
+                <span className="svc-stage-livedot" />
+                <span>Live now in</span>
+                <strong>{activeSvc.cities.join(" · ")}</strong>
               </div>
-            </motion.div>
+
+              <div className="svc-mock" data-mock={activeSvc.mock} key={activeSvc.id}>
+                <FormatMock kind={activeSvc.mock} accent={activeSvc.accent} />
+              </div>
+
+              <dl className="svc-stage-meta">
+                <div>
+                  <dt>Typical format</dt>
+                  <dd>{activeSvc.format}</dd>
+                </div>
+                <div>
+                  <dt>Materials</dt>
+                  <dd>{activeSvc.materials}</dd>
+                </div>
+                <div>
+                  <dt>Turnaround</dt>
+                  <dd>{activeSvc.turnaround}</dd>
+                </div>
+              </dl>
+
+              <div className="svc-stage-foot">
+                <ol className="svc-lifecycle" aria-label="Service lifecycle">
+                  {["Design", "Print", "Install", "Live"].map((step, i) => (
+                    <li
+                      key={step}
+                      className={`svc-life-step${i === 3 ? " is-current" : ""}`}
+                    >
+                      <span className="svc-life-dot" aria-hidden="true" />
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+                <p className="svc-stage-reach">
+                  <span aria-hidden="true">◉</span> {activeSvc.reach}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <aside className="svc-footer-cta">
+            <div>
+              <p className="eyebrow">Need a format that isn&apos;t here?</p>
+              <h2>If it can be printed, lit, wrapped or driven — we ship it.</h2>
+            </div>
+            <Link href="/contact" className="svc-cta-btn">
+              <span>Brief us</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </aside>
+        </section>
+    </main>
+  );
+}
+
+/* ---------- Per-format CSS mock-ups ---------- */
+
+type MockProps = { kind: ServiceMock; accent: string };
+
+function FormatMock({ kind, accent }: MockProps) {
+  const accentStyle = { "--svc-accent": accent } as CSSProperties;
+
+  if (kind === "flex") {
+    return (
+      <div className="svc-flex" style={accentStyle}>
+        <div className="svc-flex-wall" aria-hidden="true" />
+        <div className="svc-flex-frame">
+          <div className="svc-flex-board">
+            <p className="svc-flex-eyebrow">FRIENDS OUTDOOR · MUMBAI BKC</p>
+            <p className="svc-flex-title">
+              YOUR
+              <br />
+              BRAND
+              <br />
+              HERE
+            </p>
+            <p className="svc-flex-foot">30 × 20 ft · Premium hoarding</p>
+            <div className="svc-flex-tear" aria-hidden="true" />
+          </div>
+        </div>
+        <div className="svc-flex-shadow" aria-hidden="true" />
+      </div>
+    );
+  }
+
+  if (kind === "vinyl") {
+    return (
+      <div className="svc-vinyl" style={accentStyle}>
+        {["var(--neon-blue)", "#22d3ee", "var(--neon-purple)"].map((c, i) => (
+          <div
+            key={c}
+            className="svc-vinyl-sheet"
+            style={{ "--vc": c, "--vi": i } as CSSProperties}
+          >
+            <span className="svc-vinyl-tag">720 DPI · ΔE&nbsp;&lt;&nbsp;3</span>
+            <span className="svc-vinyl-stripe" />
+            <span className="svc-vinyl-label">PRINT {String(i + 1).padStart(2, "0")}</span>
+          </div>
+        ))}
+        <div className="svc-vinyl-ink" aria-hidden="true" />
+      </div>
+    );
+  }
+
+  if (kind === "led") {
+    return (
+      <div className="svc-led" style={accentStyle}>
+        <div className="svc-led-sky" aria-hidden="true" />
+        <div className="svc-led-grid" aria-hidden="true" />
+        <div className="svc-led-board">
+          <p className="svc-led-text">OPEN 24×7</p>
+          <p className="svc-led-sub">POWERED BY FRIENDS</p>
+        </div>
+        <div className="svc-led-bulbs" aria-hidden="true">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <span key={i} style={{ "--li": i } as CSSProperties} />
+          ))}
+        </div>
+        <div className="svc-led-scan" aria-hidden="true" />
+      </div>
+    );
+  }
+
+  if (kind === "banner") {
+    return (
+      <div className="svc-banner" style={accentStyle}>
+        <div className="svc-banner-rig" aria-hidden="true">
+          <span />
+          <span />
+        </div>
+        <div className="svc-banner-cloth">
+          <p className="svc-banner-eyebrow">EVENT · 2026</p>
+          <p className="svc-banner-title">
+            ANNUAL
+            <br />
+            SUMMIT
+          </p>
+          <p className="svc-banner-foot">Hall 04 · 18 Apr · Mumbai</p>
+        </div>
+        <div className="svc-banner-confetti" aria-hidden="true">
+          {Array.from({ length: 14 }).map((_, i) => (
+            <span key={i} style={{ "--ci": i } as CSSProperties} />
           ))}
         </div>
       </div>
-    </main>
+    );
+  }
+
+  if (kind === "transit") {
+    return (
+      <div className="svc-transit" style={accentStyle}>
+        <div className="svc-transit-sky" aria-hidden="true" />
+        <div className="svc-transit-bus">
+          <span className="svc-transit-windows" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          <span className="svc-transit-wrap">
+            <em>YOUR BRAND</em>
+            <small>across the city</small>
+          </span>
+          <span className="svc-transit-wheel svc-transit-wheel--l" aria-hidden="true" />
+          <span className="svc-transit-wheel svc-transit-wheel--r" aria-hidden="true" />
+        </div>
+        <div className="svc-transit-road" aria-hidden="true">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={i} style={{ "--di": i } as CSSProperties} />
+          ))}
+        </div>
+        <div className="svc-transit-speed" aria-hidden="true" />
+      </div>
+    );
+  }
+
+  // indoor
+  return (
+    <div className="svc-indoor" style={accentStyle}>
+      <div className="svc-indoor-floor" aria-hidden="true" />
+      <div className="svc-indoor-wall">
+        <p className="svc-indoor-logo">FRIENDS</p>
+        <p className="svc-indoor-sub">RECEPTION · LVL 04</p>
+        <div className="svc-indoor-glow" aria-hidden="true" />
+      </div>
+      <div className="svc-indoor-standee">
+        <div className="svc-indoor-standee-screen">
+          <span>EST. 2014</span>
+          <strong>
+            BRAND
+            <br />
+            DESK
+          </strong>
+        </div>
+        <div className="svc-indoor-standee-base" aria-hidden="true" />
+      </div>
+      <div className="svc-indoor-spot" aria-hidden="true" />
+    </div>
   );
 }

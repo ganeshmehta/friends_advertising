@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 
-import FloatingStarsClient from "@/components/FloatingStarsClient";
-
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
   description: "The Complete Outdoor Solution based in Mumbai and Satara. Specializing in flex boards, LED signs, and transit advertising.",
 };
 
-import Header from "@/components/Header";
+import PageShell from "@/components/PageShell";
 
 export default function RootLayout({
   children,
@@ -32,13 +30,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--neon-purple)] selection:text-white"
         suppressHydrationWarning
       >
-        <div className="fixed inset-0 z-[9999] pointer-events-none">
-          <FloatingStarsClient  />
-        </div>
-        <Header />
-        <div className="flex-1 pt-20 relative z-0">
-          {children}
-        </div>
+        <PageShell>{children}</PageShell>
       </body>
     </html>
   );

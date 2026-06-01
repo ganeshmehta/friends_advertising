@@ -60,3 +60,271 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Subtle film grain used by the campaign visualizer stage */
+.cv-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+  background-size: 160px 160px;
+  mix-blend-mode: overlay;
+  opacity: 0.18;
+}
+
+/* Star-rating SVG icon stays crisp on retina */
+.star-icon {
+  fill: currentColor;
+}
+
+/* Stop Leaflet panes from blowing through fixed UI */
+.leaflet-pane, .leaflet-top, .leaflet-bottom { z-index: 1 !important; }
+.leaflet-popup { z-index: 5 !important; }
+
+/* ============================================================================
+   Page shell / tile separation — applied to every non-home page
+   ============================================================================ */
+.page-shell-bg {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding-block: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(0, 113, 227, 0.20), transparent 24%),
+    radial-gradient(circle at 88% 12%, rgba(92, 96, 245, 0.20), transparent 26%),
+    radial-gradient(circle at 75% 88%, rgba(227, 0, 82, 0.14), transparent 28%),
+    linear-gradient(160deg, #eef2fb 0%, #f5f7fc 52%, #fbeef4 100%);
+  --mx: 50vw;
+  --my: 50vh;
+}
+
+/* Slow-drifting aurora blobs */
+.page-shell-bg::before,
+.page-shell-bg::after {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(60px);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+.page-shell-bg::before {
+  background:
+    radial-gradient(closest-side, rgba(0, 113, 227, 0.55), transparent 70%) 12% 18% / 42% 38% no-repeat,
+    radial-gradient(closest-side, rgba(92, 96, 245, 0.45), transparent 70%) 80% 22% / 38% 36% no-repeat,
+    radial-gradient(closest-side, rgba(227, 0, 82, 0.32), transparent 70%) 64% 82% / 36% 32% no-repeat;
+  animation: page-shell-aurora 22s ease-in-out infinite alternate;
+}
+.page-shell-bg::after {
+  background:
+    radial-gradient(closest-side, rgba(56, 189, 248, 0.42), transparent 70%) 28% 76% / 38% 34% no-repeat,
+    radial-gradient(closest-side, rgba(167, 139, 250, 0.36), transparent 70%) 86% 64% / 32% 32% no-repeat;
+  animation: page-shell-aurora2 28s ease-in-out infinite alternate;
+}
+@keyframes page-shell-aurora {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(2.5%, -1.5%, 0) scale(1.04); }
+  100% { transform: translate3d(-2%, 2%, 0) scale(0.98); }
+}
+@keyframes page-shell-aurora2 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-3%, 2%, 0) scale(1.05); }
+  100% { transform: translate3d(2%, -2%, 0) scale(0.97); }
+}
+
+/* Cursor-following spotlight in brand colors */
+.page-shell-spot {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle 380px at var(--mx) var(--my), rgba(0, 113, 227, 0.14), transparent 60%),
+    radial-gradient(circle 280px at calc(var(--mx) - 9%) calc(var(--my) + 10%), rgba(92, 96, 245, 0.12), transparent 64%);
+  transition: background-position 80ms linear;
+}
+
+/* Subtle blueprint grid overlay sitting above blobs, below the panel */
+.page-shell-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);
+          mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell-bg::before,
+  .page-shell-bg::after {
+    animation: none;
+  }
+}
+
+.page-shell-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-inline: clamp(0.75rem, 2vw, 1.5rem);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-panel {
+  position: relative;
+  border-radius: 32px 32px 0 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-bottom: none;
+  backdrop-filter: blur(22px) saturate(115%);
+  -webkit-backdrop-filter: blur(22px) saturate(115%);
+  box-shadow:
+    0 40px 100px -50px rgba(15, 23, 42, 0.35),
+    0 12px 24px -12px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-panel-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1rem clamp(1rem, 2.4vw, 1.75rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.74) 100%);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  color: #0a0a0a;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.page-panel-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+.page-panel-brand-dot {
+  color: var(--neon-blue);
+  font-size: 1.6rem;
+  line-height: 0;
+  transform: translateY(0.1em);
+}
+
+.page-panel-links {
+  display: none;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+@media (min-width: 880px) {
+  .page-panel-links {
+    display: inline-flex;
+  }
+}
+
+.page-panel-link {
+  position: relative;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.55);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  padding-block: 0.4rem;
+}
+
+.page-panel-link:hover {
+  color: #0a0a0a;
+}
+
+.page-panel-link.is-active {
+  color: #0a0a0a;
+}
+
+.page-panel-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+}
+
+.page-panel-cta {
+  display: none;
+  align-items: center;
+  padding: 0.6rem 1.35rem;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  background: #0a0a0a;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -12px rgba(15, 23, 42, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .page-panel-cta {
+    display: inline-flex;
+  }
+}
+
+.page-panel-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px -10px rgba(15, 23, 42, 0.45);
+}
+
+.page-panel-body {
+  position: relative;
+  background: transparent;
+}
+
+/* Footer sits INSIDE the panel so the whole tile reads as one elegant card */
+.page-panel-footer {
+  position: relative;
+  background: transparent;
+}
+.page-panel-footer > footer {
+  background: transparent !important;
+  padding-bottom: 0 !important;
+}
+
+/* Pages inside the shell should NOT compensate for the old fixed header anymore */
+.page-panel-body main {
+  margin-top: 0 !important;
+}
+
+/* Home page footer: drop its own bottom padding so it sits flush with viewport */
+.page-home-footer > footer {
+  padding-bottom: 0 !important;
+}

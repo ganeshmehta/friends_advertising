@@ -1,0 +1,30 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Highway billboard at dawn">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffd8bd"/>
+      <stop offset="55%" stop-color="#ffeeca"/>
+      <stop offset="100%" stop-color="#d7eef7"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#3d4a5e"/>
+      <stop offset="100%" stop-color="#1f2a39"/>
+    </linearGradient>
+    <linearGradient id="board" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ff6e3c"/>
+      <stop offset="55%" stop-color="#fc3f71"/>
+      <stop offset="100%" stop-color="#fca63f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1300" cy="170" r="90" fill="#fff0ba" opacity="0.9"/>
+  <polygon points="0,650 1600,650 1600,1000 0,1000" fill="url(#road)"/>
+  <polygon points="380,670 1120,670 1350,1000 150,1000" fill="#2b384c"/>
+  <line x1="780" y1="690" x2="805" y2="1000" stroke="#f7e4a2" stroke-width="14" stroke-dasharray="26 22"/>
+  <rect x="300" y="340" width="760" height="250" rx="18" fill="url(#board)"/>
+  <rect x="300" y="340" width="760" height="250" rx="18" fill="none" stroke="#fff7ef" stroke-width="8"/>
+  <rect x="640" y="590" width="70" height="190" fill="#293241"/>
+  <rect x="615" y="770" width="120" height="20" rx="6" fill="#1b2330"/>
+  <text x="355" y="430" fill="#fff8f2" font-family="Arial, sans-serif" font-size="42" font-weight="700">Festival Mega Launch</text>
+  <text x="355" y="485" fill="#fff3e8" font-family="Arial, sans-serif" font-size="30">2.1M corridor impressions in 14 days</text>
+  <text x="355" y="535" fill="#fff3e8" font-family="Arial, sans-serif" font-size="30">Mumbai - Panvel Highway</text>
+</svg>

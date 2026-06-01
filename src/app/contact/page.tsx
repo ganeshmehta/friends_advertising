@@ -12,8 +12,70 @@ import {
   Phone,
   Send,
   User,
-  CheckCircle2
+  CheckCircle2,
+  MapPin,
+  Clock,
+  Sparkles,
+  ArrowUpRight,
+  Zap,
+  IndianRupee
 } from "lucide-react";
+
+const quickContacts = [
+  {
+    icon: Phone,
+    label: "Call us",
+    value: "+91 98765 43210",
+    href: "tel:+919876543210",
+    tint: "from-[#0071e3] to-[#5c60f5]"
+  },
+  {
+    icon: Mail,
+    label: "Email us",
+    value: "hello@friendsadv.in",
+    href: "mailto:hello@friendsadv.in",
+    tint: "from-[#5c60f5] to-[#ff0055]"
+  },
+  {
+    icon: MapPin,
+    label: "Visit us",
+    value: "Navi Mumbai · Satara",
+    href: "#locations",
+    tint: "from-[#0fc3cd] to-[#0071e3]"
+  }
+];
+
+const budgetTiers = [
+  "< ₹2L",
+  "₹2L – ₹5L",
+  "₹5L – ₹15L",
+  "₹15L+"
+];
+
+const processSteps = [
+  {
+    n: "01",
+    title: "Brief",
+    body: "Tell us what you want the city to see."
+  },
+  {
+    n: "02",
+    title: "Plan",
+    body: "We map every visible square foot — and price it."
+  },
+  {
+    n: "03",
+    title: "Launch",
+    body: "Print, install, light. Your brand goes live."
+  }
+];
+
+const trustStrip = [
+  { value: "4 hrs", label: "Avg. response" },
+  { value: "120+", label: "Active sites" },
+  { value: "8M+", label: "Daily impressions" },
+  { value: "85+", label: "Brand partners" }
+];
 
 const workers = [
   {
@@ -42,6 +104,8 @@ export default function ContactSection() {
     name: "",
     company: "",
     email: "",
+    phone: "",
+    budget: "",
     message: ""
   });
 
@@ -143,16 +207,30 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2 text-sm font-semibold text-slate-500 shadow-sm">
-              <Building2 className="h-4 w-4 text-[var(--neon-blue)]" />
-              Let’s Build Your Next Campaign
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 shadow-sm backdrop-blur-md">
+                <Building2 className="h-4 w-4 text-[var(--neon-blue)]" />
+                Let&rsquo;s Build Your Next Campaign
+              </div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-700 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                <Clock className="h-3 w-3" />
+                Reply within 4 hrs
+              </div>
             </div>
 
-            <h2 className="max-w-xl text-5xl font-black leading-tight md:text-6xl text-[#1d1d1f] tracking-tight">
+            <h2 className="max-w-xl text-5xl font-black leading-[1.02] md:text-6xl text-[#1d1d1f] tracking-tight">
               Own Attention.
               <br />
-              Own The Skyline.
+              <span className="bg-gradient-to-r from-[#0071e3] via-[#5c60f5] to-[#ff0055] bg-clip-text text-transparent">
+                Own The Skyline.
+              </span>
             </h2>
+            {/* Accent rule */}
+            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#0071e3] via-[#5c60f5] to-[#ff0055]" />
 
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-slate-500 font-medium">
               Launch premium outdoor campaigns across
@@ -161,71 +239,180 @@ export default function ContactSection() {
             </p>
           </motion.div>
 
+          {/* QUICK CONTACT CARDS */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-10 grid gap-3 sm:grid-cols-3"
+          >
+            {quickContacts.map((c) => {
+              const Icon = c.icon;
+              return (
+                <a
+                  key={c.label}
+                  href={c.href}
+                  className="group relative overflow-hidden rounded-2xl border border-black/[0.06] bg-white/70 p-4 shadow-sm backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-black/15 hover:shadow-md"
+                >
+                  <div
+                    className={`mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${c.tint} text-white shadow-sm`}
+                  >
+                    <Icon className="h-4 w-4" />
+                  </div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                    {c.label}
+                  </p>
+                  <p className="mt-1 flex items-center justify-between gap-2 text-sm font-semibold text-[#1d1d1f]">
+                    <span className="truncate">{c.value}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 flex-none text-slate-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#1d1d1f]" />
+                  </p>
+                </a>
+              );
+            })}
+          </motion.div>
+
           {/* FORM */}
           <motion.form
             onSubmit={submit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 space-y-5 animate-none"
+            className="mt-10 space-y-5 animate-none"
           >
-            <div className="relative">
-              <User className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="relative">
+                <User className="absolute left-4 top-4 h-5 w-5 text-slate-400 transition-colors peer-focus:text-[var(--neon-blue)]" />
+                <input
+                  value={form.name}
+                  onChange={(e) => updateField("name", e.target.value)}
+                  placeholder="Your Name"
+                  className="peer w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-[var(--neon-blue)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,113,227,0.12)] font-medium"
+                />
+              </div>
 
-              <input
-                value={form.name}
-                onChange={(e) =>
-                  updateField("name", e.target.value)
-                }
-                placeholder="Your Name"
-                className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
-              />
+              <div className="relative">
+                <Building2 className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
+                <input
+                  value={form.company}
+                  onChange={(e) => updateField("company", e.target.value)}
+                  placeholder="Brand / Company"
+                  className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-[var(--neon-blue)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,113,227,0.12)] font-medium"
+                />
+              </div>
             </div>
 
-            <div className="relative">
-              <Building2 className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="relative">
+                <Mail className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => updateField("email", e.target.value)}
+                  placeholder="Email Address"
+                  className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-[var(--neon-blue)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,113,227,0.12)] font-medium"
+                />
+              </div>
 
-              <input
-                value={form.company}
-                onChange={(e) =>
-                  updateField("company", e.target.value)
-                }
-                placeholder="Brand / Company"
-                className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
-              />
+              <div className="relative">
+                <Phone className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
+                <input
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => updateField("phone", e.target.value)}
+                  placeholder="Phone (optional)"
+                  className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-[var(--neon-blue)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,113,227,0.12)] font-medium"
+                />
+              </div>
             </div>
 
-            <div className="relative">
-              <Mail className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
-
-              <input
-                value={form.email}
-                onChange={(e) =>
-                  updateField("email", e.target.value)
-                }
-                placeholder="Email Address"
-                className="w-full rounded-2xl border border-black/10 bg-white/60 py-4 pl-12 pr-4 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
-              />
+            {/* BUDGET CHIPS */}
+            <div>
+              <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+                <IndianRupee className="h-3.5 w-3.5" />
+                Estimated budget
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {budgetTiers.map((tier) => {
+                  const active = form.budget === tier;
+                  return (
+                    <button
+                      key={tier}
+                      type="button"
+                      onClick={() => updateField("budget", active ? "" : tier)}
+                      className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
+                        active
+                          ? "border-transparent bg-[#1d1d1f] text-white shadow-sm"
+                          : "border-black/10 bg-white/60 text-slate-600 hover:border-black/25 hover:text-[#1d1d1f]"
+                      }`}
+                    >
+                      {tier}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             <textarea
               value={form.message}
-              onChange={(e) =>
-                updateField("message", e.target.value)
-              }
-              placeholder="Tell us about your campaign"
+              onChange={(e) => updateField("message", e.target.value)}
+              placeholder="Tell us about your campaign \u2014 cities, dates, goals."
               rows={5}
-              className="w-full rounded-2xl border border-black/10 bg-white/60 p-5 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-black/30 focus:bg-white font-medium"
+              className="w-full rounded-2xl border border-black/10 bg-white/60 p-5 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-[var(--neon-blue)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,113,227,0.12)] font-medium"
             />
 
-            <button
-              type="submit"
-              className="flex items-center justify-center gap-2 rounded-full bg-black px-8 py-4 font-semibold text-white transition hover:bg-black/90 shadow-sm"
-            >
-              Launch Campaign
-              <Send className="h-4 w-4" />
-            </button>
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1d1d1f] px-8 py-4 font-semibold text-white shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-black hover:shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]"
+              >
+                <Sparkles className="h-4 w-4 text-[var(--neon-blue)] transition-transform group-hover:rotate-12" />
+                Launch Campaign
+                <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+              <p className="text-xs text-slate-500">
+                Or write to{" "}
+                <a
+                  href="mailto:hello@friendsadv.in"
+                  className="font-semibold text-[#1d1d1f] underline decoration-slate-300 underline-offset-4 hover:decoration-[var(--neon-blue)]"
+                >
+                  hello@friendsadv.in
+                </a>
+              </p>
+            </div>
           </motion.form>
+
+          {/* PROCESS TIMELINE */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="mt-14 grid gap-4 sm:grid-cols-3"
+          >
+            {processSteps.map((s, i) => (
+              <div
+                key={s.n}
+                className="relative rounded-2xl border border-black/[0.06] bg-white/60 p-5 backdrop-blur-md"
+              >
+                <div className="flex items-baseline gap-3">
+                  <span className="text-2xl font-black tracking-tight text-[#1d1d1f]">
+                    {s.n}
+                  </span>
+                  <span className="h-px flex-1 bg-gradient-to-r from-black/10 to-transparent" />
+                  {i < processSteps.length - 1 && (
+                    <Zap className="h-4 w-4 text-[var(--neon-blue)]" />
+                  )}
+                </div>
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-[#1d1d1f]">
+                  {s.title}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  {s.body}
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* BILLBOARD EXPERIENCE */}
@@ -422,6 +609,30 @@ export default function ContactSection() {
           )}
         </div>
       </div>
+
+      {/* TRUST STRIP */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="relative z-10 mx-auto mt-24 max-w-7xl px-6 lg:px-10"
+      >
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-black/[0.06] bg-black/5 shadow-[0_30px_80px_-50px_rgba(13,36,64,0.35)] md:grid-cols-4">
+          {trustStrip.map((s) => (
+            <div
+              key={s.label}
+              className="group relative bg-white/85 px-8 py-8 text-center backdrop-blur-md transition-colors hover:bg-white"
+            >
+              <p className="bg-gradient-to-br from-[#0071e3] via-[#5c60f5] to-[#ff0055] bg-clip-text text-4xl font-black tracking-tight text-transparent md:text-5xl">
+                {s.value}
+              </p>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

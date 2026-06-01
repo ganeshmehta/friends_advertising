@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" role="img" aria-label="Location placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0fc3cd" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#ff6d3d" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#f3f6fb" stop-opacity="0.95" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="160" fill="url(#sky)" />
+  <g opacity="0.18" fill="#ffffff">
+    <circle cx="40" cy="36" r="14" />
+    <circle cx="200" cy="48" r="10" />
+    <circle cx="120" cy="22" r="6" />
+  </g>
+  <rect x="44" y="44" width="152" height="74" rx="6" fill="url(#board)" stroke="#1a2333" stroke-width="2" />
+  <rect x="52" y="52" width="136" height="58" rx="3" fill="#ff6d3d" opacity="0.18" />
+  <text x="120" y="86" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a2333">
+    LOCATION
+  </text>
+  <text x="120" y="104" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" fill="#1a2333" opacity="0.7">
+    image coming soon
+  </text>
+  <rect x="116" y="118" width="8" height="34" fill="#1a2333" />
+  <rect x="60" y="148" width="120" height="4" fill="#1a2333" opacity="0.4" />
+</svg>

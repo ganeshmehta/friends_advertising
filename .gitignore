@@ -40,3 +40,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 node_modules
+
+# local debug / verification artifacts (do not commit)
+.screenshot-*
+.dbg-*
+.composite-*
+.verify-*
+.crop-*
+.bev-*
+.about-*
+.khid-*
+.playwright-mcp/

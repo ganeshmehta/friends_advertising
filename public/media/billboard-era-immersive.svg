@@ -1,0 +1,23 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Immersive modern billboard era">
+  <defs>
+    <linearGradient id="night" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f1b48"/>
+      <stop offset="100%" stop-color="#172a67"/>
+    </linearGradient>
+    <linearGradient id="led" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00b5ff"/>
+      <stop offset="50%" stop-color="#18d3b5"/>
+      <stop offset="100%" stop-color="#ff7d43"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#night)"/>
+  <rect x="0" y="710" width="1600" height="290" fill="#0c1532"/>
+  <rect x="180" y="220" width="1240" height="380" rx="20" fill="url(#led)"/>
+  <rect x="180" y="220" width="1240" height="380" rx="20" fill="none" stroke="#c8efff" stroke-width="9"/>
+  <rect x="760" y="600" width="90" height="230" fill="#1b2743"/>
+  <rect x="710" y="830" width="190" height="26" rx="8" fill="#10192e"/>
+  <text x="270" y="370" fill="#ecfaff" font-size="64" font-family="Arial, sans-serif" font-weight="700">IMMERSIVE OOH TODAY</text>
+  <text x="270" y="450" fill="#dcf6ff" font-size="34" font-family="Arial, sans-serif">Route choreography + precision deployment + measurable outcomes</text>
+  <text x="270" y="510" fill="#dcf6ff" font-size="34" font-family="Arial, sans-serif">Friends Advertising leads this modern billboard system</text>
+  <circle cx="1310" cy="160" r="70" fill="#b8d1ff" opacity="0.6"/>
+</svg>
