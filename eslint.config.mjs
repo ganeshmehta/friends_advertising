@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local-only Node utility scripts — not part of the Next.js app bundle.
+    "verify/**",
+    "scripts/**",
   ]),
 ]);
 

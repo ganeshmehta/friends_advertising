@@ -1,18 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Our Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact Us", href: "/contact" },
-];
+import { primaryNav } from "@/lib/nav";
+import { siteConfig } from "@/lib/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="px-4 pb-5 pt-12 md:px-6">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[28px] bg-[linear-gradient(155deg,#0d2440,#173b62)] px-6 pb-6 pt-8 text-[#e6f3fb] shadow-[0_40px_80px_-50px_rgba(13,36,64,0.7)] md:px-10 md:pb-7 md:pt-10">
+      <div className="relative mx-auto max-w-7xl 2xl:max-w-[1480px] overflow-hidden rounded-[28px] bg-[linear-gradient(155deg,#0d2440,#173b62)] px-6 pb-6 pt-8 text-[#e6f3fb] shadow-[0_40px_80px_-50px_rgba(13,36,64,0.7)] md:px-10 md:pb-7 md:pt-10">
         {/* radial accents */}
         <div
           className="pointer-events-none absolute inset-0 opacity-90"
@@ -36,17 +31,17 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-3">
             <p className="m-0 inline-flex items-center gap-3 text-[1rem] font-extrabold tracking-tight text-white">
-              <span
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[11px] text-[0.82rem] font-extrabold tracking-wide text-white shadow-[0_10px_22px_-10px_rgba(0,113,227,0.6)]"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--neon-blue), var(--neon-purple))",
-                }}
-                aria-hidden="true"
-              >
-                FA
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-[11px] bg-white p-1.5 shadow-[0_10px_22px_-10px_rgba(0,113,227,0.6)]">
+                <Image
+                  src="/logos/Brand_Logo.png"
+                  alt={`${siteConfig.name} logo`}
+                  width={120}
+                  height={120}
+                  sizes="48px"
+                  className="h-full w-full object-contain"
+                />
               </span>
-              <span>Friends Advertising</span>
+              <span>{siteConfig.name}</span>
             </p>
             <h3 className="m-0 max-w-[22ch] text-[clamp(1.15rem,1.8vw,1.5rem)] font-extrabold leading-tight tracking-tight text-white">
               Best Outdoor Media Company in Navi Mumbai
@@ -66,23 +61,23 @@ export default function Footer() {
           </div>
 
           {/* Explore */}
-          <div className="flex flex-col gap-3">
+          <nav aria-label="Footer" className="flex flex-col gap-3">
             <p className="m-0 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[rgba(143,198,227,0.9)]">
               Explore
             </p>
             <ul className="m-0 grid list-none gap-2 p-0">
-              {navLinks.map((link) => (
+              {primaryNav.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-[0.92rem] font-semibold text-[rgba(230,243,251,0.85)] transition-all duration-150 hover:translate-x-0.5 hover:text-white"
                   >
-                    {link.label}
+                    {link.longLabel ?? link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact */}
           <div className="flex flex-col gap-3">
@@ -95,10 +90,10 @@ export default function Footer() {
                   Email
                 </span>
                 <a
-                  href="mailto:friendsoutdoor@gmail.com"
+                  href={`mailto:${siteConfig.contact.email}`}
                   className="break-words font-semibold text-white transition-colors duration-150 hover:text-[var(--neon-blue)]"
                 >
-                  friendsoutdoor@gmail.com
+                  {siteConfig.contact.email}
                 </a>
               </li>
               <li className="grid gap-0.5 text-[0.92rem] text-[rgba(230,243,251,0.92)]">
@@ -106,24 +101,24 @@ export default function Footer() {
                   Phone
                 </span>
                 <a
-                  href="tel:+919890311234"
+                  href={`tel:${siteConfig.contact.phoneRaw}`}
                   className="font-semibold text-white transition-colors duration-150 hover:text-[var(--neon-blue)]"
                 >
-                  +91 98903 11234
+                  {siteConfig.contact.phone}
                 </a>
               </li>
               <li className="grid gap-0.5 text-[0.92rem] text-[rgba(230,243,251,0.92)]">
                 <span className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[rgba(143,198,227,0.8)]">
                   Office
                 </span>
-                <span>Navi Mumbai, Maharashtra, India</span>
+                <span>{siteConfig.contact.address.city}, {siteConfig.contact.address.region}, India</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="relative mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-white/[0.08] pt-4 text-[0.76rem] text-[rgba(180,205,222,0.7)]">
-          <p className="m-0">© {year} Friends Advertising. All rights reserved.</p>
+          <p className="m-0">© {year} {siteConfig.legalName}. All rights reserved.</p>
           <p className="m-0 italic text-[rgba(143,198,227,0.65)]">
             Crafted for brands that want to be seen everywhere that matters.
           </p>

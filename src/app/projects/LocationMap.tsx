@@ -3,6 +3,66 @@
 import { useEffect, useRef, useState } from "react";
 import type { Location } from "./types";
 
+/**
+ * Minimal structural typings for the runtime-loaded Leaflet bundle. We don't
+ * pull in `@types/leaflet` to keep the dep tree small and to avoid coupling
+ * the build to a version we don't actually import.
+ */
+type LeafletLatLngBounds = {
+  extend: (latlng: [number, number]) => void;
+  isValid: () => boolean;
+};
+type LeafletMarker = {
+  bindPopup: (html: string) => LeafletMarker;
+  on: (event: string, handler: () => void) => LeafletMarker;
+  openPopup?: () => void;
+};
+type LeafletLayer = {
+  addTo: (target: LeafletMap | LeafletLayerGroup) => LeafletLayer;
+  addLayer?: (marker: LeafletMarker) => void;
+  clearLayers?: () => void;
+};
+type LeafletLayerGroup = LeafletLayer & {
+  addLayer: (marker: LeafletMarker) => void;
+  clearLayers: () => void;
+};
+type LeafletMap = {
+  remove: () => void;
+  flyTo: (latlng: [number, number], zoom: number, opts?: { duration?: number }) => void;
+  fitBounds: (bounds: LeafletLatLngBounds, opts?: { padding?: [number, number] }) => void;
+};
+type LeafletNamespace = {
+  map: (
+    el: HTMLElement,
+    opts: {
+      center: [number, number];
+      zoom: number;
+      zoomControl?: boolean;
+      scrollWheelZoom?: boolean;
+      preferCanvas?: boolean;
+    }
+  ) => LeafletMap;
+  tileLayer: (url: string, opts: { attribution?: string; maxZoom?: number }) => LeafletLayer;
+  control: { zoom: (opts: { position: string }) => LeafletLayer };
+  layerGroup: () => LeafletLayerGroup;
+  markerClusterGroup?: (opts: {
+    showCoverageOnHover?: boolean;
+    spiderfyOnMaxZoom?: boolean;
+    maxClusterRadius?: number;
+  }) => LeafletLayerGroup;
+  circleMarker: (
+    latlng: [number, number],
+    opts: {
+      radius: number;
+      weight: number;
+      color: string;
+      fillColor: string;
+      fillOpacity: number;
+    }
+  ) => LeafletMarker;
+  latLngBounds: (initial: [number, number][]) => LeafletLatLngBounds;
+};
+
 type Props = {
   locations: Location[];
   selectedId: number | null;
@@ -13,7 +73,7 @@ type Props = {
 
 declare global {
   interface Window {
-    L?: any;
+    L?: LeafletNamespace;
   }
 }
 
@@ -50,7 +110,7 @@ function ensureScript(id: string, src: string): Promise<void> {
   });
 }
 
-async function loadLeaflet(): Promise<any> {
+async function loadLeaflet(): Promise<LeafletNamespace | null> {
   if (typeof window === "undefined") return null;
   ensureLink("leaflet-css", LEAFLET_CSS);
   ensureLink("leaflet-cluster-css", CLUSTER_CSS);
@@ -61,7 +121,7 @@ async function loadLeaflet(): Promise<any> {
   } catch {
     // Clustering is optional — fall back to a plain layerGroup if it fails.
   }
-  return window.L;
+  return window.L ?? null;
 }
 
 function colorFor(loc: Location, opts: { highlighted: boolean; competitor: boolean }): string {
@@ -93,9 +153,9 @@ export default function LocationMap({
   competitorDenseSites,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<any>(null);
-  const clusterRef = useRef<any>(null);
-  const markersRef = useRef<Map<number, any>>(new Map());
+  const mapRef = useRef<LeafletMap | null>(null);
+  const clusterRef = useRef<LeafletLayerGroup | null>(null);
+  const markersRef = useRef<Map<number, LeafletMarker>>(new Map());
   const onSelectRef = useRef(onSelect);
   const [mapReady, setMapReady] = useState(false);
 
@@ -119,26 +179,29 @@ export default function LocationMap({
       }).addTo(map);
       L.control.zoom({ position: "bottomright" }).addTo(map);
 
-      const cluster = typeof L.markerClusterGroup === "function"
-        ? L.markerClusterGroup({
-            showCoverageOnHover: false,
-            spiderfyOnMaxZoom: true,
-            maxClusterRadius: 55,
-          })
-        : L.layerGroup();
+      const cluster: LeafletLayerGroup =
+        typeof L.markerClusterGroup === "function"
+          ? L.markerClusterGroup({
+              showCoverageOnHover: false,
+              spiderfyOnMaxZoom: true,
+              maxClusterRadius: 55,
+            })
+          : L.layerGroup();
       cluster.addTo(map);
       clusterRef.current = cluster;
       mapRef.current = map;
       setMapReady(true);
     });
 
+    // Snapshot the ref so the cleanup never reads a moved-on value.
+    const markersAtMount = markersRef.current;
     return () => {
       cancelled = true;
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
         clusterRef.current = null;
-        markersRef.current.clear();
+        markersAtMount.clear();
       }
       setMapReady(false);
     };
@@ -191,8 +254,9 @@ export default function LocationMap({
     if (!loc) return;
     map.flyTo(loc.coordinates, 14, { duration: 1.2 });
     const marker = markersRef.current.get(selectedId);
-    if (marker && typeof marker.openPopup === "function") {
-      setTimeout(() => marker.openPopup(), 350);
+    const openPopup = marker?.openPopup;
+    if (marker && typeof openPopup === "function") {
+      setTimeout(() => openPopup.call(marker), 350);
     }
   }, [mapReady, selectedId, locations]);
 

@@ -1,28 +1,49 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import EyeFollow from "@/components/EyeFollow";
-import { ArrowRight, MapPin, Monitor, Flag, Sparkles, TrendingUp, Eye, MousePointer2 } from "lucide-react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import SiteLoader from "@/components/SiteLoader";
+import MobileSplash from "@/components/MobileSplash";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { ArrowRight, MapPin, Monitor, Flag, Sparkles, TrendingUp, Eye, MousePointer2, Megaphone } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
-// Dynamically import 3D components
+// Dynamically import 3D components (ssr:false already keeps them off the
+// server render, so we don't need an `isMounted` gate at the call site).
 const ScrollJourney = dynamic(() => import("@/components/ScrollJourney"), { ssr: false });
 const Megaphone3D = dynamic(() => import("@/components/Megaphone3D"), { ssr: false });
 
 export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);
+  const [loaderDone, setLoaderDone] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  // Phones / tablets get a static-first, GPU-light path: no 29 MB plane GLB,
+  // no autoplay road video, no scroll-pinned R3F canvas. Saves ~35 MB on the
+  // initial visit and turns First Contentful Paint into a poster-only render.
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
+  // Lock scroll + pin to top while the loader is showing so the user can't
+  // peek past the curtain and so scroll-restoration doesn't strand them
+  // mid-page when the reveal happens.
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (loaderDone) return;
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [loaderDone]);
 
   // Three-frame choreography for the FIXED background (ScrollJourney):
   //   FRAME 1  0.00 \u2013 0.32  globe + plane + brand
@@ -38,55 +59,86 @@ export default function Home() {
   });
 
   return (
-    <main ref={containerRef} className="flex flex-col w-full overflow-hidden bg-[var(--background)]">
-      {/* Cinematic Scroll Journey Background */}
-      {isMounted && <ScrollJourney scrollYProgress={scrollYProgress} />}
+    <main ref={containerRef} className="relative flex flex-col w-full overflow-hidden bg-[var(--background)]">
+      {/* Boot splash.
+          Desktop = cinematic SiteLoader that pre-fetches + parses the road MP4
+          and the plane GLB while the billboard erection sequence plays.
+          Mobile  = ~1.2 s MobileSplash brand fade. Pre-fetching the heavy
+          desktop assets on a phone would just waste data because the mobile
+          tree never mounts them. */}
+      {!loaderDone && (
+        isMobile
+          ? <MobileSplash onDone={() => setLoaderDone(true)} />
+          : <SiteLoader onDone={() => setLoaderDone(true)} />
+      )}
 
-      {/* Scroll Spacer for Journey (Initial Zoom & Atmospheric Entry) */}
-      <section className="h-[250vh] w-full relative flex items-center justify-center pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400"
-        >
-          <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Scroll to Explore</span>
+      {/* Cinematic Scroll Journey Background — ssr:false makes this client-only.
+          Mobile skips this entirely: the 3D canvas + 29 MB plane GLB are
+          replaced by a static skyline poster (see hero section below). */}
+      {!isMobile && <ScrollJourney scrollYProgress={scrollYProgress} />}
+
+      {/* Scroll Spacer for Journey (Initial Zoom & Atmospheric Entry).
+          Desktop reserves 250vh so the pinned canvas has scroll to chew through.
+          Mobile collapses this to a single chevron prompt under the hero. */}
+      {!isMobile && (
+        <section className="h-[250vh] w-full relative flex items-center justify-center pointer-events-none">
           <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400"
           >
-            <MousePointer2 className="w-4 h-4 rotate-180" />
+            <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Scroll to Explore</span>
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <MousePointer2 className="w-4 h-4 rotate-180" />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </section>
+        </section>
+      )}
 
-      {/* Hero Section — DOMINATE THE SKYLINE over the road video */}
+      {/* Hero Section — DOMINATE THE SKYLINE.
+          Desktop = autoplaying 5 MB road video.
+          Mobile  = optimised static skyline poster (≈23 KB) via next/image. */}
       <section className="relative w-full h-screen flex flex-col items-center justify-start pt-32 overflow-hidden z-20 bg-black">
-        {/* Road video — full bleed background, locked to this section */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          disablePictureInPicture
-          // @ts-expect-error \u2014 non-standard but supported by Chromium/Safari
-          disableRemotePlayback
-          controlsList="nodownload nofullscreen noremoteplayback"
-          className="absolute inset-0 w-full h-full object-cover saturate-[1.1] brightness-[0.95] contrast-[1.1] z-0"
-          src="/videos/Temp_road.mp4"
-        />
-        {/* Dark overlays for legibility */}
-        <div className="absolute inset-0 z-[1] bg-black/35 pointer-events-none" />
-        <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(0,0,0,0.65)_100%)] pointer-events-none" />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/50 via-transparent to-black/70 pointer-events-none" />
+        {isMobile ? (
+          <Image
+            src="/media/hero-mobile.jpg"
+            alt="Mumbai skyline at dusk with an OOH billboard"
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 z-0 object-cover"
+          />
+        ) : (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            disablePictureInPicture
+            disableRemotePlayback
+            controlsList="nodownload nofullscreen noremoteplayback"
+            className="absolute inset-0 w-full h-full object-cover saturate-[1.35] brightness-[1.18] contrast-[1.08] z-0"
+            src="/videos/Temp_road.mp4"
+          />
+        )}
+        {/* Lighter overlays — just enough contrast for legibility, plus a subtle
+            blue lift so the scene reads vibrant rather than washed-out grey. */}
+        <div className="absolute inset-0 z-[1] bg-black/10 pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.35)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/25 via-transparent to-black/45 pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-tr from-[#0a2540]/15 via-transparent to-[#7ab8ff]/10 pointer-events-none mix-blend-screen" />
 
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.94 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="z-10 text-center max-w-5xl mx-auto px-4 mb-4 flex flex-col items-center"
+          className="z-10 text-center max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 mb-4 flex flex-col items-center"
         >
           <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/25 bg-black/30 text-white text-[10px] font-semibold mb-6 uppercase tracking-[0.18em] shadow-lg backdrop-blur-md"
@@ -96,25 +148,20 @@ export default function Home() {
           </div>
 
           <h1
-            className="text-6xl md:text-8xl font-black mb-6 tracking-tight leading-none text-white"
+            className="text-6xl md:text-8xl xl:text-[8.5rem] 2xl:text-[10rem] font-black mb-6 tracking-tight leading-none text-white"
             style={{
               textShadow:
                 "0 4px 30px rgba(0,0,0,0.65), 0 0 60px rgba(0,0,0,0.45)",
             }}
           >
             DOMINATE THE <br />
-            <span
-              className="bg-gradient-to-r from-[#7ab8ff] via-[#5b8def] to-[#9d9dff] bg-clip-text text-transparent"
-              style={{
-                filter: "drop-shadow(0 4px 24px rgba(122,184,255,0.45))",
-              }}
-            >
+            <span className="bg-gradient-to-r from-[#00e5ff] via-[#3b82f6] to-[#a855f7] bg-clip-text text-transparent">
               SKYLINE.
             </span>
           </h1>
 
           <p
-            className="text-xl md:text-2xl text-white/90 font-medium mb-8 max-w-2xl leading-relaxed"
+            className="text-xl md:text-2xl xl:text-3xl text-white/90 font-medium mb-8 max-w-2xl xl:max-w-3xl leading-relaxed"
             style={{ textShadow: "0 2px 14px rgba(0,0,0,0.7)" }}
           >
             We engineer massive, unmissable brand experiences across Mumbai and Satara.
@@ -135,11 +182,19 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Storytelling Section */}
-      <section className="py-32 px-4 relative bg-[var(--background)] z-10">
+      {/* Storytelling Section.
+          Desktop drives `y` + `opacity` from `scrollYProgress` so the chapters
+          materialise as the 250 vh spacer above unwinds. Mobile skips that
+          spacer, which would leave `storyOpacity` stuck at 0 (its 0.5\u20130.6
+          input range never gets hit on a shorter page) and the whole section
+          would be an invisible white void. We pass explicit `opacity: 1, y: 0`
+          (NOT `undefined`) so framer-motion writes those values back to the
+          DOM \u2014 otherwise an earlier render that already pinned
+          `style.opacity = 0` would persist on the node. */}
+      <section className="py-16 md:py-32 px-4 relative bg-[var(--background)] z-10">
         <motion.div
-          style={{ y: storyY, opacity: storyOpacity }}
-          className="max-w-4xl mx-auto space-y-32"
+          style={isMobile ? { opacity: 1, y: 0 } : { y: storyY, opacity: storyOpacity }}
+          className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto space-y-32"
         >
           {/* Chapter 1: The Challenge */}
           <div className="flex flex-col md:flex-row gap-12 items-center relative group">
@@ -161,7 +216,11 @@ export default function Home() {
               </p>
             </div>
             <div className="w-32 h-32 md:w-64 md:h-64 rounded-full border-2 border-slate-200 flex items-center justify-center bg-slate-50 relative z-10 shadow-sm transition-all duration-500 group-hover:border-slate-300">
-              <EyeFollow />
+              {isMobile ? (
+                <Eye className="w-16 h-16 text-[var(--accent)]" strokeWidth={1.4} aria-hidden />
+              ) : (
+                <EyeFollow />
+              )}
             </div>
           </div>
 
@@ -186,14 +245,18 @@ export default function Home() {
               </p>
             </div>
             <div className="w-48 h-48 md:w-80 md:h-80 rounded-full border-2 border-slate-200 flex items-center justify-center bg-slate-50 relative z-10 shadow-sm transition-all duration-500 group-hover:border-slate-300">
-              {isMounted && <Megaphone3D />}
+              {isMobile ? (
+                <Megaphone className="w-20 h-20 text-[var(--neon-blue)]" strokeWidth={1.4} aria-hidden />
+              ) : (
+                <Megaphone3D />
+              )}
             </div>
           </div>
         </motion.div>
       </section>
 
       {/* Services Showcase — THE ARSENAL */}
-      <section className="py-32 px-4 bg-[var(--background)] relative border-t border-slate-100 z-10 overflow-hidden">
+      <section className="py-16 md:py-32 px-4 bg-[var(--background)] relative border-t border-slate-100 z-10 overflow-hidden">
         {/* Background accents */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full opacity-[0.025] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
@@ -202,7 +265,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 2xl:max-w-[1480px] mx-auto relative z-10">
           {/* Section header */}
           <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
@@ -257,7 +320,7 @@ export default function Home() {
               { label: "Cities Active", value: "12" },
               { label: "Brand Partners", value: "85+" },
             ].map((s) => (
-              <div key={s.label} className="bg-white px-6 py-6 flex flex-col gap-1 hover:bg-slate-50 transition-colors">
+              <div key={s.label} className="bg-white p-4 md:p-6 flex flex-col gap-1 hover:bg-slate-50 transition-colors">
                 <span className="text-3xl md:text-4xl font-black tracking-tight text-[#0a0a0c]">{s.value}</span>
                 <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">{s.label}</span>
               </div>
@@ -265,7 +328,7 @@ export default function Home() {
           </motion.div>
 
           {/* Bento grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[340px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-auto md:auto-rows-[340px]">
             {/* CARD 1 — Flex Board Giants (dark hero card) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -273,7 +336,7 @@ export default function Home() {
               viewport={{ once: true }}
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 220, damping: 24 }}
-              className="md:col-span-2 md:row-span-1 rounded-[32px] p-10 relative overflow-hidden group cursor-pointer bg-gradient-to-br from-[#0a0a0c] via-[#111118] to-[#1a1a26] text-white shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] border border-white/5"
+              className="md:col-span-2 md:row-span-1 rounded-[32px] p-6 md:p-10 relative overflow-hidden group cursor-pointer bg-gradient-to-br from-[#0a0a0c] via-[#111118] to-[#1a1a26] text-white shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] border border-white/5"
             >
               {/* Animated grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]"></div>
@@ -322,7 +385,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.1, type: "spring", stiffness: 220, damping: 24 }}
               whileHover={{ y: -6 }}
-              className="rounded-[32px] p-8 relative overflow-hidden group cursor-pointer bg-white border border-slate-200/80 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_-25px_rgba(157,157,255,0.45)] transition-shadow duration-500"
+              className="rounded-[32px] p-6 md:p-8 relative overflow-hidden group cursor-pointer bg-white border border-slate-200/80 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_-25px_rgba(157,157,255,0.45)] transition-shadow duration-500"
             >
               <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[var(--neon-purple)] rounded-full blur-[100px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
               <Monitor className="absolute -bottom-6 -right-6 w-40 h-40 text-[var(--neon-purple)]/[0.04] group-hover:text-[var(--neon-purple)]/[0.08] transition-colors duration-700" />
@@ -361,7 +424,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, type: "spring", stiffness: 220, damping: 24 }}
               whileHover={{ y: -6 }}
-              className="rounded-[32px] p-8 relative overflow-hidden group cursor-pointer bg-white border border-slate-200/80 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_-25px_rgba(0,0,0,0.3)] transition-shadow duration-500"
+              className="rounded-[32px] p-6 md:p-8 relative overflow-hidden group cursor-pointer bg-white border border-slate-200/80 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_-25px_rgba(0,0,0,0.3)] transition-shadow duration-500"
             >
               <div className="absolute -top-16 -right-16 w-64 h-64 bg-slate-900 rounded-full blur-[120px] opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700"></div>
               <Flag className="absolute -bottom-4 -right-4 w-36 h-36 text-slate-900/[0.04] group-hover:text-slate-900/[0.07] transition-colors duration-700 -rotate-12" />
@@ -400,7 +463,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.3, type: "spring", stiffness: 220, damping: 24 }}
               whileHover={{ y: -6 }}
-              className="md:col-span-2 rounded-[32px] p-10 relative overflow-hidden group cursor-pointer bg-gradient-to-br from-[#7ab8ff] via-[#5b8def] to-[var(--neon-blue)] text-white shadow-[0_30px_80px_-20px_rgba(91,141,239,0.55)] border border-white/10"
+              className="md:col-span-2 rounded-[32px] p-6 md:p-10 relative overflow-hidden group cursor-pointer bg-gradient-to-br from-[#7ab8ff] via-[#5b8def] to-[var(--neon-blue)] text-white shadow-[0_30px_80px_-20px_rgba(91,141,239,0.55)] border border-white/10"
             >
               {/* Sheen */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.25),_transparent_60%)]"></div>

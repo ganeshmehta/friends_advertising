@@ -323,20 +323,28 @@ export function CampaignVisualizer({ location, onRequestSite }: Props) {
   // When we have a real on-site photo with a calibrated quad, the stage MUST
   // match the photo's natural aspect ratio — otherwise object-cover crops the
   // photo, the quad coords drift, and the creative lands in the wrong spot.
-  const [backplateAspect, setBackplateAspect] = useState<number | null>(null);
+  // Cache aspect ratios keyed by URL so resetting / switching backplates only
+  // calls setState from inside the async `onload` callback (never from the
+  // effect body itself).
+  const [aspectCache, setAspectCache] = useState<Record<string, number>>({});
+  const backplateAspect = isStudioMode ? aspectCache[backplate] ?? null : null;
   useEffect(() => {
-    if (!isStudioMode) { setBackplateAspect(null); return; }
+    if (!isStudioMode) return;
+    if (aspectCache[backplate]) return;
     let cancelled = false;
     const img = new Image();
     img.onload = () => {
       if (cancelled) return;
       if (img.naturalWidth > 0 && img.naturalHeight > 0) {
-        setBackplateAspect(img.naturalWidth / img.naturalHeight);
+        setAspectCache((prev) => ({
+          ...prev,
+          [backplate]: img.naturalWidth / img.naturalHeight,
+        }));
       }
     };
     img.src = backplate;
     return () => { cancelled = true; };
-  }, [backplate, isStudioMode]);
+  }, [backplate, isStudioMode, aspectCache]);
   const stageAspect = backplateAspect ?? 16 / 9;
 
   const mood: LightingMood = useMemo(() => {
@@ -348,9 +356,15 @@ export function CampaignVisualizer({ location, onRequestSite }: Props) {
 
   const [spillCx, spillCy] = useMemo(() => quadCentroid(quad), [quad]);
 
-  useEffect(() => {
+  // Reset `hour` to the location's lighting mood when the user switches sites.
+  // Uses the React-documented "store information from previous renders" pattern
+  // (https://react.dev/reference/react/useState#storing-information-from-previous-renders)
+  // — setState is called during render, never from inside an effect body.
+  const [prevLocationId, setPrevLocationId] = useState(location.id);
+  if (location.id !== prevLocationId) {
+    setPrevLocationId(location.id);
     setHour(MOOD_HOUR[location.lightingMood ?? "day"]);
-  }, [location.id, location.lightingMood]);
+  }
 
   const transform = useMemo(() => {
     if (stageSize.width === 0 || stageSize.height === 0) return "none";
@@ -376,11 +390,16 @@ export function CampaignVisualizer({ location, onRequestSite }: Props) {
     };
   }, [asset, billboardAspect]);
 
+  // When the studio backplate / quad changes (or studio mode toggles off),
+  // re-sample the ambient tint. The setState calls all live inside async
+  // callbacks so we never trigger a cascading render from the effect body.
   useEffect(() => {
     let cancelled = false;
     if (!isStudioMode) {
-      setAmbientTint(null);
-      return;
+      queueMicrotask(() => {
+        if (!cancelled) setAmbientTint(null);
+      });
+      return () => { cancelled = true; };
     }
     void sampleAmbientColor(backplate, quad).then((rgb) => {
       if (cancelled) return;

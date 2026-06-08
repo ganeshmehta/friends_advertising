@@ -182,7 +182,7 @@ function isCompetitorZone(loc: { city: string; location: string }): boolean {
   return COMPETITOR_CITY_KEYWORDS.some((k) => haystack.includes(k));
 }
 
-const enriched: Location[] = (rawLocations as Location[]).map((loc) => {
+const enriched: Location[] = (rawLocations as unknown as Location[]).map((loc) => {
   const seed = hash(`${loc.id}-${loc.city}`);
   const real = REAL_PHOTOS[loc.id];
   return {

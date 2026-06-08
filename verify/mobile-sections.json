@@ -1,0 +1,46 @@
+[
+  {
+    "tag": "section",
+    "cls": "relative w-full h-screen flex flex-col items-center justify-start pt-32 overflow-hidden z-",
+    "top": 80,
+    "height": 844,
+    "computed": {
+      "opacity": "1",
+      "display": "flex",
+      "visibility": "visible"
+    }
+  },
+  {
+    "tag": "div",
+    "cls": "w-full bg-black py-4 overflow-hidden relative z-30 border-y border-black/10",
+    "top": 924,
+    "height": 54,
+    "computed": {
+      "opacity": "1",
+      "display": "block",
+      "visibility": "visible"
+    }
+  },
+  {
+    "tag": "section",
+    "cls": "py-16 md:py-32 px-4 relative bg-[var(--background)] z-10",
+    "top": 978,
+    "height": 1259,
+    "computed": {
+      "opacity": "1",
+      "display": "block",
+      "visibility": "visible"
+    }
+  },
+  {
+    "tag": "section",
+    "cls": "py-16 md:py-32 px-4 bg-[var(--background)] relative border-t border-slate-100 z-10 overflo",
+    "top": 2237,
+    "height": 1838,
+    "computed": {
+      "opacity": "1",
+      "display": "block",
+      "visibility": "visible"
+    }
+  }
+]

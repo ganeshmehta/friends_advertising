@@ -18,8 +18,12 @@ import {
   Sparkles,
   ArrowUpRight,
   Zap,
-  IndianRupee
+  IndianRupee,
+  AlertCircle,
+  Loader2
 } from "lucide-react";
+
+type SendStatus = "idle" | "sending" | "success" | "error";
 
 const quickContacts = [
   {
@@ -96,9 +100,10 @@ const workers = [
 ];
 
 export default function ContactSection() {
-  const [mounted, setMounted] = useState(false);
   const [started, setStarted] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<SendStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const sent = status === "success";
 
   const [form, setForm] = useState({
     name: "",
@@ -106,14 +111,14 @@ export default function ContactSection() {
     email: "",
     phone: "",
     budget: "",
-    message: ""
+    message: "",
+    // Honeypot — kept blank by humans; bots fill every field.
+    _honey: ""
   });
 
   const billboardControls = useAnimationControls();
 
   useEffect(() => {
-    setMounted(true);
-
     const timer = setTimeout(async () => {
       setStarted(true);
 
@@ -131,7 +136,7 @@ export default function ContactSection() {
     }, 400);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [billboardControls]);
 
   const interactionStarted = useMemo(() => {
     return (
@@ -152,13 +157,42 @@ export default function ContactSection() {
     }));
   };
 
-  const submit = async (e: any) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    if (status === "sending") return;
+    setErrorMsg(null);
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+      let body: { ok?: boolean; error?: string } = {};
+      try {
+        body = (await res.json()) as { ok?: boolean; error?: string };
+      } catch {
+        // non-JSON response
+      }
+      if (!res.ok || !body.ok) {
+        setErrorMsg(
+          body.error ||
+            (res.status === 429
+              ? "Too many submissions. Please try again in a minute."
+              : "Something went wrong. Please email hello@friendsadv.in directly.")
+        );
+        setStatus("error");
+        return;
+      }
+      setStatus("success");
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStatus("error");
+    }
   };
 
   return (
-    <section className="relative overflow-hidden bg-[var(--background)] py-32 text-[#1d1d1f]">
+    <main className="relative overflow-hidden bg-[var(--background)] py-16 md:py-32 text-[#1d1d1f]">
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,113,227,0.06),transparent_40%)]" />
@@ -199,7 +233,7 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-20 px-6 lg:grid-cols-2 lg:px-10">
+      <div className="relative z-10 mx-auto grid max-w-7xl 2xl:max-w-[1480px] gap-12 lg:gap-20 px-6 lg:grid-cols-2 lg:px-10">
         {/* LEFT */}
         <div>
           <motion.div
@@ -222,13 +256,13 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <h2 className="max-w-xl text-5xl font-black leading-[1.02] md:text-6xl text-[#1d1d1f] tracking-tight">
+            <h1 className="max-w-xl text-4xl sm:text-5xl font-black leading-[1.02] lg:text-6xl text-[#1d1d1f] tracking-tight">
               Own Attention.
               <br />
               <span className="bg-gradient-to-r from-[#0071e3] via-[#5c60f5] to-[#ff0055] bg-clip-text text-transparent">
                 Own The Skyline.
               </span>
-            </h2>
+            </h1>
             {/* Accent rule */}
             <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#0071e3] via-[#5c60f5] to-[#ff0055]" />
 
@@ -361,14 +395,76 @@ export default function ContactSection() {
               className="w-full rounded-2xl border border-black/10 bg-white/60 p-5 text-[#1d1d1f] outline-none backdrop-blur-xl transition-all focus:border-[var(--neon-blue)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,113,227,0.12)] font-medium"
             />
 
+            {/* Honeypot — hidden from humans, irresistible to bots. */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: "-10000px",
+                top: "auto",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden"
+              }}
+            >
+              <label>
+                Leave this field empty
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form._honey}
+                  onChange={(e) => updateField("_honey", e.target.value)}
+                />
+              </label>
+            </div>
+
+            {status === "error" && errorMsg && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                role="alert"
+                aria-live="polite"
+                className="flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50/90 px-4 py-3 text-sm font-medium text-red-700"
+              >
+                <AlertCircle className="mt-0.5 h-5 w-5 flex-none" aria-hidden="true" />
+                <span>{errorMsg}</span>
+              </motion.div>
+            )}
+
+            {status === "success" && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                role="status"
+                aria-live="polite"
+                className="flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/90 px-4 py-3 text-sm font-semibold text-emerald-700"
+              >
+                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none" aria-hidden="true" />
+                <span>Thanks! Your brief is in our inbox — we&rsquo;ll reply within 4 hours.</span>
+              </motion.div>
+            )}
+
             <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1d1d1f] px-8 py-4 font-semibold text-white shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-black hover:shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]"
+                disabled={status === "sending" || status === "success"}
+                aria-busy={status === "sending"}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1d1d1f] px-8 py-4 font-semibold text-white shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-black hover:shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-[#1d1d1f]"
               >
-                <Sparkles className="h-4 w-4 text-[var(--neon-blue)] transition-transform group-hover:rotate-12" />
-                Launch Campaign
-                <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                {status === "sending" ? (
+                  <Loader2 className="h-4 w-4 animate-spin text-[var(--neon-blue)]" aria-hidden="true" />
+                ) : (
+                  <Sparkles className="h-4 w-4 text-[var(--neon-blue)] transition-transform group-hover:rotate-12" aria-hidden="true" />
+                )}
+                {status === "sending"
+                  ? "Sending…"
+                  : status === "success"
+                    ? "Brief Received"
+                    : "Launch Campaign"}
+                {status !== "sending" && (
+                  <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                )}
               </button>
               <p className="text-xs text-slate-500">
                 Or write to{" "}
@@ -416,23 +512,24 @@ export default function ContactSection() {
         </div>
 
         {/* BILLBOARD EXPERIENCE */}
-        <div className="relative flex min-h-[720px] items-end justify-center">
-          {/* GROUND */}
-          <div className="absolute bottom-0 h-[140px] w-full rounded-[100%] bg-black/10 blur-2xl" />
+        <div className="relative flex min-h-[500px] md:min-h-[720px] items-end justify-center">
+          <div className="absolute bottom-0 w-full flex justify-center origin-bottom scale-[0.65] sm:scale-[0.8] md:scale-100">
+            {/* GROUND */}
+            <div className="absolute bottom-0 h-[140px] w-full max-w-[800px] rounded-[100%] bg-black/10 blur-2xl" />
 
-          {/* BILLBOARD POLE */}
-          <motion.div
-            initial={{ y: -400, rotate: -10, opacity: 0 }}
-            animate={billboardControls}
-            className="absolute bottom-[110px] h-[380px] w-[24px] rounded-full bg-gradient-to-b from-slate-200 via-slate-400 to-slate-600 shadow-xl"
-          />
+            {/* BILLBOARD POLE */}
+            <motion.div
+              initial={{ y: -400, rotate: -10, opacity: 0 }}
+              animate={billboardControls}
+              className="absolute bottom-[110px] h-[380px] w-[24px] rounded-full bg-gradient-to-b from-slate-200 via-slate-400 to-slate-600 shadow-xl"
+            />
 
-          {/* BILLBOARD */}
-          <motion.div
-            initial={{ y: -500, rotate: -6, opacity: 0 }}
-            animate={billboardControls}
-            className="absolute bottom-[380px] h-[260px] w-[520px] overflow-hidden rounded-[32px] border border-black/10 bg-[#ffffff] shadow-[0_30px_80px_rgba(0,0,0,0.15)]"
-          >
+            {/* BILLBOARD */}
+            <motion.div
+              initial={{ y: -500, rotate: -6, opacity: 0 }}
+              animate={billboardControls}
+              className="absolute bottom-[380px] h-[260px] w-[520px] overflow-hidden rounded-[32px] border border-black/10 bg-[#ffffff] shadow-[0_30px_80px_rgba(0,0,0,0.15)]"
+            >
             {/* LIGHTS */}
             <AnimatePresence>
               {sent && (
@@ -607,6 +704,7 @@ export default function ContactSection() {
               className="absolute bottom-[80px] h-[180px] w-[180px] rounded-full bg-black/5 blur-3xl"
             />
           )}
+          </div>
         </div>
       </div>
 
@@ -615,15 +713,15 @@ export default function ContactSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="relative z-10 mx-auto mt-24 max-w-7xl px-6 lg:px-10"
+        className="relative z-10 mx-auto mt-16 md:mt-24 max-w-7xl 2xl:max-w-[1480px] px-6 lg:px-10"
       >
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-black/[0.06] bg-black/5 shadow-[0_30px_80px_-50px_rgba(13,36,64,0.35)] md:grid-cols-4">
           {trustStrip.map((s) => (
             <div
               key={s.label}
-              className="group relative bg-white/85 px-8 py-8 text-center backdrop-blur-md transition-colors hover:bg-white"
+              className="group relative bg-white/85 px-6 py-6 md:px-8 md:py-8 text-center backdrop-blur-md transition-colors hover:bg-white"
             >
-              <p className="bg-gradient-to-br from-[#0071e3] via-[#5c60f5] to-[#ff0055] bg-clip-text text-4xl font-black tracking-tight text-transparent md:text-5xl">
+              <p className="bg-gradient-to-br from-[#0071e3] via-[#5c60f5] to-[#ff0055] bg-clip-text text-3xl sm:text-4xl font-black tracking-tight text-transparent md:text-5xl">
                 {s.value}
               </p>
               <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500">
@@ -633,6 +731,6 @@ export default function ContactSection() {
           ))}
         </div>
       </motion.div>
-    </section>
+    </main>
   );
 }

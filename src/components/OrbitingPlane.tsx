@@ -48,51 +48,106 @@ function PlaneModel({
   useEffect(() => {
     let cancelled = false;
     let disposed: THREE.Object3D | null = null;
-    import("three/examples/jsm/loaders/GLTFLoader.js")
-      .then(({ GLTFLoader }) => {
-        const loader = new GLTFLoader();
-        loader.load(
-          url,
-          (gltf) => {
-            if (cancelled) return;
-            const obj = gltf.scene;
 
-            const box = new THREE.Box3().setFromObject(obj);
-            const size = new THREE.Vector3();
-            const center = new THREE.Vector3();
-            box.getSize(size);
-            box.getCenter(center);
-            obj.position.sub(center);
+    /** Apply our standard post-processing to the loaded scene graph. */
+    const adoptGltf = (gltf: { scene: THREE.Group }) => {
+      if (cancelled) return;
+      const obj = gltf.scene;
 
-            const longest = Math.max(size.x, size.y, size.z) || 1;
-            setFit(targetSize / longest);
+      const box = new THREE.Box3().setFromObject(obj);
+      const size = new THREE.Vector3();
+      const center = new THREE.Vector3();
+      box.getSize(size);
+      box.getCenter(center);
+      obj.position.sub(center);
 
-            obj.traverse((node) => {
-              const m = node as THREE.Mesh;
-              if (m.isMesh) {
-                m.castShadow = false;
-                m.receiveShadow = false;
-                m.frustumCulled = false;
-                const mats = Array.isArray(m.material) ? m.material : [m.material];
-                mats.forEach((mat) => {
-                  const std = mat as THREE.MeshStandardMaterial;
-                  if (std && std.isMeshStandardMaterial) {
-                    std.envMapIntensity = 1.1;
-                    std.roughness = Math.min(0.85, (std.roughness ?? 0.6) + 0.1);
-                  }
-                });
-              }
-            });
-            disposed = obj;
-            setScene(obj);
-          },
-          undefined,
-          (err) => console.warn("[OrbitingPlane] model failed:", err)
-        );
-      })
-      .catch((err) => console.warn("[OrbitingPlane] loader import failed:", err));
+      const longest = Math.max(size.x, size.y, size.z) || 1;
+      setFit(targetSize / longest);
+
+      obj.traverse((node) => {
+        const m = node as THREE.Mesh;
+        if (m.isMesh) {
+          m.castShadow = false;
+          m.receiveShadow = false;
+          m.frustumCulled = false;
+          const mats = Array.isArray(m.material) ? m.material : [m.material];
+          mats.forEach((mat) => {
+            const std = mat as THREE.MeshStandardMaterial;
+            if (std && std.isMeshStandardMaterial) {
+              std.envMapIntensity = 1.1;
+              std.roughness = Math.min(0.85, (std.roughness ?? 0.6) + 0.1);
+            }
+          });
+        }
+      });
+      disposed = obj;
+      setScene(obj);
+    };
+
+    // Fast path: SiteLoader already fetched + parsed the GLB and parked the
+    // promise on window. Skip a second round-trip entirely.
+    type WindowWithPlaneCache = Window & {
+      __planeGLTFPromise?: Promise<{ scene: THREE.Group }>;
+    };
+    const warm = (window as WindowWithPlaneCache).__planeGLTFPromise;
+    if (warm) {
+      warm
+        .then((gltf) => adoptGltf(gltf))
+        .catch((err) => console.warn("[OrbitingPlane] warm cache failed:", err));
+      return () => {
+        cancelled = true;
+        if (disposed) {
+          disposed.traverse((node) => {
+            const m = node as THREE.Mesh;
+            if (m.geometry) m.geometry.dispose();
+            if (m.material) {
+              const mat = m.material as THREE.Material | THREE.Material[];
+              if (Array.isArray(mat)) mat.forEach((x) => x.dispose());
+              else mat.dispose();
+            }
+          });
+        }
+      };
+    }
+
+    const startLoad = () => {
+      if (cancelled) return;
+      import("three/examples/jsm/loaders/GLTFLoader.js")
+        .then(({ GLTFLoader }) => {
+          if (cancelled) return;
+          const loader = new GLTFLoader();
+          loader.load(
+            url,
+            (gltf) => adoptGltf(gltf as { scene: THREE.Group }),
+            undefined,
+            (err) => console.warn("[OrbitingPlane] model failed:", err)
+          );
+        })
+        .catch((err) => console.warn("[OrbitingPlane] loader import failed:", err));
+    };
+
+    // Defer GLB fetch + GLTFLoader import to browser idle time so it never
+    // competes with the initial paint. Falls back to a short timeout on
+    // browsers without requestIdleCallback (Safari).
+    type IdleWindow = Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    const w = window as IdleWindow;
+    let idleHandle: number | null = null;
+    let timeoutHandle: ReturnType<typeof setTimeout> | null = null;
+    if (typeof w.requestIdleCallback === "function") {
+      idleHandle = w.requestIdleCallback(startLoad, { timeout: 1500 });
+    } else {
+      timeoutHandle = setTimeout(startLoad, 300);
+    }
+
     return () => {
       cancelled = true;
+      if (idleHandle !== null && typeof w.cancelIdleCallback === "function") {
+        w.cancelIdleCallback(idleHandle);
+      }
+      if (timeoutHandle !== null) clearTimeout(timeoutHandle);
       if (disposed) {
         disposed.traverse((node) => {
           const m = node as THREE.Mesh;
@@ -115,18 +170,10 @@ function PlaneModel({
     );
   }
 
-  return (
-    <group scale={scale * 0.6} rotation={[0, Math.PI / 2, 0]}>
-      <mesh>
-        <coneGeometry args={[0.18, 0.7, 14]} />
-        <meshStandardMaterial color="#ffffff" metalness={0.4} roughness={0.35} />
-      </mesh>
-      <mesh position={[-0.05, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <boxGeometry args={[0.05, 0.9, 0.16]} />
-        <meshStandardMaterial color="#0071e3" metalness={0.5} roughness={0.4} />
-      </mesh>
-    </group>
-  );
+  // No placeholder geometry while the GLB is still loading or if it fails —
+  // showing an obviously-broken cone+box was worse than showing nothing.
+  // The plane simply pops in once the real model is ready.
+  return null;
 }
 
 export default function OrbitingPlane({

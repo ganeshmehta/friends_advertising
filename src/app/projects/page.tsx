@@ -180,7 +180,7 @@ export default function ProjectsPage() {
         }
       `}</style>
 
-      <section className="mx-auto max-w-7xl px-4 pt-16 md:px-6 md:pt-20">
+      <section className="mx-auto max-w-7xl 2xl:max-w-[1480px] px-4 py-16 md:px-6 md:py-24 lg:py-32">
         {/* HERO — left-aligned, source-style */}
         <div className="max-w-4xl">
           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-500">
@@ -199,7 +199,7 @@ export default function ProjectsPage() {
           </p>
 
           {/* Hero info rows — match modal pattern */}
-          <div className="mt-7 max-w-[640px] rounded-2xl border border-slate-200/70 bg-white/70 px-5 py-1 backdrop-blur">
+          <div className="mt-7 max-w-[640px] rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-2 md:px-5 md:py-1 backdrop-blur">
             <InfoRow label="Network" value={`${locations.length} active OOH sites`} accent="blue" />
             <InfoRow label="Corridors" value="Mumbai · Pune · Karjat · Lonavala · Navi Mumbai" />
             <InfoRow label="Available" value={`${locations.filter((l) => l.status === "available").length} open slots`} />
@@ -210,7 +210,7 @@ export default function ProjectsPage() {
         <div className="mt-10 grid gap-5 lg:grid-cols-2 lg:gap-5">
           {/* MAP */}
           <div className="overflow-hidden rounded-[22px] border border-slate-200/80 bg-white shadow-[0_30px_80px_-50px_rgba(15,23,42,0.5)]">
-            <div className="h-[520px] lg:h-[calc(100vh-160px)] lg:max-h-[760px]">
+            <div className="h-[400px] md:h-[520px] lg:h-[calc(100vh-160px)] lg:max-h-[760px]">
               <LocationMap
                 locations={filtered}
                 selectedId={selectedId}
@@ -221,7 +221,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* PANEL */}
-          <div className="flex h-[760px] flex-col overflow-hidden rounded-[22px] border border-slate-200/80 bg-white shadow-[0_30px_80px_-50px_rgba(15,23,42,0.5)] lg:h-[calc(100vh-160px)] lg:max-h-[760px]">
+          <div className="flex h-[500px] md:h-[600px] flex-col overflow-hidden rounded-[22px] border border-slate-200/80 bg-white shadow-[0_30px_80px_-50px_rgba(15,23,42,0.5)] lg:h-[calc(100vh-160px)] lg:max-h-[760px]">
             {/* Search header */}
             <div className="border-b border-slate-200/70 bg-white px-5 py-5">
               <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-slate-500">

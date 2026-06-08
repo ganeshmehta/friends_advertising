@@ -258,7 +258,7 @@ function SectionHeader({
   return (
     <div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-12 mb-14">
       <div
-        className={`text-[110px] md:text-[180px] font-black leading-[0.8] tracking-tighter bg-clip-text text-transparent ${numberClass}`}
+        className={`text-[80px] md:text-[180px] font-black leading-[0.8] tracking-tighter bg-clip-text text-transparent ${numberClass}`}
       >
         {number}
       </div>
@@ -705,7 +705,7 @@ export default function AboutPage() {
         </section>
 
         {/* ============================ 01 — MANIFESTO ============================ */}
-        <section className="relative py-24 px-4 md:px-10 bg-white">
+        <section className="relative py-16 md:py-24 px-4 md:px-10 bg-white">
           <GridOverlay />
           <div className="relative max-w-7xl mx-auto">
             <SectionHeader
@@ -753,7 +753,7 @@ export default function AboutPage() {
                   />
                   <div className="relative">
                     <div
-                      className="text-[88px] leading-none font-black mb-6 select-none"
+                      className="text-[64px] md:text-[88px] leading-none font-black mb-6 select-none"
                       style={{
                         color: "transparent",
                         WebkitTextStroke: `2px ${m.accent}`,
@@ -784,7 +784,7 @@ export default function AboutPage() {
         </section>
 
         {/* ============================ 02 — BY THE NUMBERS ============================ */}
-        <section className="relative py-24 px-4 md:px-10 bg-slate-50/60">
+        <section className="relative py-16 md:py-24 px-4 md:px-10 bg-slate-50/60">
           <GridOverlay />
           <div className="relative max-w-7xl mx-auto">
             <SectionHeader
@@ -812,7 +812,7 @@ export default function AboutPage() {
         </section>
 
         {/* ============================ 03 — THE FRIENDS METHOD ============================ */}
-        <section className="relative py-24 px-4 md:px-10 bg-white">
+        <section className="relative py-16 md:py-24 px-4 md:px-10 bg-white">
           <GridOverlay />
           <div className="relative max-w-7xl mx-auto">
             <SectionHeader
@@ -834,7 +834,7 @@ export default function AboutPage() {
         </section>
 
         {/* ============================ TESTIMONIALS GRID ============================ */}
-        <section className="py-24 px-4 relative">
+        <section className="py-16 md:py-24 px-4 relative">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -842,7 +842,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl font-black mb-4 text-[#1d1d1f] tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-black mb-4 text-[#1d1d1f] tracking-tight">
                 CLIENT <span className="text-[var(--neon-purple)]">TESTIMONIALS</span>
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[var(--neon-purple)] to-transparent mx-auto" />
@@ -858,7 +858,7 @@ export default function AboutPage() {
                   transition={{ delay: i * 0.1 }}
                   className="glass p-8 rounded-[32px] relative overflow-hidden group hover:border-black/15 hover:shadow-lg transition-all duration-500"
                 >
-                  <Quote className="absolute -top-4 -right-4 w-24 h-24 text-black/[0.01] group-hover:text-[var(--neon-purple)]/[0.04] transition-colors" />
+                  <Quote className="absolute -top-4 -right-4 w-16 h-16 md:w-24 md:h-24 text-black/[0.01] group-hover:text-[var(--neon-purple)]/[0.04] transition-colors" />
                   <p className="text-slate-600 italic mb-6 relative z-10 leading-relaxed text-lg font-medium">
                     &ldquo;{t.quote}&rdquo;
                   </p>
@@ -923,9 +923,9 @@ export default function AboutPage() {
         </section>
 
         {/* ============================ REAL ESTATE - TILT CARDS ============================ */}
-        <section className="py-24 px-4 relative">
+        <section className="py-16 md:py-24 px-4 relative">
           <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--neon-purple)] rounded-full filter blur-[160px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-[var(--neon-purple)] rounded-full filter blur-[100px] md:blur-[160px]" />
           </div>
 
           <motion.div

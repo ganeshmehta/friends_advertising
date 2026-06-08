@@ -143,7 +143,7 @@ export default function ServicesPage() {
               corporate indoor displays, Friends Advertising delivers a complete OOH offering with
               end-to-end accountability.
             </p>
-            <ul className="svc-hero-stats" role="list">
+            <ul className="svc-hero-stats grid grid-cols-2 md:grid-cols-4 gap-2" role="list">
               <li>
                 <strong>6</strong>
                 <span>Formats</span>
@@ -163,7 +163,7 @@ export default function ServicesPage() {
             </ul>
           </header>
 
-          <div className="svc-lab">
+          <div className="svc-lab flex flex-col lg:grid lg:grid-cols-[0.85fr_1.5fr] gap-5 lg:gap-[1.1rem]">
             <ol
               ref={tabsRef}
               className="svc-tabs"
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                 <FormatMock kind={activeSvc.mock} accent={activeSvc.accent} />
               </div>
 
-              <dl className="svc-stage-meta">
+              <dl className="svc-stage-meta grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-[0.55rem]">
                 <div>
                   <dt>Typical format</dt>
                   <dd>{activeSvc.format}</dd>
@@ -255,7 +255,7 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          <aside className="svc-footer-cta">
+          <aside className="svc-footer-cta flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <p className="eyebrow">Need a format that isn&apos;t here?</p>
               <h2>If it can be printed, lit, wrapped or driven — we ship it.</h2>

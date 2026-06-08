@@ -215,14 +215,16 @@ html {
 
 .page-panel-brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.15rem;
-  font-family: var(--font-outfit), system-ui, sans-serif;
-  font-weight: 900;
-  font-size: 1.35rem;
-  letter-spacing: -0.04em;
-  color: #0a0a0a;
+  align-items: center;
   text-decoration: none;
+  line-height: 0;
+}
+
+.page-panel-brand-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .page-panel-brand-dot {
@@ -238,7 +240,7 @@ html {
   gap: 2.25rem;
 }
 
-@media (min-width: 880px) {
+@media (min-width: 768px) {
   .page-panel-links {
     display: inline-flex;
   }
@@ -293,7 +295,7 @@ html {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .page-panel-cta {
     display: inline-flex;
   }
@@ -324,7 +326,15 @@ html {
   margin-top: 0 !important;
 }
 
-/* Home page footer: drop its own bottom padding so it sits flush with viewport */
+/* Home page footer: paint the wrapper with the page background so the navy
+   `<ScrollJourney>` canvas (fixed inset-0 bg-[#050818]) doesn't bleed through
+   the padding around the rounded footer card. Every other home section sets
+   its own bg \u2014 the footer wrapper is the one place we have to be explicit. */
+.page-home-footer {
+  position: relative;
+  z-index: 10;
+  background: var(--background);
+}
 .page-home-footer > footer {
   padding-bottom: 0 !important;
 }

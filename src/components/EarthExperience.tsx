@@ -120,7 +120,7 @@ function CameraSetup() {
 
     camera.position.set(x, y, z);
     camera.lookAt(0, 0, 0);
-  }, []);
+  }, [camera]);
 
   return null;
 }

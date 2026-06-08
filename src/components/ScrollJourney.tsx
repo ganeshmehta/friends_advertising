@@ -44,7 +44,6 @@ function RoadVideo({ opacity }: { opacity: MotionValue<number> }) {
         playsInline
         preload="metadata"
         disablePictureInPicture
-        // @ts-expect-error — non-standard but supported by Chromium/Safari
         disableRemotePlayback
         controlsList="nodownload nofullscreen noremoteplayback"
         className="w-full h-full object-cover saturate-[1.1] brightness-[0.95] contrast-[1.1]"

@@ -1,0 +1,317 @@
+[
+  {
+    "route": "/",
+    "profile": "desktop",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 579,
+    "consoleErrors": [],
+    "reqFails": [
+      "net::ERR_ABORTED http://localhost:3010/videos/Temp_road.mp4"
+    ],
+    "seo": {
+      "title": "Friends Advertising — The Complete Outdoor Solution",
+      "description": "Premium outdoor advertising across Mumbai, Navi Mumbai, Pune and the rest of Maharashtra. Flex hoardings, LED & glow signs, transit media, and end-to-end campaign delivery.",
+      "canonical": "https://friendsadvertising.in",
+      "ogTitle": "Friends Advertising — The Complete Outdoor Solution",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness"
+      ],
+      "h1": "FRIENDSADVERTISING"
+    },
+    "layout": {
+      "count": 7,
+      "voids": []
+    },
+    "screenshot": "verify/check-desktop-_.png"
+  },
+  {
+    "route": "/",
+    "profile": "mobile",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 142,
+    "consoleErrors": [],
+    "reqFails": [
+      "net::ERR_ABORTED http://localhost:3010/videos/Temp_road.mp4"
+    ],
+    "seo": {
+      "title": "Friends Advertising — The Complete Outdoor Solution",
+      "description": "Premium outdoor advertising across Mumbai, Navi Mumbai, Pune and the rest of Maharashtra. Flex hoardings, LED & glow signs, transit media, and end-to-end campaign delivery.",
+      "canonical": "https://friendsadvertising.in",
+      "ogTitle": "Friends Advertising — The Complete Outdoor Solution",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness"
+      ],
+      "h1": "DOMINATE THE SKYLINE."
+    },
+    "layout": {
+      "count": 4,
+      "voids": []
+    },
+    "screenshot": "verify/check-mobile-_.png"
+  },
+  {
+    "route": "/about",
+    "profile": "desktop",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 144,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "About Us · Friends Advertising",
+      "description": "Twelve years building outdoor brand experiences across Maharashtra — print, paint, light, rig. Friends Advertising delivers craft at scale.",
+      "canonical": "https://friendsadvertising.in/about",
+      "ogTitle": "About Us",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ],
+      "h1": "Outdoor thatowns the route."
+    },
+    "layout": {
+      "count": 2,
+      "voids": []
+    },
+    "screenshot": "verify/check-desktop-_about.png"
+  },
+  {
+    "route": "/about",
+    "profile": "mobile",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 175,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "About Us · Friends Advertising",
+      "description": "Twelve years building outdoor brand experiences across Maharashtra — print, paint, light, rig. Friends Advertising delivers craft at scale.",
+      "canonical": "https://friendsadvertising.in/about",
+      "ogTitle": "About Us",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ],
+      "h1": "Outdoor thatowns the route."
+    },
+    "layout": {
+      "count": 2,
+      "voids": []
+    },
+    "screenshot": "verify/check-mobile-_about.png"
+  },
+  {
+    "route": "/services",
+    "profile": "desktop",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 215,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "Services · Friends Advertising",
+      "description": "Flex hoardings, vinyl & digital print, LED & glow signs, transit wraps, event banners, and corporate indoor branding — delivered across Mumbai, Pune, and Maharashtra.",
+      "canonical": "https://friendsadvertising.in/services",
+      "ogTitle": "Services",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList",
+        "Service"
+      ],
+      "h1": "Complete outdoor advertising services under one execution team"
+    },
+    "layout": {
+      "count": 1,
+      "voids": []
+    },
+    "screenshot": "verify/check-desktop-_services.png"
+  },
+  {
+    "route": "/services",
+    "profile": "mobile",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 129,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "Services · Friends Advertising",
+      "description": "Flex hoardings, vinyl & digital print, LED & glow signs, transit wraps, event banners, and corporate indoor branding — delivered across Mumbai, Pune, and Maharashtra.",
+      "canonical": "https://friendsadvertising.in/services",
+      "ogTitle": "Services",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList",
+        "Service"
+      ],
+      "h1": "Complete outdoor advertising services under one execution team"
+    },
+    "layout": {
+      "count": 1,
+      "voids": []
+    },
+    "screenshot": "verify/check-mobile-_services.png"
+  },
+  {
+    "route": "/projects",
+    "profile": "desktop",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 231,
+    "consoleErrors": [],
+    "reqFails": [
+      "net::ERR_ABORTED https://c.tile.openstreetmap.org/10/719/456.png",
+      "net::ERR_ABORTED https://a.tile.openstreetmap.org/10/719/457.png",
+      "net::ERR_ABORTED https://b.tile.openstreetmap.org/10/718/456.png",
+      "net::ERR_ABORTED https://a.tile.openstreetmap.org/10/720/456.png",
+      "net::ERR_ABORTED https://c.tile.openstreetmap.org/10/718/457.png",
+      "net::ERR_ABORTED https://b.tile.openstreetmap.org/10/720/457.png",
+      "net::ERR_ABORTED https://b.tile.openstreetmap.org/10/719/455.png",
+      "net::ERR_ABORTED https://b.tile.openstreetmap.org/10/719/458.png",
+      "net::ERR_ABORTED https://a.tile.openstreetmap.org/10/718/455.png",
+      "net::ERR_ABORTED https://c.tile.openstreetmap.org/10/720/455.png"
+    ],
+    "seo": {
+      "title": "Projects & Network · Friends Advertising",
+      "description": "Live inventory of premium outdoor sites across Maharashtra — search by city, status, and competitor adjacency. On-site photographs available for select hoardings.",
+      "canonical": "https://friendsadvertising.in/projects",
+      "ogTitle": "Projects & Network",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ],
+      "h1": "Strategic OOH locations across high-traffic Maharashtra corridors"
+    },
+    "layout": {
+      "count": 2,
+      "voids": []
+    },
+    "screenshot": "verify/check-desktop-_projects.png"
+  },
+  {
+    "route": "/projects",
+    "profile": "mobile",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 144,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "Projects & Network · Friends Advertising",
+      "description": "Live inventory of premium outdoor sites across Maharashtra — search by city, status, and competitor adjacency. On-site photographs available for select hoardings.",
+      "canonical": "https://friendsadvertising.in/projects",
+      "ogTitle": "Projects & Network",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ],
+      "h1": "Strategic OOH locations across high-traffic Maharashtra corridors"
+    },
+    "layout": {
+      "count": 2,
+      "voids": []
+    },
+    "screenshot": "verify/check-mobile-_projects.png"
+  },
+  {
+    "route": "/contact",
+    "profile": "desktop",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 127,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "Contact Us · Friends Advertising",
+      "description": "Start an outdoor campaign with Friends Advertising — call, email, or send us a brief. Average response time under 4 hours.",
+      "canonical": "https://friendsadvertising.in/contact",
+      "ogTitle": "Contact Us",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ],
+      "h1": "Own Attention.Own The Skyline."
+    },
+    "layout": {
+      "count": 3,
+      "voids": []
+    },
+    "screenshot": "verify/check-desktop-_contact.png"
+  },
+  {
+    "route": "/contact",
+    "profile": "mobile",
+    "status": 200,
+    "contentType": "text/html",
+    "timeMs": 128,
+    "consoleErrors": [],
+    "reqFails": [],
+    "seo": {
+      "title": "Contact Us · Friends Advertising",
+      "description": "Start an outdoor campaign with Friends Advertising — call, email, or send us a brief. Average response time under 4 hours.",
+      "canonical": "https://friendsadvertising.in/contact",
+      "ogTitle": "Contact Us",
+      "ogImage": "https://friendsadvertising.in/media/og-default.jpg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "themeColor": "#0071e3",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "jsonLdTypes": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ],
+      "h1": "Own Attention.Own The Skyline."
+    },
+    "layout": {
+      "count": 3,
+      "voids": []
+    },
+    "screenshot": "verify/check-mobile-_contact.png"
+  }
+]
