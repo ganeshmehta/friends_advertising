@@ -164,7 +164,7 @@ export default function Home() {
             className="text-xl md:text-2xl xl:text-3xl text-white/90 font-medium mb-8 max-w-2xl xl:max-w-3xl leading-relaxed"
             style={{ textShadow: "0 2px 14px rgba(0,0,0,0.7)" }}
           >
-            We engineer massive, unmissable brand experiences across Mumbai and Satara.
+            We engineer massive, unmissable brand experiences across Maharashtra.
           </p>
         </motion.div>
       </section>

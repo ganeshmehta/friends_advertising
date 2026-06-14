@@ -49,7 +49,7 @@ const SVG_BG = `
   <text x="540" y="395"
         font-family="Outfit, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"
         font-weight="700" font-size="20" fill="#0fc3cd" letter-spacing="5">
-    MUMBAI · PUNE · MAHARASHTRA
+         MAHARASHTRA
   </text>
   <rect x="540" y="420" width="200" height="3" fill="#5c60f5" />
 </svg>

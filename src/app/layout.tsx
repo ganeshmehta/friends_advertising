@@ -101,9 +101,9 @@ const businessJsonLd = {
   logo: absoluteUrl("/favicon.ico"),
   address: {
     "@type": "PostalAddress",
-    addressLocality: siteConfig.contact.address.city,
-    addressRegion: siteConfig.contact.address.region,
-    addressCountry: siteConfig.contact.address.country,
+    addressLocality: siteConfig.contact.address1.city,
+    addressRegion: siteConfig.contact.address1.region,
+    addressCountry: siteConfig.contact.address1.country,
   },
   areaServed: [
     { "@type": "AdministrativeArea", name: "Maharashtra" },

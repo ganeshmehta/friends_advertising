@@ -46,8 +46,13 @@ export const siteConfig = {
     email: "friendsoutdoor@gmail.com",
     phone: "+91 98903 11234",
     phoneRaw: "+919890311234",
-    address: {
+    address1: {
       city: "Navi Mumbai",
+      region: "Maharashtra",
+      country: "IN",
+    },
+    address2: {
+      city: "Satara",
       region: "Maharashtra",
       country: "IN",
     },

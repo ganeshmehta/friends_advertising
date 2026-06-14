@@ -111,7 +111,8 @@ export default function Footer() {
                 <span className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[rgba(143,198,227,0.8)]">
                   Office
                 </span>
-                <span>{siteConfig.contact.address.city}, {siteConfig.contact.address.region}, India</span>
+                <span>{siteConfig.contact.address1.city}, {siteConfig.contact.address1.region}, India</span>
+                <span>{siteConfig.contact.address2.city}, {siteConfig.contact.address2.region}, India</span>
               </li>
             </ul>
           </div>
