@@ -174,10 +174,15 @@ export default function LocationDetailCard({ location, onClose, isCompetitorZone
             {location.title}
           </h2>
 
-          <p className="mt-2 flex items-center gap-2 text-sm text-slate-500">
+          <a
+            href={`https://www.google.com/maps/search/${encodeURIComponent(location.location)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 flex items-center gap-2 text-sm font-semibold text-[var(--neon-blue)] underline decoration-[var(--neon-blue)] decoration-2 underline-offset-2 hover:text-[#0080ff] hover:decoration-[#0080ff] transition-all duration-200"
+          >
             <MapPin className="h-4 w-4 text-[var(--neon-blue)]" />
             {location.location}
-          </p>
+          </a>
 
           {location.audience && (
             <p className="mt-3 text-xs font-medium uppercase tracking-wider text-slate-400">

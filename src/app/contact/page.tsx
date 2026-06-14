@@ -731,6 +731,74 @@ export default function ContactSection() {
           ))}
         </div>
       </motion.div>
+
+      {/* OUR OFFICES */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="relative z-10 mx-auto mt-16 md:mt-24 max-w-7xl 2xl:max-w-[1480px] px-6 lg:px-10"
+      >
+        <div className="rounded-3xl border border-black/[0.06] bg-white/85 backdrop-blur-md shadow-[0_30px_80px_-50px_rgba(13,36,64,0.35)] p-8 md:p-12">
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#1d1d1f] mb-2">
+            Visit Our Offices
+          </h2>
+          <p className="text-slate-600 mb-8 font-medium">
+            Stop by and say hello. We'd love to discuss your next campaign.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <a
+              href="https://www.google.com/maps/search/Shop+No.+B-32,+Hiranandani+Crystal+Plaza+Premises,+2nd+Floor,+Sector+No.7+Kharghar,+Navi+Mumbai+-+410210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-2xl border border-black/[0.06] bg-gradient-to-br from-[#0071e3]/5 to-[#5c60f5]/5 p-6 hover:border-[var(--neon-blue)]/30 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-[#0071e3] to-[#5c60f5] text-white shadow-sm">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#1d1d1f] group-hover:text-[var(--neon-blue)] transition-colors">
+                    Mumbai Office
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 group-hover:text-slate-800 transition-colors">
+                    Shop No. B-32, Hiranandani Crystal Plaza Premises, 2nd Floor, Sector No.7 Kharghar, Navi Mumbai - 410210
+                  </p>
+                  <p className="mt-3 text-xs font-semibold text-[var(--neon-blue)] flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Open in Google Maps <ArrowUpRight className="h-3 w-3" />
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://www.google.com/maps/search/Shop+No.+25/26,+Vijay+Heights,+Visaw+Naka,+Z.P.+Road,+Satara-415001"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-2xl border border-black/[0.06] bg-gradient-to-br from-[#5c60f5]/5 to-[#ff0055]/5 p-6 hover:border-[var(--neon-blue)]/30 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-[#5c60f5] to-[#ff0055] text-white shadow-sm">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#1d1d1f] group-hover:text-[var(--neon-blue)] transition-colors">
+                    Satara Office
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 group-hover:text-slate-800 transition-colors">
+                    Shop No. 25/26, Vijay Heights, Visaw Naka, Z.P. Road, Satara-415001
+                  </p>
+                  <p className="mt-3 text-xs font-semibold text-[var(--neon-blue)] flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Open in Google Maps <ArrowUpRight className="h-3 w-3" />
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </motion.div>
     </main>
   );
 }
