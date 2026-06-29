@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
@@ -11,7 +13,11 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     theme_color: siteConfig.themeColor,
     icons: [
-      { src: "/favicon.ico", sizes: "any", type: "image/x-icon" },
+      {
+        src: "/favicon.ico",
+        sizes: "any",
+        type: "image/x-icon",
+      },
     ],
   };
-}
+} 

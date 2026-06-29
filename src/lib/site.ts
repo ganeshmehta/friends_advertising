@@ -43,7 +43,7 @@ export const siteConfig = {
   language: "en",
   themeColor: "#0071e3",
   contact: {
-    email: "friendsoutdoor@gmail.com",
+    email: "Friendsoutdoor@gmail.com",
     phone: "+91 98903 11234",
     phoneRaw: "+919890311234",
     address1: {

@@ -6,6 +6,8 @@ import { primaryNav } from "@/lib/nav";
  * Static sitemap generated from the primary navigation. Update `primaryNav`
  * (or extend the list below) when new public routes are added.
  */
+
+export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return primaryNav.map((entry) => {

@@ -514,11 +514,6 @@ export function CampaignVisualizer({ location, onRequestSite }: Props) {
             ? `Mount your creative on the actual ${location.title} hoarding`
             : `See your creative on this ${location.size} hoarding`}
         </h3>
-        <p className="mt-2 max-w-3xl text-sm text-slate-600">
-          {isStudioMode
-            ? `Real on-site photograph from ${location.location}. Drop a still below and we'll composite it onto the billboard face with matched scene lighting — everything runs in your browser.`
-            : `Drop a still or short video below to preview it live on the ${location.title} billboard. Everything runs in your browser — nothing is uploaded.`}
-        </p>
       </header>
 
       <div

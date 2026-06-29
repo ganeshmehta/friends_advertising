@@ -35,7 +35,7 @@ RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
 
 ## 3. Verify your sending domain
 
-Sending from `hello@friendsadv.in` (or any address on your own domain)
+Sending from `Friendsoutdoor@gmail.com` (or any address on your own domain)
 requires Resend to verify you own it.
 
 1. Resend dashboard → **Domains** → *Add Domain* → enter `friendsadv.in`.
@@ -65,8 +65,8 @@ In the project root:
 ```dotenv
 NEXT_PUBLIC_SITE_URL=https://friendsadvertising.in
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
-CONTACT_TO_EMAIL=hello@friendsadv.in
-CONTACT_FROM_EMAIL=Friends Advertising <hello@friendsadv.in>
+CONTACT_TO_EMAIL=Friendsoutdoor@gmail.com
+CONTACT_FROM_EMAIL=Friends Advertising <Friendsoutdoor@gmail.com>
 ```
 
 | Variable              | Purpose                                                                |

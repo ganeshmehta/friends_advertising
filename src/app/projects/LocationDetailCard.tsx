@@ -201,21 +201,6 @@ export default function LocationDetailCard({ location, onClose, isCompetitorZone
             <Stat icon={<Tag className="h-4 w-4" />} label="Format" value={location.size} />
           </div>
 
-          {monthly && (
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--neon-blue)]/15 bg-[var(--neon-blue)]/5 p-5">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Monthly Rate</p>
-                <p className="mt-1 text-3xl font-black text-[var(--neon-blue)]">{monthly}</p>
-              </div>
-              <a
-                href="/contact"
-                className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800"
-              >
-                Reserve This Site →
-              </a>
-            </div>
-          )}
-
           {/* Embedded campaign visualizer */}
           <div className="mt-10">
             <CampaignVisualizer location={location} />

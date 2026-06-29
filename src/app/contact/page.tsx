@@ -36,8 +36,8 @@ const quickContacts = [
   {
     icon: Mail,
     label: "Email us",
-    value: "hello@friendsadv.in",
-    href: "mailto:hello@friendsadv.in",
+    value: "Friendsoutdoor@gmail.com",
+    href: "mailto:Friendsoutdoor@gmail.com",
     tint: "from-[#5c60f5] to-[#ff0055]"
   },
   {
@@ -151,40 +151,77 @@ export default function ContactSection() {
     key: string,
     value: string
   ) => {
-    setForm((prev) => ({
-      ...prev,
-      [key]: value
-    }));
+    const updateField = (key: string, value: string) => {
+      setForm((prev) => ({
+        ...prev,
+        [key]: value,
+      }));
+};
   };
+
+  const WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (status === "sending") return;
+
     setErrorMsg(null);
     setStatus("sending");
+
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
-      });
-      let body: { ok?: boolean; error?: string } = {};
-      try {
-        body = (await res.json()) as { ok?: boolean; error?: string };
-      } catch {
-        // non-JSON response
+      // Placeholder mode (before Web3Forms is configured)
+      if (WEB3FORMS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+
+        setStatus("success");
+        return;
       }
-      if (!res.ok || !body.ok) {
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Lead from Friends Adv - ${form.company || form.name}`,
+          from_name: "Friends Adv Website",
+
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          phone: form.phone,
+          budget: form.budget,
+          message: form.message,
+
+          botcheck: form._honey,
+        }),
+      });
+
+      const body = await res.json();
+
+      if (!res.ok || !body.success) {
         setErrorMsg(
-          body.error ||
-            (res.status === 429
-              ? "Too many submissions. Please try again in a minute."
-              : "Something went wrong. Please email hello@friendsadv.in directly.")
+          body.message ||
+            "Something went wrong. Please try again later."
         );
         setStatus("error");
         return;
       }
+
       setStatus("success");
+
+      setForm({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        budget: "",
+        message: "",
+        _honey: "",
+      });
     } catch {
       setErrorMsg("Network error. Please check your connection and try again.");
       setStatus("error");
@@ -469,10 +506,10 @@ export default function ContactSection() {
               <p className="text-xs text-slate-500">
                 Or write to{" "}
                 <a
-                  href="mailto:hello@friendsadv.in"
+                  href="mailto:Friendsoutdoor@gmail.com"
                   className="font-semibold text-[#1d1d1f] underline decoration-slate-300 underline-offset-4 hover:decoration-[var(--neon-blue)]"
                 >
-                  hello@friendsadv.in
+                  Friendsoutdoor@gmail.com
                 </a>
               </p>
             </div>
